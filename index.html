@@ -63,7 +63,6 @@ select:focus{border-color:#3b82f6}
 .loading{text-align:center;padding:60px 0;color:#3d5568}
 .spinner{width:36px;height:36px;border:3px solid #162d47;border-top-color:#3b82f6;border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 14px}
 @keyframes spin{to{transform:rotate(360deg)}}
-/* Desktop leaderboard */
 .lb-table{background:#0b1929;border:1px solid #162d47;border-radius:12px;overflow:hidden}
 .lb-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .lb-head{display:grid;grid-template-columns:70px 1fr 160px 160px 120px 140px;padding:10px 20px;border-bottom:1px solid #162d47;min-width:760px}
@@ -92,7 +91,6 @@ select:focus{border-color:#3b82f6}
 .m-t3{background:#c2410c;color:#fff}
 .m-builder{background:#065f46;color:#6ee7b7}
 .m-none{color:#4b6478;font-size:.72rem}
-/* Mobile cards */
 .lb-cards{display:none}
 .lb-card{background:#0b1929;border:1px solid #162d47;border-radius:12px;padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:background .12s}
 .lb-card:hover{background:#0e2235}
@@ -110,7 +108,6 @@ select:focus{border-color:#3b82f6}
 .lb-card-pts-label{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:1px}
 .lb-card-sep{width:1px;height:30px;background:#162d47}
 .lb-card-milestone{margin-left:auto}
-/* Dashboard */
 .dash-selector-wrap{background:#0b1929;border:1px solid #162d47;border-radius:12px;padding:18px 20px;margin-bottom:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .dash-selector-wrap label{font-size:.88rem;color:#94a3b8;font-weight:500;white-space:nowrap}
 .dash-selector-wrap select{flex:1;min-width:200px;padding:10px 14px;font-size:.92rem}
@@ -139,7 +136,6 @@ select:focus{border-color:#3b82f6}
 .cat-badge{display:inline-flex;padding:2px 8px;border-radius:10px;font-size:.67rem;font-weight:700}
 .cb-comb{background:#0c2a4a;color:#60a5fa}.cb-indiv{background:#042716;color:#4ade80}
 .pts-val-pos{font-weight:800;color:#f97316}.pts-val-zero{color:#2a3f55}
-/* Form */
 .form-wrap{max-width:600px;margin:0 auto}
 .form-card{background:#0b1929;border:1px solid #162d47;border-radius:16px;padding:32px}
 .form-card-title{font-size:1.35rem;font-weight:700;text-align:center;margin-bottom:6px}
@@ -169,7 +165,6 @@ textarea.form-input{resize:vertical;min-height:90px}
 .banner-ok{background:#052e1e;border:1px solid #15803d;color:#4ade80}
 .banner-err{background:#2d0e0e;border:1px solid #dc2626;color:#f87171}
 .banner-loading{background:#0c2a4a;border:1px solid #1d4ed8;color:#60a5fa}
-/* Rules */
 .rules-card{background:#0b1929;border:1px solid #162d47;border-radius:12px;padding:28px;margin-bottom:20px}
 .rules-title{font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:20px}
 .info-box{background:#091829;border:1px solid #1a3050;border-radius:8px;padding:14px 16px;display:flex;gap:10px;margin-bottom:14px}
@@ -206,7 +201,6 @@ textarea.form-input{resize:vertical;min-height:90px}
 .pts-table tr:last-child td{border-bottom:none}
 .pts-val{font-weight:700;color:#f97316;font-size:.85rem}
 .pts-table-section td{background:#050e18;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#4b6478;padding:7px 12px}
-/* Resources tab */
 .res-section{margin-bottom:24px}
 .res-section-title{font-size:1rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;color:#e2e8f0}
 .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -223,11 +217,9 @@ textarea.form-input{resize:vertical;min-height:90px}
 .rt-template{background:#042716;color:#4ade80}
 .rt-guide{background:#1c0d3f;color:#a78bfa}
 .rt-community{background:#2d1400;color:#fb923c}
-/* Guardrails */
 .guardrail-list{list-style:none;display:flex;flex-direction:column;gap:12px}
 .guardrail-list li{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:#94a3b8;line-height:1.6}
 .guardrail-list li span:first-child{flex-shrink:0;margin-top:2px}
-/* Responsive */
 @media(max-width:900px){
   .stats-row{grid-template-columns:repeat(2,1fr);padding:16px 1.25rem}
   .main{padding:0 1.25rem 3rem}
@@ -340,7 +332,6 @@ textarea.form-input{resize:vertical;min-height:90px}
 
 <div class="main">
 
-<!-- STANDINGS -->
 <div class="tab-panel active" id="tab-standings">
   <div class="filters">
     <div class="search-wrap"><span class="s-icon">&#128269;</span><input type="text" id="search" placeholder="Search leader or chapter&hellip;" oninput="filterTable()"></div>
@@ -367,7 +358,6 @@ textarea.form-input{resize:vertical;min-height:90px}
   <div class="lb-cards" id="lb-cards"><div class="loading"><div class="spinner"></div>Loading&hellip;</div></div>
 </div>
 
-<!-- DASHBOARD -->
 <div class="tab-panel" id="tab-dashboard">
   <div class="dash-selector-wrap">
     <label for="my-leader-sel">&#128100; Who are you?</label>
@@ -445,7 +435,6 @@ textarea.form-input{resize:vertical;min-height:90px}
   </div>
 </div>
 
-<!-- FORM -->
 <div class="tab-panel" id="tab-form">
   <div class="form-wrap"><div class="form-card">
     <h2 class="form-card-title">Submit CL Contributions</h2>
@@ -481,7 +470,6 @@ textarea.form-input{resize:vertical;min-height:90px}
   </div></div>
 </div>
 
-<!-- RESOURCES -->
 <div class="tab-panel" id="tab-resources">
   <div class="res-section">
     <div class="rules-card" style="margin-bottom:20px">
@@ -489,144 +477,32 @@ textarea.form-input{resize:vertical;min-height:90px}
       <p class="rules-para">Everything you need to deliver a great BrowserStack session at your next meetup. Use these templates, demo guides, and knowledge links to run polished, high-impact presentations.</p>
       <div class="info-box ib-green"><span style="color:#4ade80;flex-shrink:0;margin-top:2px">&#9989;</span><div class="ib-content"><h4>Delivering a BrowserStack Product Session earns 100 Individual points!</h4><p>Present a BrowserStack demo or session at your meetup and log it via the Submit Form tab to claim your points.</p></div></div>
     </div>
-
     <div class="res-section-title">&#127908; Presentation Templates &amp; Slide Decks</div>
     <div class="res-grid">
-      <div class="res-card">
-        <div class="res-card-icon">&#128196;</div>
-        <span class="res-tag rt-template">Template</span>
-        <div class="res-card-title">BrowserStack Intro Deck</div>
-        <div class="res-card-desc">Standard introduction slides covering what BrowserStack is, key products, and how it helps developers. Ready to present at meetups.</div>
-        <span class="res-card-link-disabled">&#128274; Link coming soon — contact DevRel team</span>
-      </div>
-      <div class="res-card">
-        <div class="res-card-icon">&#127891;</div>
-        <span class="res-tag rt-template">Template</span>
-        <div class="res-card-title">Live Testing Demo Script</div>
-        <div class="res-card-desc">Step-by-step demo walkthrough for BrowserStack Live — cross-browser testing in action. Audience-friendly and interactive.</div>
-        <span class="res-card-link-disabled">&#128274; Link coming soon — contact DevRel team</span>
-      </div>
-      <div class="res-card">
-        <div class="res-card-icon">&#9881;</div>
-        <span class="res-tag rt-template">Template</span>
-        <div class="res-card-title">Automate Session Deck</div>
-        <div class="res-card-desc">Slides and talking points for a BrowserStack Automate session — Selenium, Appium, and cloud grid deep dive.</div>
-        <span class="res-card-link-disabled">&#128274; Link coming soon — contact DevRel team</span>
-      </div>
+      <div class="res-card"><div class="res-card-icon">&#128196;</div><span class="res-tag rt-template">Template</span><div class="res-card-title">BrowserStack Intro Deck</div><div class="res-card-desc">Standard introduction slides covering what BrowserStack is, key products, and how it helps developers. Ready to present at meetups.</div><span class="res-card-link-disabled">&#128274; Link coming soon — contact DevRel team</span></div>
+      <div class="res-card"><div class="res-card-icon">&#9881;</div><span class="res-tag rt-template">Template</span><div class="res-card-title">Automate Session Deck</div><div class="res-card-desc">Slides and talking points for a BrowserStack Automate session — Selenium, Appium, and cloud grid deep dive.</div><span class="res-card-link-disabled">&#128274; Link coming soon — contact DevRel team</span></div>
     </div>
   </div>
-
   <div class="res-section">
     <div class="res-section-title">&#128196; Product Knowledge Base</div>
     <div class="res-grid">
-      <div class="res-card">
-        <div class="res-card-icon">&#127760;</div>
-        <span class="res-tag rt-product">Product</span>
-        <div class="res-card-title">BrowserStack Live</div>
-        <div class="res-card-desc">Test websites and web apps across 3500+ real browsers and devices. No setup required — instant access from your browser.</div>
-        <a href="https://www.browserstack.com/live" target="_blank" class="res-card-link">&#8599; Open Product Docs</a>
-      </div>
-      <div class="res-card">
-        <div class="res-card-icon">&#129302;</div>
-        <span class="res-tag rt-product">Product</span>
-        <div class="res-card-title">BrowserStack Automate</div>
-        <div class="res-card-desc">Run Selenium, Cypress, Playwright, and Appium tests on a real device cloud. CI/CD integrated and enterprise-grade.</div>
-        <a href="https://www.browserstack.com/automate" target="_blank" class="res-card-link">&#8599; Open Product Docs</a>
-      </div>
-      <div class="res-card">
-        <div class="res-card-icon">&#128241;</div>
-        <span class="res-tag rt-product">Product</span>
-        <div class="res-card-title">App Live &amp; App Automate</div>
-        <div class="res-card-desc">Test iOS and Android apps on real devices. Manual and automated testing — no emulators.</div>
-        <a href="https://www.browserstack.com/app-live" target="_blank" class="res-card-link">&#8599; Open Product Docs</a>
-      </div>
-      <div class="res-card">
-        <div class="res-card-icon">&#128300;</div>
-        <span class="res-tag rt-product">Product</span>
-        <div class="res-card-title">Percy (Visual Testing)</div>
-        <div class="res-card-desc">Catch visual regressions automatically. Percy integrates with your CI/CD pipeline to compare visual snapshots across every build.</div>
-        <a href="https://www.browserstack.com/percy" target="_blank" class="res-card-link">&#8599; Open Product Docs</a>
-      </div>
-      <div class="res-card">
-        <div class="res-card-icon">&#9889;</div>
-        <span class="res-tag rt-product">Product</span>
-        <div class="res-card-title">Accessibility Testing</div>
-        <div class="res-card-desc">Scan your web apps for WCAG violations. Identify, prioritize, and fix accessibility issues fast with Accessibility Automation.</div>
-        <a href="https://www.browserstack.com/accessibility-testing" target="_blank" class="res-card-link">&#8599; Open Product Docs</a>
-      </div>
-      <div class="res-card">
-        <div class="res-card-icon">&#128203;</div>
-        <span class="res-tag rt-product">Product</span>
-        <div class="res-card-title">Full Product Documentation</div>
-        <div class="res-card-desc">Complete developer documentation — getting started guides, API references, integrations, and code samples for all products.</div>
-        <a href="https://www.browserstack.com/docs" target="_blank" class="res-card-link">&#8599; Open Documentation</a>
-      </div>
+      <div class="res-card"><div class="res-card-icon">&#127760;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">BrowserStack Live</div><div class="res-card-desc">Test websites and web apps across 3500+ real browsers and devices. No setup required — instant access from your browser.</div><a href="https://www.browserstack.com/live" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
+      <div class="res-card"><div class="res-card-icon">&#129302;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">BrowserStack Automate</div><div class="res-card-desc">Run Selenium, Cypress, Playwright, and Appium tests on a real device cloud. CI/CD integrated and enterprise-grade.</div><a href="https://www.browserstack.com/automate" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
+      <div class="res-card"><div class="res-card-icon">&#128241;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">App Live &amp; App Automate</div><div class="res-card-desc">Test iOS and Android apps on real devices. Manual and automated testing — no emulators.</div><a href="https://www.browserstack.com/app-live" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
+      <div class="res-card"><div class="res-card-icon">&#128300;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">Percy (Visual Testing)</div><div class="res-card-desc">Catch visual regressions automatically. Percy integrates with your CI/CD pipeline to compare visual snapshots across every build.</div><a href="https://www.browserstack.com/percy" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
+      <div class="res-card"><div class="res-card-icon">&#9889;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">Accessibility Testing</div><div class="res-card-desc">Scan your web apps for WCAG violations. Identify, prioritize, and fix accessibility issues fast with Accessibility Automation.</div><a href="https://www.browserstack.com/accessibility-testing" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
+      <div class="res-card"><div class="res-card-icon">&#128203;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">Full Product Documentation</div><div class="res-card-desc">Complete developer documentation — getting started guides, API references, integrations, and code samples for all products.</div><a href="https://www.browserstack.com/docs" target="_blank" class="res-card-link">&#8599; Open Documentation</a></div>
     </div>
   </div>
 
-  <div class="res-section">
-    <div class="res-section-title">&#127919; Talk Prep &amp; Speaker Guides</div>
-    <div class="res-grid">
-      <div class="res-card">
-        <div class="res-card-icon">&#127775;</div>
-        <span class="res-tag rt-guide">Guide</span>
-        <div class="res-card-title">How to Run a Demo Session</div>
-        <div class="res-card-desc">Best practices for running live product demos at meetups — from setup checklist to handling Q&amp;A and common questions.</div>
-        <span class="res-card-link-disabled">&#128274; Link coming soon — contact DevRel team</span>
-      </div>
-      <div class="res-card">
-        <div class="res-card-icon">&#128104;&#8205;&#128187;</div>
-        <span class="res-tag rt-guide">Guide</span>
-        <div class="res-card-title">Alpha User Program Guide</div>
-        <div class="res-card-desc">How to onboard community members as alpha users for new BrowserStack features. Earn 50 pts (self) or 30 pts per referral.</div>
-        <span class="res-card-link-disabled">&#128274; Link coming soon — contact DevRel team</span>
-      </div>
-      <div class="res-card">
-        <div class="res-card-icon">&#128483;</div>
-        <span class="res-tag rt-guide">Guide</span>
-        <div class="res-card-title">Social Media Promotion Kit</div>
-        <div class="res-card-desc">Ready-to-use post templates for LinkedIn and Twitter/X for promoting meetups, BrowserStack events, and product launches.</div>
-        <span class="res-card-link-disabled">&#128274; Link coming soon — contact DevRel team</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="res-section">
-    <div class="res-section-title">&#127942; Breakpoint &amp; Community</div>
-    <div class="res-grid">
-      <div class="res-card">
-        <div class="res-card-icon">&#127881;</div>
-        <span class="res-tag rt-community">Community</span>
-        <div class="res-card-title">Breakpoint Conference</div>
-        <div class="res-card-desc">BrowserStack's flagship annual tech conference. Promote Breakpoint using your UTM link and earn 10 pts per verified registration (cap: 50).</div>
-        <a href="https://www.browserstack.com/breakpoint" target="_blank" class="res-card-link">&#8599; Breakpoint Website</a>
-      </div>
-      <div class="res-card">
-        <div class="res-card-icon">&#128172;</div>
-        <span class="res-tag rt-community">Community</span>
-        <div class="res-card-title">Discord Community</div>
-        <div class="res-card-desc">The BrowserStack developer community on Discord. Use your personal UTM link to invite new members and earn 10 pts per join (cap: 50).</div>
-        <a href="https://discord.gg/browserstack" target="_blank" class="res-card-link">&#8599; Join Discord</a>
-      </div>
-      <div class="res-card">
-        <div class="res-card-icon">&#128240;</div>
-        <span class="res-tag rt-community">Community</span>
-        <div class="res-card-title">BrowserStack Blog</div>
-        <div class="res-card-desc">Latest articles, tutorials, and product updates from BrowserStack. Great content to reference and share in your meetup sessions.</div>
-        <a href="https://www.browserstack.com/blog" target="_blank" class="res-card-link">&#8599; Read the Blog</a>
-      </div>
-    </div>
-  </div>
-
+ 
   <div style="background:#0b1929;border:1px solid #162d47;border-radius:12px;padding:20px;margin-top:8px;text-align:center">
     <div style="font-size:1.1rem;font-weight:700;margin-bottom:8px">&#128222; Need more resources?</div>
     <p style="font-size:.85rem;color:#94a3b8;line-height:1.6">Reach out to the BrowserStack DevRel team on Discord or via your chapter Slack channel. We regularly add new templates, demo scripts, and presentation materials here.</p>
   </div>
 </div>
 
-<!-- RULES & TIERS -->
 <div class="tab-panel" id="tab-rules">
-
   <div class="rules-card">
     <div class="rules-title">&#127919; Q2 Programme Objectives</div>
     <p class="rules-para">The Q2 framework is redesigned to maximise engagement and retention by making milestones significantly more achievable, distributing points evenly, and offering both high-value physical rewards and career-boosting intangible benefits.</p>
@@ -637,7 +513,6 @@ textarea.form-input{resize:vertical;min-height:90px}
       <div class="info-box" style="margin:0"><span style="color:#fb923c;flex-shrink:0">&#127754;</span><div class="ib-content"><h4>Quality Community Growth</h4><p>10 pts per Discord join (capped at 50 joins) to prioritise high-intent members.</p></div></div>
     </div>
   </div>
-
   <div class="rules-card">
     <div class="rules-title">&#127942; Milestone Tiers &amp; Rewards</div>
     <div class="info-box ib-green"><span style="color:#4ade80;flex-shrink:0;margin-top:2px">&#8505;</span><div class="ib-content"><h4>Progression is cumulative throughout Q2</h4><p>Points accumulate across the full quarter. Each tier unlocks both physical rewards and career growth perks.</p></div></div>
@@ -687,13 +562,11 @@ textarea.form-input{resize:vertical;min-height:90px}
       </div>
     </div>
   </div>
-
   <div class="rules-card">
     <div class="rules-title">&#127754; Ride the Tide Bonus Programme</div>
     <div class="info-box ib-purple"><span style="color:#a78bfa;flex-shrink:0;margin-top:2px">&#127754;</span><div class="ib-content"><h4>Teamwork earns a 15% bonus for your entire chapter</h4><p>If ALL active Chapter Leaders in a city achieve Tier 3 or higher by quarter-end, every leader in that chapter receives a 15% bonus added to their quarterly total. Encourages collaboration over internal competition.</p></div></div>
     <p class="rules-para">This bonus is calculated by the DevRel team at quarter-end and applied before final payout. It is shown as a preview on the leaderboard where the condition is already met.</p>
   </div>
-
   <div class="rules-card">
     <div class="rules-title">&#128202; Points Philosophy — Combined vs Individual</div>
     <div class="info-box"><span style="color:#60a5fa;flex-shrink:0;margin-top:2px">&#8505;</span><div class="ib-content"><h4>Why split points?</h4><p>Combined points prevent friction between co-leaders sharing a chapter. Individual points reward personal hustle independently of the chapter.</p></div></div>
@@ -727,7 +600,6 @@ textarea.form-input{resize:vertical;min-height:90px}
     </tbody></table>
     </div>
   </div>
-
   <div class="rules-card">
     <div class="rules-title">&#128737; Guardrails &amp; Operational Principles</div>
     <ul class="guardrail-list">
@@ -739,8 +611,7 @@ textarea.form-input{resize:vertical;min-height:90px}
       <li><span>&#128172;</span><span><strong>Discord Cap</strong> — Points are capped at 50 joins per channel (Chapter QR + Individual UTM = separate caps) to prioritise member quality over volume.</span></li>
     </ul>
   </div>
-
-</div><!-- tab-rules -->
+</div>
 
 </div><!-- .main -->
 </div><!-- #app -->
@@ -751,15 +622,15 @@ var SECRET_TOKEN = 'BSCLSecure2024xT9k';
 
 // Q2 Individual column keywords — all others = Combined
 var IND_COLS = [
-  'collab',                       // Collab & Cross-Promotion
-  'highlight',                    // Meetup Highlights
-  'referral',                     // Chapter Leader Referral / Alpha User Referral
-  'alpha user',                   // Alpha User (Self) + Alpha User Referral
-  'ama',                          // AMA or Product Promotion
-  'breakpoint promo',             // Breakpoint Promo
-  'discord join (unique)',        // Discord Join (Unique) NOT Chapter
-  'browserstack product session', // Q2 NEW: BS Product Session
-  'cl connect'                    // Q2 NEW: CL Connect Attendance
+  'collab',
+  'highlight',
+  'referral',
+  'alpha user',
+  'ama',
+  'breakpoint promo',
+  'discord join (unique)',
+  'browserstack product session',
+  'cl connect'
 ];
 
 function isIndividualCol(h){ return IND_COLS.some(function(k){ return h.indexOf(k)>=0; }); }
@@ -869,29 +740,31 @@ function processSheetData(data){
     var name=String(row[nameCol]||'').trim(),city=String(row[cityCol]||'').trim(),total=Number(row[totalCol])||0;
     var combined=0,individual=0;
     colMeta.forEach(function(c){var v=Number(row[c.idx])||0;if(c.isIndividual)individual+=v;else combined+=v;});
-    var bkPts=colMeta.filter(function(c){return h[c.idx]&&h[c.idx].indexOf('breakpoint')>=0;}).reduce(function(s,c){return s+(Number(row[c.idx])||0);},0);
-    var hasMeetup=colMeta.some(function(c){return h[c.idx]&&h[c.idx].indexOf('meetup')>=0&&h[c.idx].indexOf('highlight')<0&&(Number(row[c.idx])||0)>0;});
+    var hasMeetup=colMeta.some(function(c){
+      var lc=h[c.idx]||'';
+      return lc.indexOf('meetup')>=0&&lc.indexOf('highlight')<0&&(Number(row[c.idx])||0)>0;
+    });
     var milestone=getMilestone(total,hasMeetup);
     var breakdown={};colMeta.forEach(function(c){breakdown[c.name]=Number(row[c.idx])||0;});
     leaderDataMap[name.toLowerCase()]={name:name,city:city,combined:combined,individual:individual,total:total,milestone:milestone,breakdown:breakdown};
-    return{name:name,city:city,combined:combined,individual:individual,total:total,milestone:milestone,bkPts:bkPts,hasMeetup:hasMeetup,rideTide:false};
+    return{name:name,city:city,combined:combined,individual:individual,total:total,milestone:milestone,hasMeetup:hasMeetup,rideTide:false};
   }).sort(function(a,b){return b.total-a.total;});
 
-  // Ride the Tide: if ALL CLs in a city are Tier 3 or better, give 15% bonus preview
+  // Ride the Tide: if ALL CLs in a city are Tier 3+, preview 15% bonus
   var cityGroups={};
   allLeaders.forEach(function(l){if(!cityGroups[l.city])cityGroups[l.city]=[];cityGroups[l.city].push(l);});
-  var tideCount=0;
+  var tideCities=[];
   allLeaders.forEach(function(l){
     var grp=cityGroups[l.city];
     if(grp&&grp.length>1&&grp.every(function(m){return m.milestone==='TIER 3'||m.milestone==='TIER 2'||m.milestone==='TIER 1';})){
       l.rideTide=true;l.tideTotal=Math.round(l.total*1.15);
       leaderDataMap[l.name.toLowerCase()].rideTide=true;
       leaderDataMap[l.name.toLowerCase()].tideTotal=l.tideTotal;
-      tideCount++;
-    } else{l.rideTide=false;l.tideTotal=l.total;}
+      if(tideCities.indexOf(l.city)<0)tideCities.push(l.city);
+    }else{l.rideTide=false;l.tideTotal=l.total;}
   });
 
-  // City filter
+  // City / chapter filter dropdown
   var cities=[];
   allLeaders.forEach(function(l){if(l.city&&cities.indexOf(l.city)<0)cities.push(l.city);});cities.sort();
   var sel=document.getElementById('filter-chapter');
@@ -906,9 +779,14 @@ function processSheetData(data){
 
   // Stats
   document.getElementById('s-leaders').textContent=allLeaders.length;
-  document.getElementById('s-meetups').textContent=allLeaders.filter(function(l){return l.hasMeetup;}).length;
+
+  // ── BUG FIX: Meetups Hosted = unique cities with at least one CL who hosted ──
+  var meetupCities=[];
+  allLeaders.forEach(function(l){if(l.hasMeetup&&meetupCities.indexOf(l.city.toLowerCase())<0)meetupCities.push(l.city.toLowerCase());});
+  document.getElementById('s-meetups').textContent=meetupCities.length;
+
   document.getElementById('s-tier1').textContent=allLeaders.filter(function(l){return l.milestone==='TIER 1';}).length;
-  document.getElementById('s-tide').textContent=tideCount>0?Math.floor(tideCount/1)+' city':'—';
+  document.getElementById('s-tide').textContent=tideCities.length>0?tideCities.length+' city':'—';
   renderTable(allLeaders);
 }
 
@@ -926,7 +804,7 @@ function renderTable(leaders){
     return '<div class="leader-row" onclick="jumpToDash(\''+sn+'\')">'
       +'<div><span class="rank-badge '+rC+'">'+rank+'</span></div>'
       +'<div class="leader-info"><div class="avatar" style="background:'+avColor(l.name)+'">'+avInitials(l.name)+'</div>'
-      +'<div style="min-width:0"><div class="leader-name">'+esc(l.name)+'</div><div class="leader-city">&#128205; '+esc(l.city)+'</div></div></div>'
+      +'<div style="min-width:0"><div class="leader-name">'+esc(l.name)+'</div><div class="leader-city">📍 '+esc(l.city)+'</div></div></div>'
       +'<div class="pts-col"><div class="pts-label l-comb">COMBINED</div><div class="pts-num n-comb">'+l.combined.toLocaleString()+'</div></div>'
       +'<div class="pts-col"><div class="pts-label l-indiv">INDIVIDUAL</div><div class="pts-num n-indiv">'+l.individual.toLocaleString()+'</div></div>'
       +'<div><div class="total-num">'+l.total.toLocaleString()+'</div>'+tideHtml+'</div>'
@@ -941,11 +819,10 @@ function renderTable(leaders){
       +'<div class="lb-card-top">'
       +'<span class="lb-card-rank rank-badge '+rC+'">'+rank+'</span>'
       +'<div class="lb-card-avatar" style="background:'+avColor(l.name)+'">'+avInitials(l.name)+'</div>'
-      +'<div style="min-width:0;flex:1"><div class="lb-card-name">'+esc(l.name)+'</div><div class="lb-card-city">&#128205; '+esc(l.city)+'</div></div>'
+      +'<div style="min-width:0;flex:1"><div class="lb-card-name">'+esc(l.name)+'</div><div class="lb-card-city">📍 '+esc(l.city)+'</div></div>'
       +'<div class="lb-card-total"><div class="lb-card-total-val">'+l.total.toLocaleString()+'</div>'
-      +(l.rideTide?'<div style="font-size:.6rem;color:#06b6d4;font-weight:700">&#127754; +15%</div>':'<div class="lb-card-total-label">Total pts</div>')
-      +'</div>'
-      +'</div>'
+      +(l.rideTide?'<div style="font-size:.6rem;color:#06b6d4;font-weight:700">🌊 +15%</div>':'<div class="lb-card-total-label">Total pts</div>')
+      +'</div></div>'
       +'<div class="lb-card-bottom">'
       +'<div class="lb-card-pts"><div class="lb-card-pts-val n-comb">'+l.combined.toLocaleString()+'</div><div class="lb-card-pts-label l-comb">Combined</div></div>'
       +'<div class="lb-card-sep"></div>'
@@ -1002,7 +879,7 @@ function findDiscordUTM(name){
 }
 function renderUTMLinks(d){
   var url=findDiscordUTM(d.name);
-  document.getElementById('utm-links-container').innerHTML='<div class="utm-link-row"><div class="utm-link-label">&#128172; Discord Community Join</div><div class="utm-link-url"><input type="text" id="utm-inp-0" value="'+(url?esc(url):'No Discord UTM found — contact BrowserStack team')+'" readonly '+(url?'':'style="color:#3d5568;font-style:italic"')+'>'+(url?'<button class="copy-btn" id="utm-cp-0" onclick="copyUTM()">Copy</button>':'')+'</div></div>';
+  document.getElementById('utm-links-container').innerHTML='<div class="utm-link-row"><div class="utm-link-label">💬 Discord Community Join</div><div class="utm-link-url"><input type="text" id="utm-inp-0" value="'+(url?esc(url):'No Discord UTM found — contact BrowserStack team')+'" readonly '+(url?'':'style="color:#3d5568;font-style:italic"')+'>'+(url?'<button class="copy-btn" id="utm-cp-0" onclick="copyUTM()">Copy</button>':'')+'</div></div>';
 }
 function copyUTM(){
   navigator.clipboard.writeText(document.getElementById('utm-inp-0').value).then(function(){
