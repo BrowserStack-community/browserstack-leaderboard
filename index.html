@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter Leader Board | BrowserStack Community</title>
+<!-- GA4 — private usage tracking, only you can see reports at analytics.google.com -->
+<!-- Replace BOTH instances of G-XXXXXXXXXX with your GA4 Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());
+  gtag('config','G-XXXXXXXXXX',{send_page_view:true});
+</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#071320;color:#e2e8f0;min-height:100vh}
@@ -22,6 +31,8 @@ button,select,input,textarea{font-family:inherit}
 .pw-btn:hover:not(:disabled){background:#2563eb}.pw-btn:disabled{opacity:.6;cursor:not-allowed}
 .pw-spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
 .pw-err{color:#f87171;font-size:.82rem;margin-top:10px;display:none}.pw-err.show{display:block}
+.pw-prefetch{font-size:.72rem;color:#3d5568;margin-top:10px;height:14px;transition:color .3s}
+.pw-prefetch.ready{color:#22c55e}
 #event-popup{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:8888;display:none;align-items:center;justify-content:center;padding:20px}
 #event-popup.show{display:flex}
 .ep-box{background:#0b1929;border:1px solid #f97316;border-radius:16px;padding:36px 40px;width:100%;max-width:460px;text-align:center}
@@ -165,42 +176,58 @@ textarea.form-input{resize:vertical;min-height:90px}
 .banner-ok{background:#052e1e;border:1px solid #15803d;color:#4ade80}
 .banner-err{background:#2d0e0e;border:1px solid #dc2626;color:#f87171}
 .banner-loading{background:#0c2a4a;border:1px solid #1d4ed8;color:#60a5fa}
+/* Rules & Tiers */
 .rules-card{background:#0b1929;border:1px solid #162d47;border-radius:12px;padding:28px;margin-bottom:20px}
 .rules-title{font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:20px}
-.info-box{background:#091829;border:1px solid #1a3050;border-radius:8px;padding:14px 16px;display:flex;gap:10px;margin-bottom:14px}
-.ib-warn{background:#1c0d00;border-color:#7c2d12}
-.ib-green{background:#052e1e;border-color:#15803d}
-.ib-purple{background:#1c0d3f;border-color:#7c3aed}
-.ib-content h4{font-size:.88rem;font-weight:600;margin-bottom:3px}
-.ib-content p{font-size:.82rem;color:#94a3b8;line-height:1.55}
-.ib-warn .ib-content p{color:#c2410c}
-.ib-green .ib-content p{color:#4ade80}
-.ib-purple .ib-content p{color:#a78bfa}
 .rules-para{font-size:.88rem;color:#94a3b8;line-height:1.65;margin-bottom:12px}
-.tier-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px}
-.tier-card{background:#091829;border:1px solid #162d47;border-radius:12px;padding:18px}
-.tier-card.builder{border-color:#065f46}
-.tier-card.t3{border-color:#c2410c55}
-.tier-card.t2{border-color:#37415155}
-.tier-card.t1{border-color:#7c3aed55}
-.tc-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
-.tc-title{font-size:1rem;font-weight:800}
-.tc-t1{color:#a855f7}.tc-t2{color:#94a3b8}.tc-t3{color:#f97316}.tc-builder{color:#34d399}
-.tc-threshold{font-size:.72rem;color:#4b6478;font-weight:600}
-.tc-reward{font-size:.78rem;color:#e2e8f0;margin-bottom:12px;padding:8px 10px;background:#071320;border-radius:6px}
-.tc-reward strong{color:#f97316}
-.tc-intangible{font-size:.75rem;color:#60a5fa;margin-bottom:12px;padding:8px 10px;background:#050d18;border-radius:6px;line-height:1.5}
-.tc-section{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:#4b6478;font-weight:700;margin:12px 0 7px}
-.tc-item{display:flex;align-items:flex-start;gap:7px;font-size:.78rem;color:#94a3b8;margin-bottom:5px;line-height:1.45}
-.tc-check{color:#22c55e;flex-shrink:0}.tc-star{color:#d97706;flex-shrink:0}.tc-diamond{color:#a855f7;flex-shrink:0}
+.info-box{background:#091829;border:1px solid #1a3050;border-radius:8px;padding:14px 16px;display:flex;gap:10px;margin-bottom:14px}
+.ib-green{background:#052e1e;border-color:#15803d}
+.ib-content h4{font-size:.88rem;font-weight:700;margin-bottom:4px}
+.ib-content p{font-size:.82rem;color:#94a3b8;line-height:1.55}
+.ib-green .ib-content p{color:#4ade80}
+/* Tier cards */
+.tier-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.tier-card{border-radius:14px;padding:22px;position:relative;overflow:hidden}
+.tier-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.tc-builder{background:#091f12;border:1px solid #134e2a}.tc-builder::before{background:#34d399}
+.tc-t3{background:#1a0d00;border:1px solid #7c2d12}.tc-t3::before{background:#f97316}
+.tc-t2{background:#0f1520;border:1px solid #374151}.tc-t2::before{background:#9ca3af}
+.tc-t1{background:#140a2a;border:1px solid #4c1d95}.tc-t1::before{background:linear-gradient(90deg,#7c3aed,#a855f7)}
+.tc-tier-name{font-size:1.05rem;font-weight:800;margin-bottom:2px}
+.tc-tier-name.builder{color:#34d399}.tc-tier-name.t3{color:#f97316}.tc-tier-name.t2{color:#9ca3af}.tc-tier-name.t1{color:#a855f7}
+.tc-threshold{font-size:.72rem;font-weight:600;color:#4b6478;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #162d47}
+.tc-section-label{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3d5568;margin-bottom:8px;margin-top:14px}
+.tc-reward-box{background:#071320;border-radius:8px;padding:10px 12px;margin-bottom:8px}
+.tc-reward-val{font-size:.88rem;font-weight:700;color:#f97316;margin-bottom:2px}
+.tc-reward-note{font-size:.72rem;color:#4b6478}
+.tc-perk{display:flex;align-items:flex-start;gap:8px;font-size:.78rem;color:#94a3b8;margin-bottom:5px;line-height:1.45}
+.tc-perk-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.dot-green{background:#34d399}.dot-orange{background:#f97316}.dot-silver{background:#9ca3af}.dot-purple{background:#a855f7}
+/* Programs */
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.prog-card{border-radius:12px;padding:20px}
+.prog-card.tide{background:#091829;border:1px solid #1d4ed8}
+.prog-card.conf{background:#140a2a;border:1px solid #4c1d95}
+.prog-card.discord{background:#091f12;border:1px solid #134e2a}
+.prog-icon{font-size:2rem;margin-bottom:10px}
+.prog-title{font-size:.92rem;font-weight:700;margin-bottom:8px}
+.prog-card.tide .prog-title{color:#60a5fa}
+.prog-card.conf .prog-title{color:#a855f7}
+.prog-card.discord .prog-title{color:#34d399}
+.prog-desc{font-size:.8rem;color:#94a3b8;line-height:1.6}
+/* Points table — no Type column */
 .pts-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.pts-table{width:100%;border-collapse:collapse;font-size:.81rem;margin-top:16px;min-width:560px}
-.pts-table th{background:#071320;padding:9px 12px;text-align:left;font-size:.63rem;text-transform:uppercase;letter-spacing:.07em;color:#4b6478;border-bottom:1px solid #162d47}
-.pts-table td{padding:9px 12px;border-bottom:1px solid #0d1e2f;color:#c0d0e0;vertical-align:top;line-height:1.45}
+.pts-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:480px}
+.pts-table th{background:#050e18;padding:9px 14px;text-align:left;font-size:.63rem;text-transform:uppercase;letter-spacing:.08em;color:#4b6478;border-bottom:1px solid #162d47;white-space:nowrap}
+.pts-table td{padding:9px 14px;border-bottom:1px solid #0d1e2f;color:#c0d0e0;vertical-align:top;line-height:1.5}
 .pts-table tr:hover td{background:#091829}
 .pts-table tr:last-child td{border-bottom:none}
-.pts-val{font-weight:700;color:#f97316;font-size:.85rem}
-.pts-table-section td{background:#050e18;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#4b6478;padding:7px 12px}
+.pts-val{font-weight:800;color:#f97316;white-space:nowrap}
+/* Guardrails */
+.guardrail-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.guardrail-list li{display:flex;gap:12px;align-items:flex-start;font-size:.85rem;color:#94a3b8;line-height:1.6}
+.guardrail-list li span:first-child{flex-shrink:0;margin-top:2px;font-size:1rem}
+/* Resources */
 .res-section{margin-bottom:24px}
 .res-section-title{font-size:1rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;color:#e2e8f0}
 .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -215,25 +242,18 @@ textarea.form-input{resize:vertical;min-height:90px}
 .res-tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.65rem;font-weight:700;margin-bottom:4px}
 .rt-product{background:#0c2a4a;color:#60a5fa}
 .rt-template{background:#042716;color:#4ade80}
-.rt-guide{background:#1c0d3f;color:#a78bfa}
-.rt-community{background:#2d1400;color:#fb923c}
-.guardrail-list{list-style:none;display:flex;flex-direction:column;gap:12px}
-.guardrail-list li{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:#94a3b8;line-height:1.6}
-.guardrail-list li span:first-child{flex-shrink:0;margin-top:2px}
 @media(max-width:900px){
   .stats-row{grid-template-columns:repeat(2,1fr);padding:16px 1.25rem}
   .main{padding:0 1.25rem 3rem}
   .tier-grid{grid-template-columns:1fr 1fr}
+  .programs-grid{grid-template-columns:1fr}
   .dash-grid{grid-template-columns:1fr}
   .dash-card.full{grid-column:1}
   .res-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
   header{height:auto;padding:10px 14px;flex-direction:column;align-items:stretch;gap:8px}
-  .logo{gap:10px}
-  .logo-icon{width:34px;height:34px;font-size:16px}
-  .logo-title{font-size:.95rem}
-  .logo-sub{display:none}
+  .logo{gap:10px}.logo-icon{width:34px;height:34px;font-size:16px}.logo-title{font-size:.95rem}.logo-sub{display:none}
   nav{overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;gap:6px;padding-bottom:2px;scrollbar-width:none}
   nav::-webkit-scrollbar{display:none}
   .nav-btn{padding:7px 14px;font-size:.8rem;flex-shrink:0;border-radius:20px;border:1px solid #162d47}
@@ -241,33 +261,23 @@ textarea.form-input{resize:vertical;min-height:90px}
   .stats-row{grid-template-columns:1fr 1fr;gap:10px;padding:14px}
   .stat-card{padding:12px 14px;gap:10px;border-radius:10px}
   .stat-icon{width:34px;height:34px;font-size:15px;border-radius:8px}
-  .stat-value{font-size:1.6rem}
-  .stat-label{font-size:.58rem}
+  .stat-value{font-size:1.6rem}.stat-label{font-size:.58rem}
   .main{padding:0 14px 3rem}
   .filters{flex-direction:column;gap:8px}
-  .search-wrap{width:100%}
-  .filters select{width:100%;padding:10px 12px}
-  .lb-table{display:none}
-  .lb-cards{display:block}
+  .search-wrap{width:100%}.filters select{width:100%;padding:10px 12px}
+  .lb-table{display:none}.lb-cards{display:block}
+  .tier-grid{grid-template-columns:1fr}
   .dash-selector-wrap{flex-direction:column;align-items:stretch;gap:10px;padding:14px}
   .dash-selector-wrap select{max-width:100%;min-width:unset}
   .dash-private-note{display:none}
-  .dash-grid{grid-template-columns:1fr;gap:12px}
-  .dash-card{padding:16px}
-  .pts-summary{gap:8px}
-  .pts-sum-item{padding:10px 8px}
-  .pts-sum-val{font-size:1.25rem}
-  .pts-sum-label{font-size:.58rem}
+  .dash-grid{grid-template-columns:1fr;gap:12px}.dash-card{padding:16px}
+  .pts-summary{gap:8px}.pts-sum-item{padding:10px 8px}.pts-sum-val{font-size:1.25rem}.pts-sum-label{font-size:.58rem}
   .breakdown-table th:nth-child(2),.breakdown-table td:nth-child(2){display:none}
-  .form-card{padding:20px 16px;border-radius:12px}
-  .form-card-title{font-size:1.1rem}
-  .divider{margin:0 -16px 20px}
-  .form-row{grid-template-columns:1fr}
+  .form-card{padding:20px 16px;border-radius:12px}.form-card-title{font-size:1.1rem}
+  .divider{margin:0 -16px 20px}.form-row{grid-template-columns:1fr}
   .rules-card{padding:18px 14px;border-radius:10px}
-  .tier-grid{grid-template-columns:1fr}
   .res-grid{grid-template-columns:1fr}
-  .ep-box{padding:24px 18px}
-  .pw-box{padding:28px 20px}
+  .ep-box{padding:24px 18px}.pw-box{padding:28px 20px}
 }
 </style>
 </head>
@@ -277,7 +287,7 @@ textarea.form-input{resize:vertical;min-height:90px}
   <div class="pw-box">
     <div class="pw-logo">&#127942;</div>
     <div class="pw-title">Chapter Leader Board</div>
-    <div class="pw-sub">BrowserStack Community &bull; Q2 Portal &bull; Enter password to continue</div>
+    <div class="pw-sub">BrowserStack Community &bull; Enter password to continue</div>
     <div class="pw-field">
       <input type="password" class="pw-input" id="pw-input" placeholder="Password" onkeydown="if(event.key==='Enter')checkPw()">
       <button class="pw-eye" onclick="togglePwVisibility()" type="button">
@@ -289,7 +299,8 @@ textarea.form-input{resize:vertical;min-height:90px}
       <div class="pw-spinner" id="pw-spinner"></div>
       <span id="pw-btn-text">Access Portal</span>
     </button>
-    <div class="pw-err" id="pw-err">&#10060; Incorrect password. Please try again.</div>
+    <div class="pw-err" id="pw-err"></div>
+    <div class="pw-prefetch" id="pw-prefetch">&#9679; Connecting&hellip;</div>
   </div>
 </div>
 
@@ -332,14 +343,15 @@ textarea.form-input{resize:vertical;min-height:90px}
 
 <div class="main">
 
+<!-- STANDINGS -->
 <div class="tab-panel active" id="tab-standings">
   <div class="filters">
     <div class="search-wrap"><span class="s-icon">&#128269;</span><input type="text" id="search" placeholder="Search leader or chapter&hellip;" oninput="filterTable()"></div>
     <select id="filter-tier" onchange="filterTable()">
       <option value="all">All Tiers</option>
-      <option value="TIER 1">Tier 1 (2250+ pts)</option>
-      <option value="TIER 2">Tier 2 (1550+ pts)</option>
-      <option value="TIER 3">Tier 3 (750+ pts)</option>
+      <option value="TIER 1">Tier 1 — Community Strategist</option>
+      <option value="TIER 2">Tier 2 — Community Architect</option>
+      <option value="TIER 3">Tier 3 — Community Contributor</option>
       <option value="BUILDER">Builder</option>
       <option value="NONE">No Tier Yet</option>
     </select>
@@ -358,6 +370,7 @@ textarea.form-input{resize:vertical;min-height:90px}
   <div class="lb-cards" id="lb-cards"><div class="loading"><div class="spinner"></div>Loading&hellip;</div></div>
 </div>
 
+<!-- DASHBOARD -->
 <div class="tab-panel" id="tab-dashboard">
   <div class="dash-selector-wrap">
     <label for="my-leader-sel">&#128100; Who are you?</label>
@@ -369,7 +382,7 @@ textarea.form-input{resize:vertical;min-height:90px}
       <div class="dash-card">
         <div class="dash-card-title">&#128279; My UTM Links</div>
         <div id="utm-links-container"></div>
-        <div class="utm-note">Share your unique Discord link on social media and in meetup slides to earn 10 pts per verified join (capped at 50 joins).</div>
+        <div class="utm-note">Share your unique Discord link to earn 10 pts per verified join (capped at 50 joins).</div>
       </div>
       <div class="dash-card">
         <div class="dash-card-title">&#128202; Points Summary</div>
@@ -379,19 +392,17 @@ textarea.form-input{resize:vertical;min-height:90px}
           <div class="pts-sum-item"><div class="pts-sum-label psl-i">Individual</div><div class="pts-sum-val psv-i" id="dash-individual">&mdash;</div></div>
         </div>
         <div style="font-size:.8rem;color:#4b6478;margin-bottom:8px">Milestone: <span id="dash-milestone" style="font-weight:700">&mdash;</span></div>
-        <div id="dash-tide-note" style="display:none;font-size:.75rem;color:#06b6d4;padding:8px 10px;background:#050e18;border-radius:6px;border-left:2px solid #06b6d4">&#127754; <strong>Ride the Tide active!</strong> Your chapter has earned a <strong>+15% bonus</strong> — all CLs in your city reached Tier 3 or higher.</div>
+        <div id="dash-tide-note" style="display:none;font-size:.75rem;color:#06b6d4;padding:8px 10px;background:#050e18;border-radius:6px;border-left:2px solid #06b6d4">&#127754; <strong>Ride the Tide active!</strong> Your chapter earned a <strong>+15% bonus</strong> &mdash; all CLs in your city reached Tier 3+.</div>
       </div>
     </div>
     <div class="dash-card full">
       <div class="dash-card-title">&#128203; Full Points Breakdown</div>
-      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
-        <table class="breakdown-table" style="min-width:320px"><thead><tr><th>Activity</th><th>Category</th><th>Points</th></tr></thead><tbody id="breakdown-body"></tbody></table>
-      </div>
+      <div style="overflow-x:auto"><table class="breakdown-table" style="min-width:320px"><thead><tr><th>Activity</th><th>Category</th><th>Points</th></tr></thead><tbody id="breakdown-body"></tbody></table></div>
     </div>
     <div class="dash-card full" style="margin-top:16px">
       <div class="dash-card-title">&#9888; Raise a Points Dispute</div>
       <div style="font-size:.83rem;color:#94a3b8;margin-bottom:18px;line-height:1.6">If you believe a points entry is incorrect, raise a dispute here. The DevRel team will review within 5 business days.</div>
-      <div class="banner banner-ok" id="dispute-ok">&#9989; Dispute logged! The team will review and respond within 5 business days.</div>
+      <div class="banner banner-ok" id="dispute-ok">&#9989; Dispute logged! The team will review within 5 business days.</div>
       <div class="banner banner-err" id="dispute-err">&#10060; Something went wrong. Please try again.</div>
       <div class="banner banner-loading" id="dispute-loading">&#9203; Submitting&hellip;</div>
       <form id="dispute-form" onsubmit="submitDispute(event)">
@@ -411,10 +422,11 @@ textarea.form-input{resize:vertical;min-height:90px}
             </optgroup>
             <optgroup label="Individual Activities">
               <option>BrowserStack Product Session</option><option>CL Connect Attendance</option>
-              <option>Collab &amp; Cross-Promotion</option><option>Chapter Leader Referral</option>
+              <option>Collab &amp; Cross-Promotion</option><option>Referral (Successful)</option>
               <option>Meetup Highlights</option><option>Alpha User (Self)</option>
               <option>Alpha User Referral</option><option>AMA or Product Promotion</option>
-              <option>Breakpoint Promo</option><option>Discord Join (Unique)</option>
+              <option>Discord Join (Unique)</option>
+              <option>BrowserStack Related Conference Talk</option>
             </optgroup>
             <option>Other</option>
           </select>
@@ -423,7 +435,7 @@ textarea.form-input{resize:vertical;min-height:90px}
           <div class="form-field"><label class="form-label">Points Currently Shown</label><input type="number" class="form-input" id="d-shown" placeholder="e.g. 0" min="0"></div>
           <div class="form-field"><label class="form-label">Points Expected <span class="req">*</span></label><input type="number" class="form-input" id="d-expected" placeholder="e.g. 100" min="0" required></div>
         </div>
-        <div class="form-field"><label class="form-label">Describe the issue / add evidence link <span class="req">*</span></label><textarea class="form-input" id="d-desc" placeholder="Explain what happened and paste any evidence links" required></textarea></div>
+        <div class="form-field"><label class="form-label">Describe the issue / evidence link <span class="req">*</span></label><textarea class="form-input" id="d-desc" placeholder="Explain what happened and paste any evidence links" required></textarea></div>
         <button type="submit" class="btn-purple" id="d-btn">Submit Dispute</button>
       </form>
     </div>
@@ -435,14 +447,15 @@ textarea.form-input{resize:vertical;min-height:90px}
   </div>
 </div>
 
+<!-- FORM -->
 <div class="tab-panel" id="tab-form">
   <div class="form-wrap"><div class="form-card">
     <h2 class="form-card-title">Submit CL Contributions</h2>
-    <p class="form-card-sub">Submit a report detailing key aspects of your recent chapter activity. All submissions are reviewed by the DevRel team.</p>
+    <p class="form-card-sub">Submit a report detailing your recent chapter activity. All submissions are reviewed by the DevRel team.</p>
     <a href="https://forms.gle/enpHZqp4Tx22bCm96" target="_blank" class="form-ext-link">&#8599; Open Original Google Form</a>
     <hr class="divider">
     <div class="banner banner-ok" id="form-ok">&#9989; Your response has been saved successfully!</div>
-    <div class="banner banner-err" id="form-err">&#10060; Submission failed. Please try again or use the original Google Form link above.</div>
+    <div class="banner banner-err" id="form-err">&#10060; Submission failed. Please try again or use the Google Form link above.</div>
     <div class="banner banner-loading" id="form-loading">&#9203; Submitting your response&hellip;</div>
     <form id="activity-form" onsubmit="submitActivityForm(event)">
       <div class="form-field"><label class="form-label">1. Chapter Leader Name <span class="req">*</span></label><input type="text" class="form-input" id="fl-name" placeholder="Enter your full name" required></div>
@@ -456,7 +469,7 @@ textarea.form-input{resize:vertical;min-height:90px}
           <label class="radio-opt"><input type="radio" name="fl-speaker" value="No guest speaker this time"><span class="radio-opt-label">No guest speaker this time</span></label>
         </div>
       </div>
-      <div class="form-field"><label class="form-label">6. Did you collaborate with any community for this meetup?</label>
+      <div class="form-field"><label class="form-label">6. Did you collaborate with any community?</label>
         <div class="radio-group">
           <label class="radio-opt"><input type="radio" name="fl-collab" value="Yes"><span class="radio-opt-label">Yes</span></label>
           <label class="radio-opt"><input type="radio" name="fl-collab" value="No"><span class="radio-opt-label">No</span></label>
@@ -470,6 +483,7 @@ textarea.form-input{resize:vertical;min-height:90px}
   </div></div>
 </div>
 
+<!-- RESOURCES -->
 <div class="tab-panel" id="tab-resources">
   <div class="res-section">
     <div class="rules-card" style="margin-bottom:20px">
@@ -494,124 +508,144 @@ textarea.form-input{resize:vertical;min-height:90px}
       <div class="res-card"><div class="res-card-icon">&#128203;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">Full Product Documentation</div><div class="res-card-desc">Complete developer documentation — getting started guides, API references, integrations, and code samples for all products.</div><a href="https://www.browserstack.com/docs" target="_blank" class="res-card-link">&#8599; Open Documentation</a></div>
     </div>
   </div>
-
- 
   <div style="background:#0b1929;border:1px solid #162d47;border-radius:12px;padding:20px;margin-top:8px;text-align:center">
     <div style="font-size:1.1rem;font-weight:700;margin-bottom:8px">&#128222; Need more resources?</div>
     <p style="font-size:.85rem;color:#94a3b8;line-height:1.6">Reach out to the BrowserStack DevRel team on Discord or via your chapter Slack channel. We regularly add new templates, demo scripts, and presentation materials here.</p>
   </div>
 </div>
 
+<!-- RULES & TIERS -->
 <div class="tab-panel" id="tab-rules">
+
+  <!-- 1. TIER CARDS -->
   <div class="rules-card">
-    <div class="rules-title">&#127919; Q2 Programme Objectives</div>
-    <p class="rules-para">The Q2 framework is redesigned to maximise engagement and retention by making milestones significantly more achievable, distributing points evenly, and offering both high-value physical rewards and career-boosting intangible benefits.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px">
-      <div class="info-box" style="margin:0"><span style="color:#60a5fa;flex-shrink:0">&#128101;</span><div class="ib-content"><h4>Drive Engagement &amp; Retention</h4><p>Realistic, evenly distributed targets keep Chapter Leaders motivated all quarter.</p></div></div>
-      <div class="info-box" style="margin:0"><span style="color:#4ade80;flex-shrink:0">&#127968;</span><div class="ib-content"><h4>Simplify Chapter Management</h4><p>One portal for activity logging, progress tracking, and key resource access.</p></div></div>
-      <div class="info-box" style="margin:0"><span style="color:#a78bfa;flex-shrink:0">&#127775;</span><div class="ib-content"><h4>Up-Skill &amp; Recognise Leaders</h4><p>Tangible hardware rewards combined with conference sponsorships and spotlight features.</p></div></div>
-      <div class="info-box" style="margin:0"><span style="color:#fb923c;flex-shrink:0">&#127754;</span><div class="ib-content"><h4>Quality Community Growth</h4><p>10 pts per Discord join (capped at 50 joins) to prioritise high-intent members.</p></div></div>
-    </div>
-  </div>
-  <div class="rules-card">
-    <div class="rules-title">&#127942; Milestone Tiers &amp; Rewards</div>
-    <div class="info-box ib-green"><span style="color:#4ade80;flex-shrink:0;margin-top:2px">&#8505;</span><div class="ib-content"><h4>Progression is cumulative throughout Q2</h4><p>Points accumulate across the full quarter. Each tier unlocks both physical rewards and career growth perks.</p></div></div>
+    <div class="rules-title">&#127942; Tiering Framework &amp; Rewards</div>
+    <p class="rules-para" style="margin-bottom:20px">Progression is non-linear and calculated cumulatively throughout the quarter. Leaders unlock both physical items and career growth perks at each stage.</p>
     <div class="tier-grid">
-      <div class="tier-card builder">
-        <div class="tc-header"><div class="tc-title tc-builder">&#129489; Builder</div><div class="tc-threshold">Host 1 Primary Meetup</div></div>
-        <div class="tc-reward">&#127873; <strong>Official BrowserStack Yearly Swag Kit</strong></div>
-        <div class="tc-intangible">&#127991; Active Chapter Leader Badge</div>
-        <div class="tc-section">Requirement</div>
-        <div class="tc-item"><span class="tc-check">&#10003;</span>Complete 1 primary meetup in Q2</div>
-        <div class="tc-item"><span class="tc-check">&#10003;</span>Log activity via the Submit Form</div>
+
+      <div class="tier-card tc-builder">
+        <div class="tc-tier-name builder">&#129489; Builder</div>
+        <div class="tc-threshold">Successfully host one primary meetup during the quarter</div>
+        <div class="tc-section-label">Physical Reward</div>
+        <div class="tc-reward-box"><div class="tc-reward-val">&#127873; Official BrowserStack Annual Swag Kit</div></div>
+        <div class="tc-section-label">Professional Growth</div>
+        <div class="tc-perk"><span class="tc-perk-dot dot-green"></span>Active Chapter Leader Badge</div>
       </div>
-      <div class="tier-card t3">
-        <div class="tc-header"><div class="tc-title tc-t3">&#127881; Tier 3</div><div class="tc-threshold">750 Points</div></div>
-        <div class="tc-reward">&#128266; <strong>Sony Speaker</strong> (or equivalent tech)</div>
-        <div class="tc-intangible">&#127991; Community Contributor Badge &bull; Quarterly Reward Pool Eligibility</div>
-        <div class="tc-section">Checklist</div>
-        <div class="tc-item"><span class="tc-check">&#10003;</span>Primary Meetup Hosting (100)</div>
-        <div class="tc-item"><span class="tc-check">&#10003;</span>Venue Partner (100)</div>
-        <div class="tc-item"><span class="tc-check">&#10003;</span>Guest Speaker (100)</div>
-        <div class="tc-item"><span class="tc-check">&#10003;</span>Attendance High &gt;75% (100)</div>
-        <div class="tc-item"><span class="tc-check">&#10003;</span>Feedback Collection (50)</div>
-        <div class="tc-item"><span class="tc-star">&#10022;</span>Discord Join / Breakpoint Promo</div>
+
+      <div class="tier-card tc-t3">
+        <div class="tc-tier-name t3">&#127881; Tier 3 &mdash; Community Contributor</div>
+        <div class="tc-threshold">750 Points</div>
+        <div class="tc-section-label">Physical Reward</div>
+        <div class="tc-reward-box"><div class="tc-reward-val">&#128241; Tech Hardware up to $75</div></div>
+        <div class="tc-section-label">Professional Growth</div>
+        <div class="tc-perk"><span class="tc-perk-dot dot-orange"></span>Community Contributor Badge</div>
+        <div class="tc-perk"><span class="tc-perk-dot dot-orange"></span>Eligible for Quarterly Reward Pool</div>
+        <div class="tc-perk"><span class="tc-perk-dot dot-orange"></span>BrowserStack Community Recognition</div>
       </div>
-      <div class="tier-card t2">
-        <div class="tc-header"><div class="tc-title tc-t2">&#127775; Tier 2</div><div class="tc-threshold">1,550 Points</div></div>
-        <div class="tc-reward">&#128218; <strong>Kindle / Mechanical Keyboard / Smartwatch</strong></div>
-        <div class="tc-intangible">&#127991; Community Architect Badge &bull; Priority Alpha Program &bull; Featured LinkedIn Spotlight</div>
-        <div class="tc-section">Checklist</div>
-        <div class="tc-item"><span class="tc-check">&#10003;</span>Tier 3 checklist met</div>
-        <div class="tc-item"><span class="tc-check">&#10003;</span>BrowserStack Product Session (100)</div>
-        <div class="tc-item"><span class="tc-check">&#10003;</span>Collab &amp; Cross-Promotion (100)</div>
-        <div class="tc-item"><span class="tc-check">&#10003;</span>CL Connect Attendance (100)</div>
-        <div class="tc-item"><span class="tc-star">&#10022;</span>Meetup Highlights (50)</div>
-        <div class="tc-item"><span class="tc-star">&#10022;</span>Extra Meetup Bonus (150)</div>
+
+      <div class="tier-card tc-t2">
+        <div class="tc-tier-name t2">&#127775; Tier 2 &mdash; Community Architect</div>
+        <div class="tc-threshold">1,550 Points</div>
+        <div class="tc-section-label">Physical Rewards</div>
+        <div class="tc-reward-box">
+          <div class="tc-reward-val">&#128218; Tech Hardware up to $135</div>
+          <div class="tc-reward-note">+ BrowserStack-sponsored Upskilling Voucher (up to $40)</div>
+        </div>
+        <div class="tc-section-label">Professional Growth</div>
+        <div class="tc-perk"><span class="tc-perk-dot dot-silver"></span>Community Architect Badge</div>
+        <div class="tc-perk"><span class="tc-perk-dot dot-silver"></span>Priority Alpha Program Access</div>
+        <div class="tc-perk"><span class="tc-perk-dot dot-silver"></span>Featured on BrowserStack Community &amp; LinkedIn Channels</div>
       </div>
-      <div class="tier-card t1">
-        <div class="tc-header"><div class="tc-title tc-t1">&#128081; Tier 1</div><div class="tc-threshold">2,250 Points</div></div>
-        <div class="tc-reward">&#128187; <strong>iPad / Meta Quest 3S</strong> (Premium Tech)</div>
-        <div class="tc-intangible">&#127991; Premium Leader Badge &bull; &#9992; Full Tech Conference Travel &amp; Stay Sponsorship (BrowserStack talk)</div>
-        <div class="tc-section">Checklist</div>
-        <div class="tc-item"><span class="tc-check">&#10003;</span>Tier 2 checklist met</div>
-        <div class="tc-item"><span class="tc-diamond">&#9830;</span>Chapter Leader Referral (100)</div>
-        <div class="tc-item"><span class="tc-diamond">&#9830;</span>Alpha User programme (self + referrals)</div>
-        <div class="tc-item"><span class="tc-diamond">&#9830;</span>AMA / Product Promotion posts</div>
-        <div class="tc-item"><span class="tc-diamond">&#9830;</span>Max Discord &amp; Breakpoint joins</div>
+
+      <div class="tier-card tc-t1">
+        <div class="tc-tier-name t1">&#128081; Tier 1 &mdash; Community Strategist</div>
+        <div class="tc-threshold">2,250 Points</div>
+        <div class="tc-section-label">Physical Rewards</div>
+        <div class="tc-reward-box">
+          <div class="tc-reward-val">&#128187; Premium Tech Hardware up to $200</div>
+          <div class="tc-reward-note">+ Advanced Technical Learning Stipend (up to $75)</div>
+        </div>
+        <div class="tc-section-label">Professional Growth</div>
+        <div class="tc-perk"><span class="tc-perk-dot dot-purple"></span>Premium BrowserStack Leader Badge</div>
+        <div class="tc-perk"><span class="tc-perk-dot dot-purple"></span>BrowserStack Global Community Spotlight</div>
+        <div class="tc-perk"><span class="tc-perk-dot dot-purple"></span>Priority consideration for BrowserStack-sponsored conference travel &amp; accommodation</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 2. KEY PROGRAM INITIATIVES -->
+  <div class="rules-card">
+    <div class="rules-title">&#127775; Key Programme Initiatives</div>
+    <div class="programs-grid">
+      <div class="prog-card tide">
+        <div class="prog-icon">&#127754;</div>
+        <div class="prog-title">Ride the Tide</div>
+        <div class="prog-desc">If <strong>all active Chapter Leaders in a city</strong> reach Tier 3 or higher, every leader in that chapter gets a <strong>+15% bonus point boost</strong> added to their quarterly total. A chapter wins together.</div>
+      </div>
+      <div class="prog-card conf">
+        <div class="prog-icon">&#9992;</div>
+        <div class="prog-title">Conference Travel &amp; Stay Sponsorship</div>
+        <div class="prog-desc">If a Chapter Leader's talk proposal featuring a <strong>BrowserStack topic</strong> gets accepted at a recognised tech conference, BrowserStack will <strong>sponsor their travel and accommodation</strong>. Funded separately from tier rewards.</div>
+      </div>
+      <div class="prog-card discord">
+        <div class="prog-icon">&#128172;</div>
+        <div class="prog-title">Discord Point Policy</div>
+        <div class="prog-desc">Joins earn <strong>10 points per verified member</strong> across both Chapter (QR code) and Individual (Unique UTM) links. Points are <strong>capped at 50 joins (500 pts total) per source channel</strong>.</div>
       </div>
     </div>
   </div>
+
+  <!-- 3. POINTS FRAMEWORK — no Type column -->
   <div class="rules-card">
-    <div class="rules-title">&#127754; Ride the Tide Bonus Programme</div>
-    <div class="info-box ib-purple"><span style="color:#a78bfa;flex-shrink:0;margin-top:2px">&#127754;</span><div class="ib-content"><h4>Teamwork earns a 15% bonus for your entire chapter</h4><p>If ALL active Chapter Leaders in a city achieve Tier 3 or higher by quarter-end, every leader in that chapter receives a 15% bonus added to their quarterly total. Encourages collaboration over internal competition.</p></div></div>
-    <p class="rules-para">This bonus is calculated by the DevRel team at quarter-end and applied before final payout. It is shown as a preview on the leaderboard where the condition is already met.</p>
-  </div>
-  <div class="rules-card">
-    <div class="rules-title">&#128202; Points Philosophy — Combined vs Individual</div>
-    <div class="info-box"><span style="color:#60a5fa;flex-shrink:0;margin-top:2px">&#8505;</span><div class="ib-content"><h4>Why split points?</h4><p>Combined points prevent friction between co-leaders sharing a chapter. Individual points reward personal hustle independently of the chapter.</p></div></div>
-    <p class="rules-para"><strong style="color:#06b6d4">Combined Points</strong> — Awarded to all active Chapter Leaders who co-host or contribute to the chapter's meetup activity that quarter.</p>
-    <p class="rules-para"><strong style="color:#22c55e">Individual Points</strong> — Points each Chapter Leader earns independently through personal promotion, referrals, product engagement, and community growth.</p>
+    <div class="rules-title">&#128202; Points Framework</div>
+    <p class="rules-para">Points are divided into <strong style="color:#06b6d4">Combined</strong> (awarded to all active chapter co-hosts) and <strong style="color:#22c55e">Individual</strong> (earned independently) to balance team effort with personal performance.</p>
+
+    <div style="font-size:.82rem;font-weight:700;color:#06b6d4;margin:20px 0 8px;display:flex;align-items:center;gap:8px">&#128279; Combined Activities</div>
     <div class="pts-table-wrap">
-    <table class="pts-table"><thead><tr><th>Trigger / Task</th><th>Category</th><th>Qualification</th><th>Points</th></tr></thead><tbody>
-      <tr class="pts-table-section"><td colspan="4">&#128279; Combined Activities</td></tr>
-      <tr><td>Primary Meetup Hosting</td><td><span class="cat-badge cb-comb">Combined</span></td><td>Host 1 primary meetup in the quarter</td><td class="pts-val">100</td></tr>
-      <tr><td>Extra Meetup Bonus</td><td><span class="cat-badge cb-comb">Combined</span></td><td>Additional meetup (45-day gap mandatory)</td><td class="pts-val">150</td></tr>
-      <tr><td>Venue Partner</td><td><span class="cat-badge cb-comb">Combined</span></td><td>Secure a third-party venue for free</td><td class="pts-val">100</td></tr>
-      <tr><td>Paid Venue (Self-Found)</td><td><span class="cat-badge cb-comb">Combined</span></td><td>Source a paid venue independently</td><td class="pts-val">50</td></tr>
-      <tr><td>Guest Speaker</td><td><span class="cat-badge cb-comb">Combined</span></td><td>Onboard an external expert/speaker</td><td class="pts-val">100</td></tr>
-      <tr><td>Special Format / Theme</td><td><span class="cat-badge cb-comb">Combined</span></td><td>Bug Bash, Hackathon, etc.</td><td class="pts-val">50</td></tr>
-      <tr><td>Attendance (High)</td><td><span class="cat-badge cb-comb">Combined</span></td><td>&gt;75% conversion on form fills</td><td class="pts-val">100</td></tr>
-      <tr><td>Attendance (Mid)</td><td><span class="cat-badge cb-comb">Combined</span></td><td>50%–75% conversion on form fills</td><td class="pts-val">50</td></tr>
-      <tr><td>Attendance (Low)</td><td><span class="cat-badge cb-comb">Combined</span></td><td>&lt;50% conversion rate</td><td class="pts-val">0</td></tr>
-      <tr><td>Feedback Collection</td><td><span class="cat-badge cb-comb">Combined</span></td><td>&ge;30% attendee feedback responses</td><td class="pts-val">50</td></tr>
-      <tr><td>Discord Join (Chapter)</td><td><span class="cat-badge cb-comb">Combined</span></td><td>New joins via generic slide QR code</td><td class="pts-val">10/join<br><small style="color:#4b6478">Cap: 50 joins</small></td></tr>
-      <tr class="pts-table-section"><td colspan="4">&#9889; Individual Activities</td></tr>
-      <tr><td>BrowserStack Product Session</td><td><span class="cat-badge cb-indiv">Individual</span></td><td>Deliver a BS demo/session at meetup</td><td class="pts-val">100</td></tr>
-      <tr><td>CL Connect Attendance</td><td><span class="cat-badge cb-indiv">Individual</span></td><td>Attend the official quarterly CL Connect</td><td class="pts-val">100</td></tr>
-      <tr><td>Collab &amp; Cross-Promotion</td><td><span class="cat-badge cb-indiv">Individual</span></td><td>Collaborate with local tech communities</td><td class="pts-val">100</td></tr>
-      <tr><td>Chapter Leader Referral</td><td><span class="cat-badge cb-indiv">Individual</span></td><td>Refer a new CL who completes their 1st meetup</td><td class="pts-val">100</td></tr>
-      <tr><td>Meetup Highlights</td><td><span class="cat-badge cb-indiv">Individual</span></td><td>Share photos/wins on LinkedIn or Discord</td><td class="pts-val">50</td></tr>
-      <tr><td>Alpha User (Self)</td><td><span class="cat-badge cb-indiv">Individual</span></td><td>Act as alpha user for new features</td><td class="pts-val">50</td></tr>
-      <tr><td>Alpha User Referral</td><td><span class="cat-badge cb-indiv">Individual</span></td><td>Onboard external alpha users</td><td class="pts-val">30</td></tr>
-      <tr><td>AMA or Product Promotion</td><td><span class="cat-badge cb-indiv">Individual</span></td><td>LinkedIn/Discord posts about AMAs</td><td class="pts-val">20</td></tr>
-      <tr><td>Breakpoint Promo</td><td><span class="cat-badge cb-indiv">Individual</span></td><td>Registrations via personal UTM link</td><td class="pts-val">10/reg<br><small style="color:#4b6478">Cap: 50 regs</small></td></tr>
-      <tr><td>Discord Join (Unique)</td><td><span class="cat-badge cb-indiv">Individual</span></td><td>New joins via personal CL link</td><td class="pts-val">10/join<br><small style="color:#4b6478">Cap: 50 joins</small></td></tr>
+    <table class="pts-table"><thead><tr><th>Activity</th><th>Qualification</th><th>Tracking</th><th>Points</th></tr></thead><tbody>
+      <tr><td>Primary Meetup Hosting</td><td>Host 1 primary meetup in the quarter</td><td>CL Portal / Dashboard</td><td class="pts-val">100</td></tr>
+      <tr><td>Extra Meetup Bonus</td><td>Host an additional meetup (45-day gap mandatory)</td><td>CL Portal / Dashboard</td><td class="pts-val">150</td></tr>
+      <tr><td>Venue Partner</td><td>Secure a third-party venue for free</td><td>Activity Form (Portal)</td><td class="pts-val">100</td></tr>
+      <tr><td>Paid Venue (Self-Found)</td><td>Source a paid venue found independently by CL</td><td>Activity Form (Portal)</td><td class="pts-val">50</td></tr>
+      <tr><td>Guest Speaker</td><td>Onboard an external expert / speaker</td><td>Activity Form (Portal)</td><td class="pts-val">100</td></tr>
+      <tr><td>Special Format / Theme</td><td>Organise a Bug Bash, Hackathon, etc.</td><td>CL Portal / Dashboard</td><td class="pts-val">50</td></tr>
+      <tr><td>Attendance (High)</td><td>&gt;75% conversion on form fills</td><td>Attendance Form</td><td class="pts-val">100</td></tr>
+      <tr><td>Attendance (Mid)</td><td>50%–75% conversion on form fills</td><td>Attendance Form</td><td class="pts-val">50</td></tr>
+      <tr><td>Attendance (Low)</td><td>&lt;50% conversion rate on form fills</td><td>Attendance Form</td><td class="pts-val">0</td></tr>
+      <tr><td>Feedback Collection</td><td>Secure &ge;30% attendee feedback responses</td><td>Feedback Form</td><td class="pts-val">50</td></tr>
+      <tr><td>Discord Join (Chapter)</td><td>New members joining via generic slide QR code</td><td>Auto-Tracked Link</td><td class="pts-val">10/join<br><small style="color:#4b6478;font-weight:400">Cap: 50 joins</small></td></tr>
+    </tbody></table>
+    </div>
+
+    <div style="font-size:.82rem;font-weight:700;color:#22c55e;margin:24px 0 8px;display:flex;align-items:center;gap:8px">&#9889; Individual Activities</div>
+    <div class="pts-table-wrap">
+    <table class="pts-table"><thead><tr><th>Activity</th><th>Qualification</th><th>Tracking</th><th>Points</th></tr></thead><tbody>
+      <tr><td>BrowserStack Product Session</td><td>Deliver a BrowserStack demo / session at a meetup</td><td>Activity Form (Portal)</td><td class="pts-val">100</td></tr>
+      <tr><td>CL Connect Attendance</td><td>Attend the official quarterly CL Connect call</td><td>Attendance Sheet</td><td class="pts-val">100</td></tr>
+      <tr><td>Collab &amp; Cross-Promotion</td><td>Collaborate with local tech communities</td><td>Activity Form (Portal)</td><td class="pts-val">100</td></tr>
+      <tr><td>Referral (Successful)</td><td>Refer a new CL who completes their 1st meetup</td><td>Manual Onboarding</td><td class="pts-val">100</td></tr>
+      <tr><td>Meetup Highlights</td><td>Share photos / wins on LinkedIn or Discord</td><td>Activity Form (Portal)</td><td class="pts-val">50</td></tr>
+      <tr><td>Alpha User (Self)</td><td>Act as an alpha user for new features</td><td>Activity Form (Portal)</td><td class="pts-val">50</td></tr>
+      <tr><td>Alpha User Referral</td><td>Onboard external alpha users (post-feedback)</td><td>Activity Form (Portal)</td><td class="pts-val">30</td></tr>
+      <tr><td>AMA or Product Promotion</td><td>LinkedIn / Discord posts about product AMAs</td><td>Activity Form (Portal)</td><td class="pts-val">20</td></tr>
+      <tr><td>Discord Join (Unique)</td><td>New members joining via personal CL link</td><td>Unique UTM Link</td><td class="pts-val">10/join<br><small style="color:#4b6478;font-weight:400">Cap: 50 joins</small></td></tr>
+      <tr><td>BrowserStack Related Conference Talk</td><td>Topic should be related to BrowserStack</td><td>Activity Form</td><td class="pts-val" style="color:#a855f7">200</td></tr>
     </tbody></table>
     </div>
   </div>
+
+  <!-- 4. GUARDRAILS -->
   <div class="rules-card">
-    <div class="rules-title">&#128737; Guardrails &amp; Operational Principles</div>
+    <div class="rules-title">&#128737; Guardrails</div>
     <ul class="guardrail-list">
-      <li><span>&#128197;</span><span><strong>Quarterly Reset</strong> — Leaderboard totals, tier status, and point counters reset at the start of each quarter. Every Chapter Leader gets a fresh competitive start.</span></li>
-      <li><span>&#128269;</span><span><strong>Verification &amp; Audit</strong> — All activity form submissions and tracking links are audited by the DevRel team prior to final tier payouts.</span></li>
-      <li><span>&#128666;</span><span><strong>Reward Distribution</strong> — Physical rewards, badges, and certificates are processed and dispatched within <strong>30 days</strong> of the quarter-end review.</span></li>
-      <li><span>&#9992;</span><span><strong>Conference Sponsorship</strong> — If your talk proposal featuring a BrowserStack topic is accepted at a recognised tech conference, BrowserStack sponsors your travel and accommodation (Tier 1 only).</span></li>
-      <li><span>&#127754;</span><span><strong>Ride the Tide</strong> — 15% bonus applied at quarter-end if ALL CLs in a city reach Tier 3 or higher. Calculated by DevRel team before final payouts.</span></li>
-      <li><span>&#128172;</span><span><strong>Discord Cap</strong> — Points are capped at 50 joins per channel (Chapter QR + Individual UTM = separate caps) to prioritise member quality over volume.</span></li>
+      <li><span>&#128197;</span><span><strong>Quarterly Reset</strong> &mdash; Leaderboard totals, tier status, and point counters reset at the beginning of each quarter.</span></li>
+      <li><span>&#128269;</span><span><strong>Verification &amp; Audit</strong> &mdash; All activity form submissions and tracking links are audited by the DevRel team prior to final tier payouts.</span></li>
+      <li><span>&#128666;</span><span><strong>Reward Distribution</strong> &mdash; Physical rewards, badges, and certificates are processed and dispatched within <strong>30 days</strong> of the quarter-end review.</span></li>
     </ul>
   </div>
-</div>
+
+</div><!-- /tab-rules -->
 
 </div><!-- .main -->
 </div><!-- #app -->
@@ -620,20 +654,29 @@ textarea.form-input{resize:vertical;min-height:90px}
 var GAS_URL      = 'https://script.google.com/macros/s/AKfycbxLl9Ph5Uq0JMUe3wroyBpFGvimDPRG73cjCzHTEPaHpcqLPzgpF4x9RXkAW6P0dcSE/exec';
 var SECRET_TOKEN = 'BSCLSecure2024xT9k';
 
-// Q2 Individual column keywords — all others = Combined
 var IND_COLS = [
-  'collab',
-  'highlight',
-  'referral',
-  'alpha user',
-  'ama',
-  'breakpoint promo',
-  'discord join (unique)',
-  'browserstack product session',
-  'cl connect'
+  'collab','highlight','referral','alpha user','ama',
+  'breakpoint promo','discord join (unique)',
+  'browserstack product session','cl connect',
+  'conference talk'
 ];
-
 function isIndividualCol(h){ return IND_COLS.some(function(k){ return h.indexOf(k)>=0; }); }
+
+var _prefetchData=null,_prefetchDone=false;
+function gasCall(params,onSuccess,onError){
+  var cb='_cb_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+  window[cb]=function(res){delete window[cb];var old=document.querySelector('script[data-jsonp="'+cb+'"]');if(old)old.remove();onSuccess(res);};
+  var s=document.createElement('script');s.setAttribute('data-jsonp',cb);
+  var p=Object.assign({},params,{token:SECRET_TOKEN,callback:cb});
+  var qs=Object.keys(p).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(p[k]);}).join('&');
+  s.src=GAS_URL+'?'+qs;s.onerror=function(){delete window[cb];s.remove();if(onError)onError();};
+  document.head.appendChild(s);
+}
+gasCall({},function(res){
+  _prefetchData=res;_prefetchDone=true;
+  var el=document.getElementById('pw-prefetch');
+  if(el){el.textContent='✔ Server ready';el.classList.add('ready');}
+},function(){_prefetchDone=true;var el=document.getElementById('pw-prefetch');if(el)el.textContent='';});
 
 function togglePwVisibility(){
   var inp=document.getElementById('pw-input');
@@ -654,10 +697,12 @@ function checkPw(){
     setPwLoading(false);
     if(res&&res.success){
       localStorage.setItem('bs_auth','1');
+      if(typeof gtag==='function') gtag('event','login_success',{event_category:'auth'});
       document.getElementById('pw-gate').style.display='none';
       document.getElementById('app').style.display='block';
       if(!localStorage.getItem('bs_popup_seen')) document.getElementById('event-popup').classList.add('show');
-      loadLeaderboardData();
+      if(_prefetchDone&&_prefetchData&&!_prefetchData.error){processSheetData(_prefetchData);}
+      else{loadLeaderboardData();}
     }else{
       var err=document.getElementById('pw-err');
       err.textContent='❌ Incorrect password. Please try again.';err.classList.add('show');
@@ -667,21 +712,27 @@ function checkPw(){
     }
   },function(){
     setPwLoading(false);
-    var err=document.getElementById('pw-err');err.textContent='❌ Connection error. Please try again.';err.classList.add('show');
+    document.getElementById('pw-err').textContent='❌ Connection error. Please try again.';
+    document.getElementById('pw-err').classList.add('show');
   });
 }
 function closePopup(){localStorage.setItem('bs_popup_seen','1');document.getElementById('event-popup').classList.remove('show');}
 if(localStorage.getItem('bs_auth')==='1'){
   document.getElementById('pw-gate').style.display='none';document.getElementById('app').style.display='block';
   if(!localStorage.getItem('bs_popup_seen')) document.getElementById('event-popup').classList.add('show');
+  setTimeout(function(){
+    if(_prefetchDone&&_prefetchData&&!_prefetchData.error){processSheetData(_prefetchData);}else{loadLeaderboardData();}
+  },50);
 }
 
 var allLeaders=[],leaderDataMap={},colMeta=[],utmLinksMap={};
+// myLeader stored as "Name|||City" composite key
 var myLeader=localStorage.getItem('my_leader')||'';
 var AV_COLORS=['#1d4ed8','#0891b2','#059669','#d97706','#dc2626','#7c3aed','#db2777','#0369a1','#b45309','#6d28d9'];
 function avColor(n){var h=0;for(var i=0;i<n.length;i++)h=(h*31+n.charCodeAt(i))&0xffff;return AV_COLORS[h%AV_COLORS.length];}
 function avInitials(n){var p=n.trim().split(/\s+/);return p.length>=2?(p[0][0]+p[p.length-1][0]).toUpperCase():n.slice(0,2).toUpperCase();}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function leaderKey(name,city){return(name+'|||'+city).toLowerCase();}
 function clearBanners(){['form-ok','form-err','form-loading','dispute-ok','dispute-err','dispute-loading'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('show');});}
 function showBanner(id){clearBanners();var el=document.getElementById(id);if(el)el.classList.add('show');}
 function switchTab(tab,btn){
@@ -690,40 +741,25 @@ function switchTab(tab,btn){
   document.getElementById('tab-'+tab).classList.add('active');if(btn)btn.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function gasCall(params,onSuccess,onError){
-  var cb='_cb_'+Date.now();
-  window[cb]=function(res){delete window[cb];var old=document.head.querySelector('script[data-jsonp]');if(old)old.remove();onSuccess(res);};
-  var s=document.createElement('script');s.setAttribute('data-jsonp','');
-  var p=Object.assign({},params,{token:SECRET_TOKEN,callback:cb});
-  var qs=Object.keys(p).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(p[k]);}).join('&');
-  s.src=GAS_URL+'?'+qs;s.onerror=function(){delete window[cb];if(onError)onError();};
-  document.head.appendChild(s);
-}
 function loadLeaderboardData(){
-  var loadHtml='<div class="loading"><div class="spinner"></div>Loading from Google Sheets…</div>';
-  document.getElementById('lb-body').innerHTML=loadHtml;document.getElementById('lb-cards').innerHTML=loadHtml;
+  var h='<div class="loading"><div class="spinner"></div>Loading from Google Sheets…</div>';
+  document.getElementById('lb-body').innerHTML=h;document.getElementById('lb-cards').innerHTML=h;
   gasCall({},processSheetData,function(){
-    var err='<div class="loading">Failed to load. Please refresh.</div>';
-    document.getElementById('lb-body').innerHTML=err;document.getElementById('lb-cards').innerHTML=err;
+    var e='<div class="loading">Failed to load. Please refresh.</div>';
+    document.getElementById('lb-body').innerHTML=e;document.getElementById('lb-cards').innerHTML=e;
   });
 }
 function getMilestone(total,hasMeetup){
-  if(total>=2250)return'TIER 1';
-  if(total>=1550)return'TIER 2';
-  if(total>=750)return'TIER 3';
-  if(hasMeetup)return'BUILDER';
-  return'NONE';
+  if(total>=2250)return'TIER 1';if(total>=1550)return'TIER 2';
+  if(total>=750)return'TIER 3';if(hasMeetup)return'BUILDER';return'NONE';
 }
 function processSheetData(data){
   if(!data||data.error){
-    var msg='<div class="loading">'+(data&&data.error?esc(data.error):'Error loading data')+'</div>';
-    document.getElementById('lb-body').innerHTML=msg;document.getElementById('lb-cards').innerHTML=msg;return;
+    var m='<div class="loading">'+(data&&data.error?esc(data.error):'Error loading data')+'</div>';
+    document.getElementById('lb-body').innerHTML=m;document.getElementById('lb-cards').innerHTML=m;return;
   }
   var headers=data.headers,rows=data.rows;
-  if(!headers||!rows||!rows.length){
-    document.getElementById('lb-body').innerHTML='<div class="loading">No data found.</div>';
-    document.getElementById('lb-cards').innerHTML='<div class="loading">No data found.</div>';return;
-  }
+  if(!headers||!rows||!rows.length){document.getElementById('lb-body').innerHTML='<div class="loading">No data found.</div>';document.getElementById('lb-cards').innerHTML='<div class="loading">No data found.</div>';return;}
   utmLinksMap=data.utmLinks||{};
   var h=headers.map(function(s){return String(s).toLowerCase().trim();});
   var nameCol=h.indexOf('name'),cityCol=h.indexOf('city'),totalCol=h.indexOf('total');
@@ -734,94 +770,81 @@ function processSheetData(data){
     colMeta.push({name:hdr,idx:i,isIndividual:isIndividualCol(lc)});
   });
   leaderDataMap={};
-  allLeaders=rows.filter(function(r){
-    var n=r[nameCol];return n&&String(n).trim()&&String(n).trim().toLowerCase()!=='na';
-  }).map(function(row){
+  allLeaders=rows.filter(function(r){var n=r[nameCol];return n&&String(n).trim()&&String(n).trim().toLowerCase()!=='na';})
+  .map(function(row){
     var name=String(row[nameCol]||'').trim(),city=String(row[cityCol]||'').trim(),total=Number(row[totalCol])||0;
     var combined=0,individual=0;
     colMeta.forEach(function(c){var v=Number(row[c.idx])||0;if(c.isIndividual)individual+=v;else combined+=v;});
-    var hasMeetup=colMeta.some(function(c){
-      var lc=h[c.idx]||'';
-      return lc.indexOf('meetup')>=0&&lc.indexOf('highlight')<0&&(Number(row[c.idx])||0)>0;
-    });
+    var hasMeetup=colMeta.some(function(c){var lc=h[c.idx]||'';return lc.indexOf('meetup')>=0&&lc.indexOf('highlight')<0&&(Number(row[c.idx])||0)>0;});
     var milestone=getMilestone(total,hasMeetup);
     var breakdown={};colMeta.forEach(function(c){breakdown[c.name]=Number(row[c.idx])||0;});
-    leaderDataMap[name.toLowerCase()]={name:name,city:city,combined:combined,individual:individual,total:total,milestone:milestone,breakdown:breakdown};
+    // KEY = name|||city — prevents collisions when two leaders share the same name
+    leaderDataMap[leaderKey(name,city)]={name:name,city:city,combined:combined,individual:individual,total:total,milestone:milestone,breakdown:breakdown};
     return{name:name,city:city,combined:combined,individual:individual,total:total,milestone:milestone,hasMeetup:hasMeetup,rideTide:false};
   }).sort(function(a,b){return b.total-a.total;});
-
-  // Ride the Tide: if ALL CLs in a city are Tier 3+, preview 15% bonus
-  var cityGroups={};
-  allLeaders.forEach(function(l){if(!cityGroups[l.city])cityGroups[l.city]=[];cityGroups[l.city].push(l);});
+  var cityGroups={};allLeaders.forEach(function(l){if(!cityGroups[l.city])cityGroups[l.city]=[];cityGroups[l.city].push(l);});
   var tideCities=[];
   allLeaders.forEach(function(l){
     var grp=cityGroups[l.city];
     if(grp&&grp.length>1&&grp.every(function(m){return m.milestone==='TIER 3'||m.milestone==='TIER 2'||m.milestone==='TIER 1';})){
       l.rideTide=true;l.tideTotal=Math.round(l.total*1.15);
-      leaderDataMap[l.name.toLowerCase()].rideTide=true;
-      leaderDataMap[l.name.toLowerCase()].tideTotal=l.tideTotal;
+      leaderDataMap[leaderKey(l.name,l.city)].rideTide=true;
+      leaderDataMap[leaderKey(l.name,l.city)].tideTotal=l.tideTotal;
       if(tideCities.indexOf(l.city)<0)tideCities.push(l.city);
     }else{l.rideTide=false;l.tideTotal=l.total;}
   });
-
-  // City / chapter filter dropdown
-  var cities=[];
-  allLeaders.forEach(function(l){if(l.city&&cities.indexOf(l.city)<0)cities.push(l.city);});cities.sort();
-  var sel=document.getElementById('filter-chapter');
-  sel.innerHTML='<option value="all">All Chapters</option>';
-  cities.forEach(function(c){sel.innerHTML+='<option value="'+c.toLowerCase()+'">'+esc(c)+'</option>';});
-
-  // Dashboard selector
+  var cities=[];allLeaders.forEach(function(l){if(l.city&&cities.indexOf(l.city)<0)cities.push(l.city);});cities.sort();
+  var cSel=document.getElementById('filter-chapter');
+  cSel.innerHTML='<option value="all">All Chapters</option>';
+  cities.forEach(function(c){cSel.innerHTML+='<option value="'+c.toLowerCase()+'">'+esc(c)+'</option>';});
+  // Dropdown values are "Name|||City" so we always have the exact right leader
   var dSel=document.getElementById('my-leader-sel');
   dSel.innerHTML='<option value="">— Select your name —</option>';
-  allLeaders.forEach(function(l){var o=document.createElement('option');o.value=l.name;o.textContent=l.name+' ('+l.city+')';if(l.name===myLeader)o.selected=true;dSel.appendChild(o);});
+  allLeaders.forEach(function(l){
+    var key=l.name+'|||'+l.city;
+    var o=document.createElement('option');o.value=key;o.textContent=l.name+' ('+l.city+')';
+    if(key===myLeader)o.selected=true;
+    dSel.appendChild(o);
+  });
   if(myLeader)renderDashboard(myLeader);
-
-  // Stats
   document.getElementById('s-leaders').textContent=allLeaders.length;
-
-  // ── BUG FIX: Meetups Hosted = unique cities with at least one CL who hosted ──
-  var meetupCities=[];
-  allLeaders.forEach(function(l){if(l.hasMeetup&&meetupCities.indexOf(l.city.toLowerCase())<0)meetupCities.push(l.city.toLowerCase());});
-  document.getElementById('s-meetups').textContent=meetupCities.length;
-
+  var mc=[];allLeaders.forEach(function(l){if(l.hasMeetup&&mc.indexOf(l.city.toLowerCase())<0)mc.push(l.city.toLowerCase());});
+  document.getElementById('s-meetups').textContent=mc.length;
   document.getElementById('s-tier1').textContent=allLeaders.filter(function(l){return l.milestone==='TIER 1';}).length;
   document.getElementById('s-tide').textContent=tideCities.length>0?tideCities.length+' city':'—';
   renderTable(allLeaders);
 }
-
 function milestoneClass(m){return m==='TIER 1'?'m-t1':m==='TIER 2'?'m-t2':m==='TIER 3'?'m-t3':m==='BUILDER'?'m-builder':'m-none';}
-function milestoneLabel(m){return m==='NONE'?'None':m==='BUILDER'?'Builder':m;}
-
+function milestoneLabel(m){
+  return{'TIER 1':'Tier 1 — Strategist','TIER 2':'Tier 2 — Architect','TIER 3':'Tier 3 — Contributor','BUILDER':'Builder','NONE':'None'}[m]||m;
+}
 function renderTable(leaders){
   var empty='<div class="loading">No results match your filters.</div>';
   if(!leaders.length){document.getElementById('lb-body').innerHTML=empty;document.getElementById('lb-cards').innerHTML=empty;return;}
   document.getElementById('lb-body').innerHTML=leaders.map(function(l,i){
     var rank=i+1,rC=rank===1?'r1':rank===2?'r2':rank===3?'r3':'rn';
     var mC=milestoneClass(l.milestone),mL=milestoneLabel(l.milestone);
-    var sn=l.name.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-    var tideHtml=l.rideTide?'<small class="tide-badge">&#127754; +15% bonus active</small>':'';
-    return '<div class="leader-row" onclick="jumpToDash(\''+sn+'\')">'
+    // Pass composite key so jumpToDash always resolves the right leader
+    var sk=(l.name+'|||'+l.city).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    return '<div class="leader-row" onclick="jumpToDash(\''+sk+'\')">'
       +'<div><span class="rank-badge '+rC+'">'+rank+'</span></div>'
       +'<div class="leader-info"><div class="avatar" style="background:'+avColor(l.name)+'">'+avInitials(l.name)+'</div>'
-      +'<div style="min-width:0"><div class="leader-name">'+esc(l.name)+'</div><div class="leader-city">📍 '+esc(l.city)+'</div></div></div>'
+      +'<div style="min-width:0"><div class="leader-name">'+esc(l.name)+'</div><div class="leader-city">&#128205; '+esc(l.city)+'</div></div></div>'
       +'<div class="pts-col"><div class="pts-label l-comb">COMBINED</div><div class="pts-num n-comb">'+l.combined.toLocaleString()+'</div></div>'
       +'<div class="pts-col"><div class="pts-label l-indiv">INDIVIDUAL</div><div class="pts-num n-indiv">'+l.individual.toLocaleString()+'</div></div>'
-      +'<div><div class="total-num">'+l.total.toLocaleString()+'</div>'+tideHtml+'</div>'
-      +'<div><span class="milestone '+mC+'">'+mL+'</span></div>'
-      +'</div>';
+      +'<div><div class="total-num">'+l.total.toLocaleString()+'</div>'+(l.rideTide?'<small class="tide-badge">&#127754; +15% bonus</small>':'')+'</div>'
+      +'<div><span class="milestone '+mC+'">'+mL+'</span></div></div>';
   }).join('');
   document.getElementById('lb-cards').innerHTML=leaders.map(function(l,i){
     var rank=i+1,rC=rank===1?'r1':rank===2?'r2':rank===3?'r3':'rn';
     var mC=milestoneClass(l.milestone),mL=milestoneLabel(l.milestone);
-    var sn=l.name.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-    return '<div class="lb-card" onclick="jumpToDash(\''+sn+'\')">'
-      +'<div class="lb-card-top">'
-      +'<span class="lb-card-rank rank-badge '+rC+'">'+rank+'</span>'
+    var sk=(l.name+'|||'+l.city).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    return '<div class="lb-card" onclick="jumpToDash(\''+sk+'\')">'
+      +'<div class="lb-card-top"><span class="lb-card-rank rank-badge '+rC+'">'+rank+'</span>'
       +'<div class="lb-card-avatar" style="background:'+avColor(l.name)+'">'+avInitials(l.name)+'</div>'
-      +'<div style="min-width:0;flex:1"><div class="lb-card-name">'+esc(l.name)+'</div><div class="lb-card-city">📍 '+esc(l.city)+'</div></div>'
+      +'<div style="min-width:0;flex:1"><div class="lb-card-name">'+esc(l.name)+'</div><div class="lb-card-city">&#128205; '+esc(l.city)+'</div></div>'
       +'<div class="lb-card-total"><div class="lb-card-total-val">'+l.total.toLocaleString()+'</div>'
-      +(l.rideTide?'<div style="font-size:.6rem;color:#06b6d4;font-weight:700">🌊 +15%</div>':'<div class="lb-card-total-label">Total pts</div>')
+      +(l.rideTide?'<div style="font-size:.6rem;color:#06b6d4;font-weight:700">&#127754; +15%</div>':'<div class="lb-card-total-label">Total pts</div>')
       +'</div></div>'
       +'<div class="lb-card-bottom">'
       +'<div class="lb-card-pts"><div class="lb-card-pts-val n-comb">'+l.combined.toLocaleString()+'</div><div class="lb-card-pts-label l-comb">Combined</div></div>'
@@ -832,7 +855,6 @@ function renderTable(leaders){
       +'</div></div>';
   }).join('');
 }
-
 function filterTable(){
   var q=document.getElementById('search').value.toLowerCase();
   var tier=document.getElementById('filter-tier').value;
@@ -844,42 +866,50 @@ function filterTable(){
     return true;
   }));
 }
-
-function jumpToDash(name){document.getElementById('my-leader-sel').value=name;selectMyLeader(name);switchTab('dashboard',document.querySelectorAll('.nav-btn')[1]);}
-
-function selectMyLeader(name){
-  myLeader=name;localStorage.setItem('my_leader',name);
-  if(!name){document.getElementById('dash-content').style.display='none';document.getElementById('dash-placeholder').style.display='block';return;}
-  document.getElementById('dash-content').style.display='block';document.getElementById('dash-placeholder').style.display='none';
-  renderDashboard(name);
+// jumpToDash receives the composite "Name|||City" key
+function jumpToDash(compositeKey){
+  document.getElementById('my-leader-sel').value=compositeKey;
+  selectMyLeader(compositeKey);
+  switchTab('dashboard',document.querySelectorAll('.nav-btn')[1]);
 }
-
-function renderDashboard(name){
-  var d=leaderDataMap[name.toLowerCase()];if(!d)return;
+function selectMyLeader(compositeKey){
+  myLeader=compositeKey;localStorage.setItem('my_leader',compositeKey);
+  if(!compositeKey){document.getElementById('dash-content').style.display='none';document.getElementById('dash-placeholder').style.display='block';return;}
+  document.getElementById('dash-content').style.display='block';document.getElementById('dash-placeholder').style.display='none';
+  renderDashboard(compositeKey);
+}
+function renderDashboard(compositeKey){
+  var d=leaderDataMap[compositeKey.toLowerCase()];
+  if(!d){
+    // Fallback: try treating it as old-style plain name (for users with old localStorage)
+    var found=null;
+    Object.keys(leaderDataMap).forEach(function(k){if(leaderDataMap[k].name.toLowerCase()===compositeKey.toLowerCase())found=leaderDataMap[k];});
+    if(found)d=found;else return;
+  }
   document.getElementById('dash-total').textContent=d.total.toLocaleString();
   document.getElementById('dash-combined').textContent=d.combined.toLocaleString();
   document.getElementById('dash-individual').textContent=d.individual.toLocaleString();
   var mEl=document.getElementById('dash-milestone');
-  mEl.textContent=d.milestone==='NONE'?'No Tier Yet':milestoneLabel(d.milestone);
-  var mc={'TIER 1':'#a855f7','TIER 2':'#94a3b8','TIER 3':'#f97316','BUILDER':'#34d399','NONE':'#4b6478'};
+  mEl.textContent=milestoneLabel(d.milestone);
+  var mc={'TIER 1':'#a855f7','TIER 2':'#9ca3af','TIER 3':'#f97316','BUILDER':'#34d399','NONE':'#4b6478'};
   mEl.style.color=mc[d.milestone]||'#4b6478';
   document.getElementById('dash-tide-note').style.display=d.rideTide?'block':'none';
   renderUTMLinks(d);renderBreakdown(d);
-  document.getElementById('d-name').value=d.name;document.getElementById('d-city').value=d.city;
+  // Pre-fill dispute form with EXACT name and city from the resolved leader record
+  document.getElementById('d-name').value=d.name;
+  document.getElementById('d-city').value=d.city;
 }
-
 function findDiscordUTM(name){
-  var lc=name.toLowerCase().trim();
-  if(utmLinksMap[lc])return utmLinksMap[lc];
+  var lc=name.toLowerCase().trim();if(utmLinksMap[lc])return utmLinksMap[lc];
   var norm=lc.replace(/[^a-z0-9]/g,''),keys=Object.keys(utmLinksMap);
   for(var i=0;i<keys.length;i++){if(keys[i].replace(/[^a-z0-9]/g,'')===norm)return utmLinksMap[keys[i]];}
   var first=lc.split(/\s+/)[0];
-  for(var j=0;j<keys.length;j++){if(keys[j].indexOf(first)===0||first.indexOf(keys[j].split(/\s+/)[0])===0)return utmLinksMap[keys[j]];}
+  for(var j=0;j<keys.length;j++){if(keys[j].indexOf(first)===0)return utmLinksMap[keys[j]];}
   return'';
 }
 function renderUTMLinks(d){
   var url=findDiscordUTM(d.name);
-  document.getElementById('utm-links-container').innerHTML='<div class="utm-link-row"><div class="utm-link-label">💬 Discord Community Join</div><div class="utm-link-url"><input type="text" id="utm-inp-0" value="'+(url?esc(url):'No Discord UTM found — contact BrowserStack team')+'" readonly '+(url?'':'style="color:#3d5568;font-style:italic"')+'>'+(url?'<button class="copy-btn" id="utm-cp-0" onclick="copyUTM()">Copy</button>':'')+'</div></div>';
+  document.getElementById('utm-links-container').innerHTML='<div class="utm-link-row"><div class="utm-link-label">&#128172; Discord Community Join</div><div class="utm-link-url"><input type="text" id="utm-inp-0" value="'+(url?esc(url):'No Discord UTM found — contact BrowserStack team')+'" readonly '+(url?'':'style="color:#3d5568;font-style:italic"')+'>'+(url?'<button class="copy-btn" id="utm-cp-0" onclick="copyUTM()">Copy</button>':'')+'</div></div>';
 }
 function copyUTM(){
   navigator.clipboard.writeText(document.getElementById('utm-inp-0').value).then(function(){
@@ -894,31 +924,22 @@ function renderBreakdown(d){
     return'<tr class="'+(r.pts===0?'zero-row':'')+'"><td>'+esc(r.name)+'</td><td><span class="cat-badge '+(r.isInd?'cb-indiv':'cb-comb')+'">'+(r.isInd?'Individual':'Combined')+'</span></td><td class="'+(r.pts>0?'pts-val-pos':'pts-val-zero')+'">'+r.pts+'</td></tr>';
   }).join('');
 }
-
 function submitActivityForm(e){
-  e.preventDefault();
-  var btn=document.getElementById('form-btn');btn.disabled=true;showBanner('form-loading');
+  e.preventDefault();var btn=document.getElementById('form-btn');btn.disabled=true;showBanner('form-loading');
   var speaker=document.querySelector('input[name="fl-speaker"]:checked');
   var collab=document.querySelector('input[name="fl-collab"]:checked');
   gasCall({action:'submitForm',
-    leaderName:document.getElementById('fl-name').value.trim(),
-    city:document.getElementById('fl-city').value.trim(),
-    dateOfActivity:document.getElementById('fl-date').value,
-    attendance:document.getElementById('fl-attendance').value.trim(),
-    whoFoundSpeaker:speaker?speaker.value:'',
-    collaborated:collab?collab.value:'',
+    leaderName:document.getElementById('fl-name').value.trim(),city:document.getElementById('fl-city').value.trim(),
+    dateOfActivity:document.getElementById('fl-date').value,attendance:document.getElementById('fl-attendance').value.trim(),
+    whoFoundSpeaker:speaker?speaker.value:'',collaborated:collab?collab.value:'',
     meetupHighlights:document.getElementById('fl-highlights').value.trim(),
     referral:document.getElementById('fl-referral').value.trim(),
     promotingEvents:document.getElementById('fl-promoting').value.trim()
-  },function(res){
-    btn.disabled=false;
-    if(res&&res.success){showBanner('form-ok');document.getElementById('activity-form').reset();setTimeout(clearBanners,6000);}
-    else{showBanner('form-err');setTimeout(clearBanners,6000);}
-  },function(){btn.disabled=false;showBanner('form-err');setTimeout(clearBanners,6000);});
+  },function(res){btn.disabled=false;if(res&&res.success){showBanner('form-ok');document.getElementById('activity-form').reset();setTimeout(clearBanners,6000);}else{showBanner('form-err');setTimeout(clearBanners,6000);}},
+  function(){btn.disabled=false;showBanner('form-err');setTimeout(clearBanners,6000);});
 }
 function submitDispute(e){
-  e.preventDefault();
-  var btn=document.getElementById('d-btn');btn.disabled=true;showBanner('dispute-loading');
+  e.preventDefault();var btn=document.getElementById('d-btn');btn.disabled=true;showBanner('dispute-loading');
   gasCall({action:'complaint',
     leaderName:document.getElementById('d-name').value,city:document.getElementById('d-city').value,
     category:document.getElementById('d-category').value,ptsShown:document.getElementById('d-shown').value,
@@ -927,14 +948,13 @@ function submitDispute(e){
     btn.disabled=false;
     if(res&&res.success){
       showBanner('dispute-ok');document.getElementById('dispute-form').reset();
-      document.getElementById('d-name').value=myLeader;
-      var d=leaderDataMap[myLeader.toLowerCase()];if(d)document.getElementById('d-city').value=d.city;
+      // Re-fill name & city after form reset
+      var d=leaderDataMap[myLeader.toLowerCase()];
+      if(d){document.getElementById('d-name').value=d.name;document.getElementById('d-city').value=d.city;}
       setTimeout(clearBanners,6000);
     }else{showBanner('dispute-err');setTimeout(clearBanners,6000);}
   },function(){btn.disabled=false;showBanner('dispute-err');setTimeout(clearBanners,6000);});
 }
-
-if(localStorage.getItem('bs_auth')==='1') loadLeaderboardData();
 </script>
 </body>
 </html>
