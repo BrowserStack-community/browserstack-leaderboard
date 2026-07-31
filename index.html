@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter Leader Board | BrowserStack Community</title>
-<!-- GA4 — private usage tracking, only you can see reports at analytics.google.com -->
-<!-- Replace BOTH instances of G-XXXXXXXXXX with your GA4 Measurement ID -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
   window.dataLayer=window.dataLayer||[];
@@ -48,7 +46,6 @@ header{background:#0b1929;border-bottom:1px solid #162d47;padding:0 2rem;display
 .logo{display:flex;align-items:center;gap:14px;flex-shrink:0}
 .logo-icon{width:42px;height:42px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
 .logo-title{font-size:1.15rem;font-weight:400}.logo-title b{font-weight:800}
-.logo-sub{font-size:.68rem;color:#3d5568;margin-top:1px}
 nav{display:flex;gap:4px;flex-shrink:0}
 .nav-btn{background:transparent;border:none;color:#6b8299;cursor:pointer;padding:8px 14px;border-radius:8px;font-size:.82rem;font-weight:500;transition:all .15s;white-space:nowrap}
 .nav-btn:hover{background:#122030;color:#e2e8f0}
@@ -176,7 +173,6 @@ textarea.form-input{resize:vertical;min-height:90px}
 .banner-ok{background:#052e1e;border:1px solid #15803d;color:#4ade80}
 .banner-err{background:#2d0e0e;border:1px solid #dc2626;color:#f87171}
 .banner-loading{background:#0c2a4a;border:1px solid #1d4ed8;color:#60a5fa}
-/* Rules & Tiers */
 .rules-card{background:#0b1929;border:1px solid #162d47;border-radius:12px;padding:28px;margin-bottom:20px}
 .rules-title{font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:20px}
 .rules-para{font-size:.88rem;color:#94a3b8;line-height:1.65;margin-bottom:12px}
@@ -185,7 +181,6 @@ textarea.form-input{resize:vertical;min-height:90px}
 .ib-content h4{font-size:.88rem;font-weight:700;margin-bottom:4px}
 .ib-content p{font-size:.82rem;color:#94a3b8;line-height:1.55}
 .ib-green .ib-content p{color:#4ade80}
-/* Tier cards */
 .tier-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .tier-card{border-radius:14px;padding:22px;position:relative;overflow:hidden}
 .tier-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
@@ -203,7 +198,6 @@ textarea.form-input{resize:vertical;min-height:90px}
 .tc-perk{display:flex;align-items:flex-start;gap:8px;font-size:.78rem;color:#94a3b8;margin-bottom:5px;line-height:1.45}
 .tc-perk-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px}
 .dot-green{background:#34d399}.dot-orange{background:#f97316}.dot-silver{background:#9ca3af}.dot-purple{background:#a855f7}
-/* Programs */
 .programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .prog-card{border-radius:12px;padding:20px}
 .prog-card.tide{background:#091829;border:1px solid #1d4ed8}
@@ -215,7 +209,6 @@ textarea.form-input{resize:vertical;min-height:90px}
 .prog-card.conf .prog-title{color:#a855f7}
 .prog-card.discord .prog-title{color:#34d399}
 .prog-desc{font-size:.8rem;color:#94a3b8;line-height:1.6}
-/* Points table — no Type column */
 .pts-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .pts-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:480px}
 .pts-table th{background:#050e18;padding:9px 14px;text-align:left;font-size:.63rem;text-transform:uppercase;letter-spacing:.08em;color:#4b6478;border-bottom:1px solid #162d47;white-space:nowrap}
@@ -223,7 +216,6 @@ textarea.form-input{resize:vertical;min-height:90px}
 .pts-table tr:hover td{background:#091829}
 .pts-table tr:last-child td{border-bottom:none}
 .pts-val{font-weight:800;color:#f97316;white-space:nowrap}
-/* Guardrails */
 .guardrail-list{list-style:none;display:flex;flex-direction:column;gap:12px}
 .guardrail-list li{display:flex;gap:12px;align-items:flex-start;font-size:.85rem;color:#94a3b8;line-height:1.6}
 .guardrail-list li span:first-child{flex-shrink:0;margin-top:2px;font-size:1rem}
@@ -242,6 +234,17 @@ textarea.form-input{resize:vertical;min-height:90px}
 .res-tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.65rem;font-weight:700;margin-bottom:4px}
 .rt-product{background:#0c2a4a;color:#60a5fa}
 .rt-template{background:#042716;color:#4ade80}
+.rt-featured{background:#1c0d3f;color:#a78bfa}
+/* Test Companion featured card */
+.tc-featured-card{background:linear-gradient(135deg,#0d1a3a,#140a2a);border:1.5px solid #4c1d95;border-radius:14px;padding:24px 28px;margin-bottom:24px;display:flex;align-items:center;gap:24px;position:relative;overflow:hidden}
+.tc-featured-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7c3aed,#a855f7,#60a5fa)}
+.tc-featured-icon{font-size:3rem;flex-shrink:0}
+.tc-featured-body{flex:1;min-width:0}
+.tc-featured-tag{display:inline-flex;align-items:center;gap:5px;background:#1c0d3f;color:#a78bfa;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:8px}
+.tc-featured-title{font-size:1.15rem;font-weight:800;color:#e2e8f0;margin-bottom:6px}
+.tc-featured-desc{font-size:.83rem;color:#94a3b8;line-height:1.6;margin-bottom:12px}
+.tc-featured-link{display:inline-flex;align-items:center;gap:6px;background:#7c3aed;color:#fff;font-size:.82rem;font-weight:700;text-decoration:none;padding:9px 18px;border-radius:8px}
+.tc-featured-link:hover{background:#6d28d9}
 @media(max-width:900px){
   .stats-row{grid-template-columns:repeat(2,1fr);padding:16px 1.25rem}
   .main{padding:0 1.25rem 3rem}
@@ -250,10 +253,11 @@ textarea.form-input{resize:vertical;min-height:90px}
   .dash-grid{grid-template-columns:1fr}
   .dash-card.full{grid-column:1}
   .res-grid{grid-template-columns:1fr 1fr}
+  .tc-featured-card{flex-direction:column;align-items:flex-start;gap:14px}
 }
 @media(max-width:640px){
   header{height:auto;padding:10px 14px;flex-direction:column;align-items:stretch;gap:8px}
-  .logo{gap:10px}.logo-icon{width:34px;height:34px;font-size:16px}.logo-title{font-size:.95rem}.logo-sub{display:none}
+  .logo{gap:10px}.logo-icon{width:34px;height:34px;font-size:16px}.logo-title{font-size:.95rem}
   nav{overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;gap:6px;padding-bottom:2px;scrollbar-width:none}
   nav::-webkit-scrollbar{display:none}
   .nav-btn{padding:7px 14px;font-size:.8rem;flex-shrink:0;border-radius:20px;border:1px solid #162d47}
@@ -277,6 +281,7 @@ textarea.form-input{resize:vertical;min-height:90px}
   .divider{margin:0 -16px 20px}.form-row{grid-template-columns:1fr}
   .rules-card{padding:18px 14px;border-radius:10px}
   .res-grid{grid-template-columns:1fr}
+  .tc-featured-card{padding:18px 16px}
   .ep-box{padding:24px 18px}.pw-box{padding:28px 20px}
 }
 </style>
@@ -303,8 +308,8 @@ textarea.form-input{resize:vertical;min-height:90px}
     <div class="pw-prefetch" id="pw-prefetch">&#9679; Connecting&hellip;</div>
   </div>
 </div>
-<!-- 
-<div id="event-popup">
+
+<!-- <div id="event-popup">
   <div class="ep-box">
     <div class="ep-icon">&#128197;</div>
     <div class="ep-badge">Upcoming Event</div>
@@ -320,10 +325,7 @@ textarea.form-input{resize:vertical;min-height:90px}
 <header>
   <div class="logo">
     <div class="logo-icon">&#127942;</div>
-    <div>
-      <div class="logo-title">Chapter <b>Leader Board</b></div>
-      <div class="logo-sub">BrowserStack Community &bull; Q2 Engagement Portal</div>
-    </div>
+    <div class="logo-title">Chapter <b>Leader Board</b></div>
   </div>
   <nav>
     <button class="nav-btn active"   onclick="switchTab('standings',this)">&#127885; Standings</button>
@@ -343,7 +345,6 @@ textarea.form-input{resize:vertical;min-height:90px}
 
 <div class="main">
 
-<!-- STANDINGS -->
 <div class="tab-panel active" id="tab-standings">
   <div class="filters">
     <div class="search-wrap"><span class="s-icon">&#128269;</span><input type="text" id="search" placeholder="Search leader or chapter&hellip;" oninput="filterTable()"></div>
@@ -370,7 +371,6 @@ textarea.form-input{resize:vertical;min-height:90px}
   <div class="lb-cards" id="lb-cards"><div class="loading"><div class="spinner"></div>Loading&hellip;</div></div>
 </div>
 
-<!-- DASHBOARD -->
 <div class="tab-panel" id="tab-dashboard">
   <div class="dash-selector-wrap">
     <label for="my-leader-sel">&#128100; Who are you?</label>
@@ -447,7 +447,6 @@ textarea.form-input{resize:vertical;min-height:90px}
   </div>
 </div>
 
-<!-- FORM -->
 <div class="tab-panel" id="tab-form">
   <div class="form-wrap"><div class="form-card">
     <h2 class="form-card-title">Submit CL Contributions</h2>
@@ -485,44 +484,55 @@ textarea.form-input{resize:vertical;min-height:90px}
 
 <!-- RESOURCES -->
 <div class="tab-panel" id="tab-resources">
+
+  <!-- ★ TEST COMPANION — PRIORITY FEATURED CARD ★ -->
+  <div class="tc-featured-card">
+    <div class="tc-featured-icon">&#129302;</div>
+    <div class="tc-featured-body">
+      <div class="tc-featured-tag">&#11088; Featured Product</div>
+      <div class="tc-featured-title">Test Companion by BrowserStack</div>
+      <div class="tc-featured-desc">Your AI-powered testing sidekick. Test Companion helps you write, run, and debug tests faster with intelligent suggestions, auto-generated test cases, and real-time feedback — right inside your browser. A great topic to present at your next meetup!</div>
+      <a href="https://www.browserstack.com/test-companion" target="_blank" class="tc-featured-link">&#8599; Explore Test Companion</a>
+    </div>
+  </div>
+
   <div class="res-section">
     <div class="rules-card" style="margin-bottom:20px">
       <div class="rules-title">&#128218; BrowserStack Talk Session Resources</div>
-      <p class="rules-para">Everything you need to deliver a great BrowserStack session at your next meetup. Use these templates, demo guides, and knowledge links to run polished, high-impact presentations.</p>
+      <p class="rules-para">Everything you need to deliver a great BrowserStack session at your next meetup.</p>
       <div class="info-box ib-green"><span style="color:#4ade80;flex-shrink:0;margin-top:2px">&#9989;</span><div class="ib-content"><h4>Delivering a BrowserStack Product Session earns 100 Individual points!</h4><p>Present a BrowserStack demo or session at your meetup and log it via the Submit Form tab to claim your points.</p></div></div>
     </div>
     <div class="res-section-title">&#127908; Presentation Templates &amp; Slide Decks</div>
     <div class="res-grid">
-      <div class="res-card"><div class="res-card-icon">&#128196;</div><span class="res-tag rt-template">Template</span><div class="res-card-title">BrowserStack Intro Deck</div><div class="res-card-desc">Standard introduction slides covering what BrowserStack is, key products, and how it helps developers. Ready to present at meetups.</div><span class="res-card-link-disabled">&#128274; Link coming soon — contact DevRel team</span></div>
+      <div class="res-card"><div class="res-card-icon">&#128196;</div><span class="res-tag rt-template">Template</span><div class="res-card-title">BrowserStack Intro Deck</div><div class="res-card-desc">Standard introduction slides covering what BrowserStack is, key products, and how it helps developers.</div><span class="res-card-link-disabled">&#128274; Link coming soon — contact DevRel team</span></div>
       <div class="res-card"><div class="res-card-icon">&#9881;</div><span class="res-tag rt-template">Template</span><div class="res-card-title">Automate Session Deck</div><div class="res-card-desc">Slides and talking points for a BrowserStack Automate session — Selenium, Appium, and cloud grid deep dive.</div><span class="res-card-link-disabled">&#128274; Link coming soon — contact DevRel team</span></div>
     </div>
   </div>
+
   <div class="res-section">
     <div class="res-section-title">&#128196; Product Knowledge Base</div>
     <div class="res-grid">
-      <div class="res-card"><div class="res-card-icon">&#127760;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">BrowserStack Live</div><div class="res-card-desc">Test websites and web apps across 3500+ real browsers and devices. No setup required — instant access from your browser.</div><a href="https://www.browserstack.com/live" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
-      <div class="res-card"><div class="res-card-icon">&#129302;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">BrowserStack Automate</div><div class="res-card-desc">Run Selenium, Cypress, Playwright, and Appium tests on a real device cloud. CI/CD integrated and enterprise-grade.</div><a href="https://www.browserstack.com/automate" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
-      <div class="res-card"><div class="res-card-icon">&#128241;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">App Live &amp; App Automate</div><div class="res-card-desc">Test iOS and Android apps on real devices. Manual and automated testing — no emulators.</div><a href="https://www.browserstack.com/app-live" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
-      <div class="res-card"><div class="res-card-icon">&#128300;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">Percy (Visual Testing)</div><div class="res-card-desc">Catch visual regressions automatically. Percy integrates with your CI/CD pipeline to compare visual snapshots across every build.</div><a href="https://www.browserstack.com/percy" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
-      <div class="res-card"><div class="res-card-icon">&#9889;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">Accessibility Testing</div><div class="res-card-desc">Scan your web apps for WCAG violations. Identify, prioritize, and fix accessibility issues fast with Accessibility Automation.</div><a href="https://www.browserstack.com/accessibility-testing" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
-      <div class="res-card"><div class="res-card-icon">&#128203;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">Full Product Documentation</div><div class="res-card-desc">Complete developer documentation — getting started guides, API references, integrations, and code samples for all products.</div><a href="https://www.browserstack.com/docs" target="_blank" class="res-card-link">&#8599; Open Documentation</a></div>
+      <div class="res-card"><div class="res-card-icon">&#127760;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">BrowserStack Live</div><div class="res-card-desc">Test websites and web apps across 3500+ real browsers and devices.</div><a href="https://www.browserstack.com/live" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
+      <div class="res-card"><div class="res-card-icon">&#9881;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">BrowserStack Automate</div><div class="res-card-desc">Run Selenium, Cypress, Playwright, and Appium tests on a real device cloud.</div><a href="https://www.browserstack.com/automate" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
+      <div class="res-card"><div class="res-card-icon">&#128241;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">App Live &amp; App Automate</div><div class="res-card-desc">Test iOS and Android apps on real devices. Manual and automated — no emulators.</div><a href="https://www.browserstack.com/app-live" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
+      <div class="res-card"><div class="res-card-icon">&#128300;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">Percy (Visual Testing)</div><div class="res-card-desc">Catch visual regressions automatically across every build.</div><a href="https://www.browserstack.com/percy" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
+      <div class="res-card"><div class="res-card-icon">&#9889;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">Accessibility Testing</div><div class="res-card-desc">Scan your web apps for WCAG violations and fix them fast.</div><a href="https://www.browserstack.com/accessibility-testing" target="_blank" class="res-card-link">&#8599; Open Product Docs</a></div>
+      <div class="res-card"><div class="res-card-icon">&#128203;</div><span class="res-tag rt-product">Product</span><div class="res-card-title">Full Product Documentation</div><div class="res-card-desc">Getting started guides, API references, integrations, and code samples for all products.</div><a href="https://www.browserstack.com/docs" target="_blank" class="res-card-link">&#8599; Open Documentation</a></div>
     </div>
   </div>
+
   <div style="background:#0b1929;border:1px solid #162d47;border-radius:12px;padding:20px;margin-top:8px;text-align:center">
     <div style="font-size:1.1rem;font-weight:700;margin-bottom:8px">&#128222; Need more resources?</div>
-    <p style="font-size:.85rem;color:#94a3b8;line-height:1.6">Reach out to the BrowserStack DevRel team on Discord or via your chapter Slack channel. We regularly add new templates, demo scripts, and presentation materials here.</p>
+    <p style="font-size:.85rem;color:#94a3b8;line-height:1.6">Reach out to the BrowserStack DevRel team on Discord or via your chapter Slack channel.</p>
   </div>
 </div>
 
 <!-- RULES & TIERS -->
 <div class="tab-panel" id="tab-rules">
-
-  <!-- 1. TIER CARDS -->
   <div class="rules-card">
     <div class="rules-title">&#127942; Tiering Framework &amp; Rewards</div>
-    <p class="rules-para" style="margin-bottom:20px">Progression is non-linear and calculated cumulatively throughout the quarter. Leaders unlock both physical items and career growth perks at each stage.</p>
+    <p class="rules-para" style="margin-bottom:20px">Progression is cumulative throughout the quarter. Leaders unlock physical items and career growth perks at each stage.</p>
     <div class="tier-grid">
-
       <div class="tier-card tc-builder">
         <div class="tc-tier-name builder">&#129489; Builder</div>
         <div class="tc-threshold">Successfully host one primary meetup during the quarter</div>
@@ -531,7 +541,6 @@ textarea.form-input{resize:vertical;min-height:90px}
         <div class="tc-section-label">Professional Growth</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-green"></span>Active Chapter Leader Badge</div>
       </div>
-
       <div class="tier-card tc-t3">
         <div class="tc-tier-name t3">&#127881; Tier 3 &mdash; Community Contributor</div>
         <div class="tc-threshold">750 Points</div>
@@ -542,7 +551,6 @@ textarea.form-input{resize:vertical;min-height:90px}
         <div class="tc-perk"><span class="tc-perk-dot dot-orange"></span>Eligible for Quarterly Reward Pool</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-orange"></span>BrowserStack Community Recognition</div>
       </div>
-
       <div class="tier-card tc-t2">
         <div class="tc-tier-name t2">&#127775; Tier 2 &mdash; Community Architect</div>
         <div class="tc-threshold">1,550 Points</div>
@@ -554,9 +562,8 @@ textarea.form-input{resize:vertical;min-height:90px}
         <div class="tc-section-label">Professional Growth</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-silver"></span>Community Architect Badge</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-silver"></span>Priority Alpha Program Access</div>
-        <div class="tc-perk"><span class="tc-perk-dot dot-silver"></span>Featured on BrowserStack Community &amp; LinkedIn Channels</div>
+        <div class="tc-perk"><span class="tc-perk-dot dot-silver"></span>Featured on BrowserStack Community &amp; LinkedIn</div>
       </div>
-
       <div class="tier-card tc-t1">
         <div class="tc-tier-name t1">&#128081; Tier 1 &mdash; Community Strategist</div>
         <div class="tc-threshold">2,250 Points</div>
@@ -568,40 +575,34 @@ textarea.form-input{resize:vertical;min-height:90px}
         <div class="tc-section-label">Professional Growth</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-purple"></span>Premium BrowserStack Leader Badge</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-purple"></span>BrowserStack Global Community Spotlight</div>
-        <div class="tc-perk"><span class="tc-perk-dot dot-purple"></span>Priority consideration for BrowserStack-sponsored conference travel &amp; accommodation</div>
+        <div class="tc-perk"><span class="tc-perk-dot dot-purple"></span>Priority consideration for conference travel &amp; accommodation sponsorship</div>
       </div>
-
     </div>
   </div>
-
-  <!-- 2. KEY PROGRAM INITIATIVES -->
   <div class="rules-card">
     <div class="rules-title">&#127775; Key Programme Initiatives</div>
     <div class="programs-grid">
       <div class="prog-card tide">
         <div class="prog-icon">&#127754;</div>
         <div class="prog-title">Ride the Tide</div>
-        <div class="prog-desc">If <strong>all active Chapter Leaders in a city</strong> reach Tier 3 or higher, every leader in that chapter gets a <strong>+15% bonus point boost</strong> added to their quarterly total. A chapter wins together.</div>
+        <div class="prog-desc">If <strong>all active Chapter Leaders in a city</strong> reach Tier 3 or higher, every leader in that chapter gets a <strong>+15% bonus point boost</strong>. A chapter wins together.</div>
       </div>
       <div class="prog-card conf">
         <div class="prog-icon">&#9992;</div>
         <div class="prog-title">Conference Travel &amp; Stay Sponsorship</div>
-        <div class="prog-desc">If a Chapter Leader's talk proposal featuring a <strong>BrowserStack topic</strong> gets accepted at a recognised tech conference, BrowserStack will <strong>sponsor their travel and accommodation</strong>. Funded separately from tier rewards.</div>
+        <div class="prog-desc">If a CL's talk proposal featuring a <strong>BrowserStack topic</strong> gets accepted at a recognised conference, BrowserStack will <strong>sponsor travel and accommodation</strong>. Funded separately from tier rewards.</div>
       </div>
       <div class="prog-card discord">
         <div class="prog-icon">&#128172;</div>
         <div class="prog-title">Discord Point Policy</div>
-        <div class="prog-desc">Joins earn <strong>10 points per verified member</strong> across both Chapter (QR code) and Individual (Unique UTM) links. Points are <strong>capped at 50 joins (500 pts total) per source channel</strong>.</div>
+        <div class="prog-desc">Joins earn <strong>10 points per verified member</strong> via Chapter QR or Individual UTM links. <strong>Capped at 50 joins per source channel</strong> to keep rankings balanced.</div>
       </div>
     </div>
   </div>
-
-  <!-- 3. POINTS FRAMEWORK — no Type column -->
   <div class="rules-card">
     <div class="rules-title">&#128202; Points Framework</div>
-    <p class="rules-para">Points are divided into <strong style="color:#06b6d4">Combined</strong> (awarded to all active chapter co-hosts) and <strong style="color:#22c55e">Individual</strong> (earned independently) to balance team effort with personal performance.</p>
-
-    <div style="font-size:.82rem;font-weight:700;color:#06b6d4;margin:20px 0 8px;display:flex;align-items:center;gap:8px">&#128279; Combined Activities</div>
+    <p class="rules-para">Points are divided into <strong style="color:#06b6d4">Combined</strong> (all active chapter co-hosts) and <strong style="color:#22c55e">Individual</strong> (earned personally).</p>
+    <div style="font-size:.82rem;font-weight:700;color:#06b6d4;margin:20px 0 8px">&#128279; Combined Activities</div>
     <div class="pts-table-wrap">
     <table class="pts-table"><thead><tr><th>Activity</th><th>Qualification</th><th>Tracking</th><th>Points</th></tr></thead><tbody>
       <tr><td>Primary Meetup Hosting</td><td>Host 1 primary meetup in the quarter</td><td>CL Portal / Dashboard</td><td class="pts-val">100</td></tr>
@@ -614,11 +615,10 @@ textarea.form-input{resize:vertical;min-height:90px}
       <tr><td>Attendance (Mid)</td><td>50%–75% conversion on form fills</td><td>Attendance Form</td><td class="pts-val">50</td></tr>
       <tr><td>Attendance (Low)</td><td>&lt;50% conversion rate on form fills</td><td>Attendance Form</td><td class="pts-val">0</td></tr>
       <tr><td>Feedback Collection</td><td>Secure &ge;30% attendee feedback responses</td><td>Feedback Form</td><td class="pts-val">50</td></tr>
-      <tr><td>Discord Join (Chapter)</td><td>New members joining via generic slide QR code</td><td>Auto-Tracked Link</td><td class="pts-val">10/join<br><small style="color:#4b6478;font-weight:400">Cap: 50 joins</small></td></tr>
+      <tr><td>Discord Join (Chapter)</td><td>New members via generic slide QR code</td><td>Auto-Tracked Link</td><td class="pts-val">10/join<br><small style="color:#4b6478;font-weight:400">Cap: 50 joins</small></td></tr>
     </tbody></table>
     </div>
-
-    <div style="font-size:.82rem;font-weight:700;color:#22c55e;margin:24px 0 8px;display:flex;align-items:center;gap:8px">&#9889; Individual Activities</div>
+    <div style="font-size:.82rem;font-weight:700;color:#22c55e;margin:24px 0 8px">&#9889; Individual Activities</div>
     <div class="pts-table-wrap">
     <table class="pts-table"><thead><tr><th>Activity</th><th>Qualification</th><th>Tracking</th><th>Points</th></tr></thead><tbody>
       <tr><td>BrowserStack Product Session</td><td>Deliver a BrowserStack demo / session at a meetup</td><td>Activity Form (Portal)</td><td class="pts-val">100</td></tr>
@@ -629,13 +629,11 @@ textarea.form-input{resize:vertical;min-height:90px}
       <tr><td>Alpha User (Self)</td><td>Act as an alpha user for new features</td><td>Activity Form (Portal)</td><td class="pts-val">50</td></tr>
       <tr><td>Alpha User Referral</td><td>Onboard external alpha users (post-feedback)</td><td>Activity Form (Portal)</td><td class="pts-val">30</td></tr>
       <tr><td>AMA or Product Promotion</td><td>LinkedIn / Discord posts about product AMAs</td><td>Activity Form (Portal)</td><td class="pts-val">20</td></tr>
-      <tr><td>Discord Join (Unique)</td><td>New members joining via personal CL link</td><td>Unique UTM Link</td><td class="pts-val">10/join<br><small style="color:#4b6478;font-weight:400">Cap: 50 joins</small></td></tr>
+      <tr><td>Discord Join (Unique)</td><td>New members via personal CL UTM link</td><td>Unique UTM Link</td><td class="pts-val">10/join<br><small style="color:#4b6478;font-weight:400">Cap: 50 joins</small></td></tr>
       <tr><td>BrowserStack Related Conference Talk</td><td>Topic should be related to BrowserStack</td><td>Activity Form</td><td class="pts-val" style="color:#a855f7">200</td></tr>
     </tbody></table>
     </div>
   </div>
-
-  <!-- 4. GUARDRAILS -->
   <div class="rules-card">
     <div class="rules-title">&#128737; Guardrails</div>
     <ul class="guardrail-list">
@@ -644,24 +642,16 @@ textarea.form-input{resize:vertical;min-height:90px}
       <li><span>&#128666;</span><span><strong>Reward Distribution</strong> &mdash; Physical rewards, badges, and certificates are processed and dispatched within <strong>30 days</strong> of the quarter-end review.</span></li>
     </ul>
   </div>
+</div>
 
-</div><!-- /tab-rules -->
-
-</div><!-- .main -->
-</div><!-- #app -->
+</div>
+</div>
 
 <script>
 var GAS_URL      = 'https://script.google.com/macros/s/AKfycbxLl9Ph5Uq0JMUe3wroyBpFGvimDPRG73cjCzHTEPaHpcqLPzgpF4x9RXkAW6P0dcSE/exec';
 var SECRET_TOKEN = 'BSCLSecure2024xT9k';
-
-var IND_COLS = [
-  'collab','highlight','referral','alpha user','ama',
-  'breakpoint promo','discord join (unique)',
-  'browserstack product session','cl connect',
-  'conference talk'
-];
-function isIndividualCol(h){ return IND_COLS.some(function(k){ return h.indexOf(k)>=0; }); }
-
+var IND_COLS=['collab','highlight','referral','alpha user','ama','breakpoint promo','discord join (unique)','browserstack product session','cl connect','conference talk'];
+function isIndividualCol(h){return IND_COLS.some(function(k){return h.indexOf(k)>=0;});}
 var _prefetchData=null,_prefetchDone=false;
 function gasCall(params,onSuccess,onError){
   var cb='_cb_'+Date.now()+'_'+Math.random().toString(36).slice(2);
@@ -672,24 +662,9 @@ function gasCall(params,onSuccess,onError){
   s.src=GAS_URL+'?'+qs;s.onerror=function(){delete window[cb];s.remove();if(onError)onError();};
   document.head.appendChild(s);
 }
-gasCall({},function(res){
-  _prefetchData=res;_prefetchDone=true;
-  var el=document.getElementById('pw-prefetch');
-  if(el){el.textContent='✔ Server ready';el.classList.add('ready');}
-},function(){_prefetchDone=true;var el=document.getElementById('pw-prefetch');if(el)el.textContent='';});
-
-function togglePwVisibility(){
-  var inp=document.getElementById('pw-input');
-  var on=document.getElementById('eye-icon'),off=document.getElementById('eye-off-icon');
-  if(inp.type==='password'){inp.type='text';on.style.display='none';off.style.display='block';}
-  else{inp.type='password';on.style.display='block';off.style.display='none';}
-}
-function setPwLoading(v){
-  var btn=document.getElementById('pw-btn'),inp=document.getElementById('pw-input');
-  btn.disabled=v;inp.disabled=v;
-  document.getElementById('pw-spinner').style.display=v?'block':'none';
-  document.getElementById('pw-btn-text').textContent=v?'Verifying…':'Access Portal';
-}
+gasCall({},function(res){_prefetchData=res;_prefetchDone=true;var el=document.getElementById('pw-prefetch');if(el){el.textContent='✔ Server ready';el.classList.add('ready');}},function(){_prefetchDone=true;var el=document.getElementById('pw-prefetch');if(el)el.textContent='';});
+function togglePwVisibility(){var inp=document.getElementById('pw-input');var on=document.getElementById('eye-icon'),off=document.getElementById('eye-off-icon');if(inp.type==='password'){inp.type='text';on.style.display='none';off.style.display='block';}else{inp.type='password';on.style.display='block';off.style.display='none';}}
+function setPwLoading(v){var btn=document.getElementById('pw-btn'),inp=document.getElementById('pw-input');btn.disabled=v;inp.disabled=v;document.getElementById('pw-spinner').style.display=v?'block':'none';document.getElementById('pw-btn-text').textContent=v?'Verifying…':'Access Portal';}
 function checkPw(){
   var val=document.getElementById('pw-input').value.trim();if(!val)return;
   document.getElementById('pw-err').classList.remove('show');setPwLoading(true);
@@ -697,36 +672,25 @@ function checkPw(){
     setPwLoading(false);
     if(res&&res.success){
       localStorage.setItem('bs_auth','1');
-      if(typeof gtag==='function') gtag('event','login_success',{event_category:'auth'});
-      document.getElementById('pw-gate').style.display='none';
-      document.getElementById('app').style.display='block';
-      if(!localStorage.getItem('bs_popup_seen')) document.getElementById('event-popup').classList.add('show');
-      if(_prefetchDone&&_prefetchData&&!_prefetchData.error){processSheetData(_prefetchData);}
-      else{loadLeaderboardData();}
+      if(typeof gtag==='function')gtag('event','login_success',{event_category:'auth'});
+      document.getElementById('pw-gate').style.display='none';document.getElementById('app').style.display='block';
+      if(!localStorage.getItem('bs_popup_seen'))document.getElementById('event-popup').classList.add('show');
+      if(_prefetchDone&&_prefetchData&&!_prefetchData.error){processSheetData(_prefetchData);}else{loadLeaderboardData();}
     }else{
-      var err=document.getElementById('pw-err');
-      err.textContent='❌ Incorrect password. Please try again.';err.classList.add('show');
+      var err=document.getElementById('pw-err');err.textContent='❌ Incorrect password. Please try again.';err.classList.add('show');
       document.getElementById('pw-input').value='';document.getElementById('pw-input').type='password';
       document.getElementById('eye-icon').style.display='block';document.getElementById('eye-off-icon').style.display='none';
       document.getElementById('pw-input').focus();
     }
-  },function(){
-    setPwLoading(false);
-    document.getElementById('pw-err').textContent='❌ Connection error. Please try again.';
-    document.getElementById('pw-err').classList.add('show');
-  });
+  },function(){setPwLoading(false);document.getElementById('pw-err').textContent='❌ Connection error. Please try again.';document.getElementById('pw-err').classList.add('show');});
 }
 function closePopup(){localStorage.setItem('bs_popup_seen','1');document.getElementById('event-popup').classList.remove('show');}
 if(localStorage.getItem('bs_auth')==='1'){
   document.getElementById('pw-gate').style.display='none';document.getElementById('app').style.display='block';
-  if(!localStorage.getItem('bs_popup_seen')) document.getElementById('event-popup').classList.add('show');
-  setTimeout(function(){
-    if(_prefetchDone&&_prefetchData&&!_prefetchData.error){processSheetData(_prefetchData);}else{loadLeaderboardData();}
-  },50);
+  if(!localStorage.getItem('bs_popup_seen'))document.getElementById('event-popup').classList.add('show');
+  setTimeout(function(){if(_prefetchDone&&_prefetchData&&!_prefetchData.error){processSheetData(_prefetchData);}else{loadLeaderboardData();}},50);
 }
-
 var allLeaders=[],leaderDataMap={},colMeta=[],utmLinksMap={};
-// myLeader stored as "Name|||City" composite key
 var myLeader=localStorage.getItem('my_leader')||'';
 var AV_COLORS=['#1d4ed8','#0891b2','#059669','#d97706','#dc2626','#7c3aed','#db2777','#0369a1','#b45309','#6d28d9'];
 function avColor(n){var h=0;for(var i=0;i<n.length;i++)h=(h*31+n.charCodeAt(i))&0xffff;return AV_COLORS[h%AV_COLORS.length];}
@@ -735,40 +699,18 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').repl
 function leaderKey(name,city){return(name+'|||'+city).toLowerCase();}
 function clearBanners(){['form-ok','form-err','form-loading','dispute-ok','dispute-err','dispute-loading'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('show');});}
 function showBanner(id){clearBanners();var el=document.getElementById(id);if(el)el.classList.add('show');}
-function switchTab(tab,btn){
-  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
-  document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active');});
-  document.getElementById('tab-'+tab).classList.add('active');if(btn)btn.classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function loadLeaderboardData(){
-  var h='<div class="loading"><div class="spinner"></div>Loading from Google Sheets…</div>';
-  document.getElementById('lb-body').innerHTML=h;document.getElementById('lb-cards').innerHTML=h;
-  gasCall({},processSheetData,function(){
-    var e='<div class="loading">Failed to load. Please refresh.</div>';
-    document.getElementById('lb-body').innerHTML=e;document.getElementById('lb-cards').innerHTML=e;
-  });
-}
-function getMilestone(total,hasMeetup){
-  if(total>=2250)return'TIER 1';if(total>=1550)return'TIER 2';
-  if(total>=750)return'TIER 3';if(hasMeetup)return'BUILDER';return'NONE';
-}
+function switchTab(tab,btn){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+tab).classList.add('active');if(btn)btn.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function loadLeaderboardData(){var h='<div class="loading"><div class="spinner"></div>Loading from Google Sheets…</div>';document.getElementById('lb-body').innerHTML=h;document.getElementById('lb-cards').innerHTML=h;gasCall({},processSheetData,function(){var e='<div class="loading">Failed to load. Please refresh.</div>';document.getElementById('lb-body').innerHTML=e;document.getElementById('lb-cards').innerHTML=e;});}
+function getMilestone(total,hasMeetup){if(total>=2250)return'TIER 1';if(total>=1550)return'TIER 2';if(total>=750)return'TIER 3';if(hasMeetup)return'BUILDER';return'NONE';}
 function processSheetData(data){
-  if(!data||data.error){
-    var m='<div class="loading">'+(data&&data.error?esc(data.error):'Error loading data')+'</div>';
-    document.getElementById('lb-body').innerHTML=m;document.getElementById('lb-cards').innerHTML=m;return;
-  }
+  if(!data||data.error){var m='<div class="loading">'+(data&&data.error?esc(data.error):'Error loading data')+'</div>';document.getElementById('lb-body').innerHTML=m;document.getElementById('lb-cards').innerHTML=m;return;}
   var headers=data.headers,rows=data.rows;
   if(!headers||!rows||!rows.length){document.getElementById('lb-body').innerHTML='<div class="loading">No data found.</div>';document.getElementById('lb-cards').innerHTML='<div class="loading">No data found.</div>';return;}
   utmLinksMap=data.utmLinks||{};
   var h=headers.map(function(s){return String(s).toLowerCase().trim();});
   var nameCol=h.indexOf('name'),cityCol=h.indexOf('city'),totalCol=h.indexOf('total');
   colMeta=[];
-  headers.forEach(function(hdr,i){
-    if(i===nameCol||i===cityCol||i===totalCol)return;
-    var lc=h[i];if(!lc)return;
-    colMeta.push({name:hdr,idx:i,isIndividual:isIndividualCol(lc)});
-  });
+  headers.forEach(function(hdr,i){if(i===nameCol||i===cityCol||i===totalCol)return;var lc=h[i];if(!lc)return;colMeta.push({name:hdr,idx:i,isIndividual:isIndividualCol(lc)});});
   leaderDataMap={};
   allLeaders=rows.filter(function(r){var n=r[nameCol];return n&&String(n).trim()&&String(n).trim().toLowerCase()!=='na';})
   .map(function(row){
@@ -778,7 +720,6 @@ function processSheetData(data){
     var hasMeetup=colMeta.some(function(c){var lc=h[c.idx]||'';return lc.indexOf('meetup')>=0&&lc.indexOf('highlight')<0&&(Number(row[c.idx])||0)>0;});
     var milestone=getMilestone(total,hasMeetup);
     var breakdown={};colMeta.forEach(function(c){breakdown[c.name]=Number(row[c.idx])||0;});
-    // KEY = name|||city — prevents collisions when two leaders share the same name
     leaderDataMap[leaderKey(name,city)]={name:name,city:city,combined:combined,individual:individual,total:total,milestone:milestone,breakdown:breakdown};
     return{name:name,city:city,combined:combined,individual:individual,total:total,milestone:milestone,hasMeetup:hasMeetup,rideTide:false};
   }).sort(function(a,b){return b.total-a.total;});
@@ -787,25 +728,13 @@ function processSheetData(data){
   allLeaders.forEach(function(l){
     var grp=cityGroups[l.city];
     if(grp&&grp.length>1&&grp.every(function(m){return m.milestone==='TIER 3'||m.milestone==='TIER 2'||m.milestone==='TIER 1';})){
-      l.rideTide=true;l.tideTotal=Math.round(l.total*1.15);
-      leaderDataMap[leaderKey(l.name,l.city)].rideTide=true;
-      leaderDataMap[leaderKey(l.name,l.city)].tideTotal=l.tideTotal;
-      if(tideCities.indexOf(l.city)<0)tideCities.push(l.city);
+      l.rideTide=true;l.tideTotal=Math.round(l.total*1.15);leaderDataMap[leaderKey(l.name,l.city)].rideTide=true;leaderDataMap[leaderKey(l.name,l.city)].tideTotal=l.tideTotal;if(tideCities.indexOf(l.city)<0)tideCities.push(l.city);
     }else{l.rideTide=false;l.tideTotal=l.total;}
   });
   var cities=[];allLeaders.forEach(function(l){if(l.city&&cities.indexOf(l.city)<0)cities.push(l.city);});cities.sort();
-  var cSel=document.getElementById('filter-chapter');
-  cSel.innerHTML='<option value="all">All Chapters</option>';
-  cities.forEach(function(c){cSel.innerHTML+='<option value="'+c.toLowerCase()+'">'+esc(c)+'</option>';});
-  // Dropdown values are "Name|||City" so we always have the exact right leader
-  var dSel=document.getElementById('my-leader-sel');
-  dSel.innerHTML='<option value="">— Select your name —</option>';
-  allLeaders.forEach(function(l){
-    var key=l.name+'|||'+l.city;
-    var o=document.createElement('option');o.value=key;o.textContent=l.name+' ('+l.city+')';
-    if(key===myLeader)o.selected=true;
-    dSel.appendChild(o);
-  });
+  var cSel=document.getElementById('filter-chapter');cSel.innerHTML='<option value="all">All Chapters</option>';cities.forEach(function(c){cSel.innerHTML+='<option value="'+c.toLowerCase()+'">'+esc(c)+'</option>';});
+  var dSel=document.getElementById('my-leader-sel');dSel.innerHTML='<option value="">— Select your name —</option>';
+  allLeaders.forEach(function(l){var key=l.name+'|||'+l.city;var o=document.createElement('option');o.value=key;o.textContent=l.name+' ('+l.city+')';if(key===myLeader)o.selected=true;dSel.appendChild(o);});
   if(myLeader)renderDashboard(myLeader);
   document.getElementById('s-leaders').textContent=allLeaders.length;
   var mc=[];allLeaders.forEach(function(l){if(l.hasMeetup&&mc.indexOf(l.city.toLowerCase())<0)mc.push(l.city.toLowerCase());});
@@ -815,146 +744,39 @@ function processSheetData(data){
   renderTable(allLeaders);
 }
 function milestoneClass(m){return m==='TIER 1'?'m-t1':m==='TIER 2'?'m-t2':m==='TIER 3'?'m-t3':m==='BUILDER'?'m-builder':'m-none';}
-function milestoneLabel(m){
-  return{'TIER 1':'Tier 1 — Strategist','TIER 2':'Tier 2 — Architect','TIER 3':'Tier 3 — Contributor','BUILDER':'Builder','NONE':'None'}[m]||m;
-}
+function milestoneLabel(m){return{'TIER 1':'Tier 1 — Strategist','TIER 2':'Tier 2 — Architect','TIER 3':'Tier 3 — Contributor','BUILDER':'Builder','NONE':'None'}[m]||m;}
 function renderTable(leaders){
   var empty='<div class="loading">No results match your filters.</div>';
   if(!leaders.length){document.getElementById('lb-body').innerHTML=empty;document.getElementById('lb-cards').innerHTML=empty;return;}
   document.getElementById('lb-body').innerHTML=leaders.map(function(l,i){
-    var rank=i+1,rC=rank===1?'r1':rank===2?'r2':rank===3?'r3':'rn';
-    var mC=milestoneClass(l.milestone),mL=milestoneLabel(l.milestone);
-    // Pass composite key so jumpToDash always resolves the right leader
+    var rank=i+1,rC=rank===1?'r1':rank===2?'r2':rank===3?'r3':'rn';var mC=milestoneClass(l.milestone),mL=milestoneLabel(l.milestone);
     var sk=(l.name+'|||'+l.city).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-    return '<div class="leader-row" onclick="jumpToDash(\''+sk+'\')">'
-      +'<div><span class="rank-badge '+rC+'">'+rank+'</span></div>'
-      +'<div class="leader-info"><div class="avatar" style="background:'+avColor(l.name)+'">'+avInitials(l.name)+'</div>'
-      +'<div style="min-width:0"><div class="leader-name">'+esc(l.name)+'</div><div class="leader-city">&#128205; '+esc(l.city)+'</div></div></div>'
-      +'<div class="pts-col"><div class="pts-label l-comb">COMBINED</div><div class="pts-num n-comb">'+l.combined.toLocaleString()+'</div></div>'
-      +'<div class="pts-col"><div class="pts-label l-indiv">INDIVIDUAL</div><div class="pts-num n-indiv">'+l.individual.toLocaleString()+'</div></div>'
-      +'<div><div class="total-num">'+l.total.toLocaleString()+'</div>'+(l.rideTide?'<small class="tide-badge">&#127754; +15% bonus</small>':'')+'</div>'
-      +'<div><span class="milestone '+mC+'">'+mL+'</span></div></div>';
+    return '<div class="leader-row" onclick="jumpToDash(\''+sk+'\')">'+'<div><span class="rank-badge '+rC+'">'+rank+'</span></div>'+'<div class="leader-info"><div class="avatar" style="background:'+avColor(l.name)+'">'+avInitials(l.name)+'</div><div style="min-width:0"><div class="leader-name">'+esc(l.name)+'</div><div class="leader-city">&#128205; '+esc(l.city)+'</div></div></div>'+'<div class="pts-col"><div class="pts-label l-comb">COMBINED</div><div class="pts-num n-comb">'+l.combined.toLocaleString()+'</div></div>'+'<div class="pts-col"><div class="pts-label l-indiv">INDIVIDUAL</div><div class="pts-num n-indiv">'+l.individual.toLocaleString()+'</div></div>'+'<div><div class="total-num">'+l.total.toLocaleString()+'</div>'+(l.rideTide?'<small class="tide-badge">&#127754; +15% bonus</small>':'')+'</div>'+'<div><span class="milestone '+mC+'">'+mL+'</span></div></div>';
   }).join('');
   document.getElementById('lb-cards').innerHTML=leaders.map(function(l,i){
-    var rank=i+1,rC=rank===1?'r1':rank===2?'r2':rank===3?'r3':'rn';
-    var mC=milestoneClass(l.milestone),mL=milestoneLabel(l.milestone);
+    var rank=i+1,rC=rank===1?'r1':rank===2?'r2':rank===3?'r3':'rn';var mC=milestoneClass(l.milestone),mL=milestoneLabel(l.milestone);
     var sk=(l.name+'|||'+l.city).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-    return '<div class="lb-card" onclick="jumpToDash(\''+sk+'\')">'
-      +'<div class="lb-card-top"><span class="lb-card-rank rank-badge '+rC+'">'+rank+'</span>'
-      +'<div class="lb-card-avatar" style="background:'+avColor(l.name)+'">'+avInitials(l.name)+'</div>'
-      +'<div style="min-width:0;flex:1"><div class="lb-card-name">'+esc(l.name)+'</div><div class="lb-card-city">&#128205; '+esc(l.city)+'</div></div>'
-      +'<div class="lb-card-total"><div class="lb-card-total-val">'+l.total.toLocaleString()+'</div>'
-      +(l.rideTide?'<div style="font-size:.6rem;color:#06b6d4;font-weight:700">&#127754; +15%</div>':'<div class="lb-card-total-label">Total pts</div>')
-      +'</div></div>'
-      +'<div class="lb-card-bottom">'
-      +'<div class="lb-card-pts"><div class="lb-card-pts-val n-comb">'+l.combined.toLocaleString()+'</div><div class="lb-card-pts-label l-comb">Combined</div></div>'
-      +'<div class="lb-card-sep"></div>'
-      +'<div class="lb-card-pts"><div class="lb-card-pts-val n-indiv">'+l.individual.toLocaleString()+'</div><div class="lb-card-pts-label l-indiv">Individual</div></div>'
-      +'<div class="lb-card-sep"></div>'
-      +'<div class="lb-card-milestone"><span class="milestone '+mC+'">'+mL+'</span></div>'
-      +'</div></div>';
+    return '<div class="lb-card" onclick="jumpToDash(\''+sk+'\')">'+'<div class="lb-card-top"><span class="lb-card-rank rank-badge '+rC+'">'+rank+'</span><div class="lb-card-avatar" style="background:'+avColor(l.name)+'">'+avInitials(l.name)+'</div><div style="min-width:0;flex:1"><div class="lb-card-name">'+esc(l.name)+'</div><div class="lb-card-city">&#128205; '+esc(l.city)+'</div></div><div class="lb-card-total"><div class="lb-card-total-val">'+l.total.toLocaleString()+'</div>'+(l.rideTide?'<div style="font-size:.6rem;color:#06b6d4;font-weight:700">&#127754; +15%</div>':'<div class="lb-card-total-label">Total pts</div>')+'</div></div><div class="lb-card-bottom"><div class="lb-card-pts"><div class="lb-card-pts-val n-comb">'+l.combined.toLocaleString()+'</div><div class="lb-card-pts-label l-comb">Combined</div></div><div class="lb-card-sep"></div><div class="lb-card-pts"><div class="lb-card-pts-val n-indiv">'+l.individual.toLocaleString()+'</div><div class="lb-card-pts-label l-indiv">Individual</div></div><div class="lb-card-sep"></div><div class="lb-card-milestone"><span class="milestone '+mC+'">'+mL+'</span></div></div></div>';
   }).join('');
 }
-function filterTable(){
-  var q=document.getElementById('search').value.toLowerCase();
-  var tier=document.getElementById('filter-tier').value;
-  var chapter=document.getElementById('filter-chapter').value;
-  renderTable(allLeaders.filter(function(l){
-    if(q&&l.name.toLowerCase().indexOf(q)<0&&l.city.toLowerCase().indexOf(q)<0)return false;
-    if(tier!=='all'&&l.milestone!==tier)return false;
-    if(chapter!=='all'&&l.city.toLowerCase()!==chapter)return false;
-    return true;
-  }));
-}
-// jumpToDash receives the composite "Name|||City" key
-function jumpToDash(compositeKey){
-  document.getElementById('my-leader-sel').value=compositeKey;
-  selectMyLeader(compositeKey);
-  switchTab('dashboard',document.querySelectorAll('.nav-btn')[1]);
-}
-function selectMyLeader(compositeKey){
-  myLeader=compositeKey;localStorage.setItem('my_leader',compositeKey);
-  if(!compositeKey){document.getElementById('dash-content').style.display='none';document.getElementById('dash-placeholder').style.display='block';return;}
-  document.getElementById('dash-content').style.display='block';document.getElementById('dash-placeholder').style.display='none';
-  renderDashboard(compositeKey);
-}
+function filterTable(){var q=document.getElementById('search').value.toLowerCase();var tier=document.getElementById('filter-tier').value;var chapter=document.getElementById('filter-chapter').value;renderTable(allLeaders.filter(function(l){if(q&&l.name.toLowerCase().indexOf(q)<0&&l.city.toLowerCase().indexOf(q)<0)return false;if(tier!=='all'&&l.milestone!==tier)return false;if(chapter!=='all'&&l.city.toLowerCase()!==chapter)return false;return true;}));}
+function jumpToDash(compositeKey){document.getElementById('my-leader-sel').value=compositeKey;selectMyLeader(compositeKey);switchTab('dashboard',document.querySelectorAll('.nav-btn')[1]);}
+function selectMyLeader(compositeKey){myLeader=compositeKey;localStorage.setItem('my_leader',compositeKey);if(!compositeKey){document.getElementById('dash-content').style.display='none';document.getElementById('dash-placeholder').style.display='block';return;}document.getElementById('dash-content').style.display='block';document.getElementById('dash-placeholder').style.display='none';renderDashboard(compositeKey);}
 function renderDashboard(compositeKey){
   var d=leaderDataMap[compositeKey.toLowerCase()];
-  if(!d){
-    // Fallback: try treating it as old-style plain name (for users with old localStorage)
-    var found=null;
-    Object.keys(leaderDataMap).forEach(function(k){if(leaderDataMap[k].name.toLowerCase()===compositeKey.toLowerCase())found=leaderDataMap[k];});
-    if(found)d=found;else return;
-  }
-  document.getElementById('dash-total').textContent=d.total.toLocaleString();
-  document.getElementById('dash-combined').textContent=d.combined.toLocaleString();
-  document.getElementById('dash-individual').textContent=d.individual.toLocaleString();
-  var mEl=document.getElementById('dash-milestone');
-  mEl.textContent=milestoneLabel(d.milestone);
-  var mc={'TIER 1':'#a855f7','TIER 2':'#9ca3af','TIER 3':'#f97316','BUILDER':'#34d399','NONE':'#4b6478'};
-  mEl.style.color=mc[d.milestone]||'#4b6478';
+  if(!d){var found=null;Object.keys(leaderDataMap).forEach(function(k){if(leaderDataMap[k].name.toLowerCase()===compositeKey.toLowerCase())found=leaderDataMap[k];});if(found)d=found;else return;}
+  document.getElementById('dash-total').textContent=d.total.toLocaleString();document.getElementById('dash-combined').textContent=d.combined.toLocaleString();document.getElementById('dash-individual').textContent=d.individual.toLocaleString();
+  var mEl=document.getElementById('dash-milestone');mEl.textContent=milestoneLabel(d.milestone);var mc={'TIER 1':'#a855f7','TIER 2':'#9ca3af','TIER 3':'#f97316','BUILDER':'#34d399','NONE':'#4b6478'};mEl.style.color=mc[d.milestone]||'#4b6478';
   document.getElementById('dash-tide-note').style.display=d.rideTide?'block':'none';
   renderUTMLinks(d);renderBreakdown(d);
-  // Pre-fill dispute form with EXACT name and city from the resolved leader record
-  document.getElementById('d-name').value=d.name;
-  document.getElementById('d-city').value=d.city;
+  document.getElementById('d-name').value=d.name;document.getElementById('d-city').value=d.city;
 }
-function findDiscordUTM(name){
-  var lc=name.toLowerCase().trim();if(utmLinksMap[lc])return utmLinksMap[lc];
-  var norm=lc.replace(/[^a-z0-9]/g,''),keys=Object.keys(utmLinksMap);
-  for(var i=0;i<keys.length;i++){if(keys[i].replace(/[^a-z0-9]/g,'')===norm)return utmLinksMap[keys[i]];}
-  var first=lc.split(/\s+/)[0];
-  for(var j=0;j<keys.length;j++){if(keys[j].indexOf(first)===0)return utmLinksMap[keys[j]];}
-  return'';
-}
-function renderUTMLinks(d){
-  var url=findDiscordUTM(d.name);
-  document.getElementById('utm-links-container').innerHTML='<div class="utm-link-row"><div class="utm-link-label">&#128172; Discord Community Join</div><div class="utm-link-url"><input type="text" id="utm-inp-0" value="'+(url?esc(url):'No Discord UTM found — contact BrowserStack team')+'" readonly '+(url?'':'style="color:#3d5568;font-style:italic"')+'>'+(url?'<button class="copy-btn" id="utm-cp-0" onclick="copyUTM()">Copy</button>':'')+'</div></div>';
-}
-function copyUTM(){
-  navigator.clipboard.writeText(document.getElementById('utm-inp-0').value).then(function(){
-    var btn=document.getElementById('utm-cp-0');btn.textContent='Copied!';btn.classList.add('copied');
-    setTimeout(function(){btn.textContent='Copy';btn.classList.remove('copied');},2000);
-  });
-}
-function renderBreakdown(d){
-  var rows=colMeta.map(function(c){return{name:c.name,isInd:c.isIndividual,pts:d.breakdown[c.name]||0};});
-  rows.sort(function(a,b){return b.pts-a.pts;});
-  document.getElementById('breakdown-body').innerHTML=rows.map(function(r){
-    return'<tr class="'+(r.pts===0?'zero-row':'')+'"><td>'+esc(r.name)+'</td><td><span class="cat-badge '+(r.isInd?'cb-indiv':'cb-comb')+'">'+(r.isInd?'Individual':'Combined')+'</span></td><td class="'+(r.pts>0?'pts-val-pos':'pts-val-zero')+'">'+r.pts+'</td></tr>';
-  }).join('');
-}
-function submitActivityForm(e){
-  e.preventDefault();var btn=document.getElementById('form-btn');btn.disabled=true;showBanner('form-loading');
-  var speaker=document.querySelector('input[name="fl-speaker"]:checked');
-  var collab=document.querySelector('input[name="fl-collab"]:checked');
-  gasCall({action:'submitForm',
-    leaderName:document.getElementById('fl-name').value.trim(),city:document.getElementById('fl-city').value.trim(),
-    dateOfActivity:document.getElementById('fl-date').value,attendance:document.getElementById('fl-attendance').value.trim(),
-    whoFoundSpeaker:speaker?speaker.value:'',collaborated:collab?collab.value:'',
-    meetupHighlights:document.getElementById('fl-highlights').value.trim(),
-    referral:document.getElementById('fl-referral').value.trim(),
-    promotingEvents:document.getElementById('fl-promoting').value.trim()
-  },function(res){btn.disabled=false;if(res&&res.success){showBanner('form-ok');document.getElementById('activity-form').reset();setTimeout(clearBanners,6000);}else{showBanner('form-err');setTimeout(clearBanners,6000);}},
-  function(){btn.disabled=false;showBanner('form-err');setTimeout(clearBanners,6000);});
-}
-function submitDispute(e){
-  e.preventDefault();var btn=document.getElementById('d-btn');btn.disabled=true;showBanner('dispute-loading');
-  gasCall({action:'complaint',
-    leaderName:document.getElementById('d-name').value,city:document.getElementById('d-city').value,
-    category:document.getElementById('d-category').value,ptsShown:document.getElementById('d-shown').value,
-    ptsExpected:document.getElementById('d-expected').value,description:document.getElementById('d-desc').value
-  },function(res){
-    btn.disabled=false;
-    if(res&&res.success){
-      showBanner('dispute-ok');document.getElementById('dispute-form').reset();
-      // Re-fill name & city after form reset
-      var d=leaderDataMap[myLeader.toLowerCase()];
-      if(d){document.getElementById('d-name').value=d.name;document.getElementById('d-city').value=d.city;}
-      setTimeout(clearBanners,6000);
-    }else{showBanner('dispute-err');setTimeout(clearBanners,6000);}
-  },function(){btn.disabled=false;showBanner('dispute-err');setTimeout(clearBanners,6000);});
-}
+function findDiscordUTM(name){var lc=name.toLowerCase().trim();if(utmLinksMap[lc])return utmLinksMap[lc];var norm=lc.replace(/[^a-z0-9]/g,''),keys=Object.keys(utmLinksMap);for(var i=0;i<keys.length;i++){if(keys[i].replace(/[^a-z0-9]/g,'')===norm)return utmLinksMap[keys[i]];}var first=lc.split(/\s+/)[0];for(var j=0;j<keys.length;j++){if(keys[j].indexOf(first)===0)return utmLinksMap[keys[j]];}return'';}
+function renderUTMLinks(d){var url=findDiscordUTM(d.name);document.getElementById('utm-links-container').innerHTML='<div class="utm-link-row"><div class="utm-link-label">&#128172; Discord Community Join</div><div class="utm-link-url"><input type="text" id="utm-inp-0" value="'+(url?esc(url):'No Discord UTM found — contact BrowserStack team')+'" readonly '+(url?'':'style="color:#3d5568;font-style:italic"')+'>'+(url?'<button class="copy-btn" id="utm-cp-0" onclick="copyUTM()">Copy</button>':'')+'</div></div>';}
+function copyUTM(){navigator.clipboard.writeText(document.getElementById('utm-inp-0').value).then(function(){var btn=document.getElementById('utm-cp-0');btn.textContent='Copied!';btn.classList.add('copied');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('copied');},2000);});}
+function renderBreakdown(d){var rows=colMeta.map(function(c){return{name:c.name,isInd:c.isIndividual,pts:d.breakdown[c.name]||0};});rows.sort(function(a,b){return b.pts-a.pts;});document.getElementById('breakdown-body').innerHTML=rows.map(function(r){return'<tr class="'+(r.pts===0?'zero-row':'')+'"><td>'+esc(r.name)+'</td><td><span class="cat-badge '+(r.isInd?'cb-indiv':'cb-comb')+'">'+(r.isInd?'Individual':'Combined')+'</span></td><td class="'+(r.pts>0?'pts-val-pos':'pts-val-zero')+'">'+r.pts+'</td></tr>';}).join('');}
+function submitActivityForm(e){e.preventDefault();var btn=document.getElementById('form-btn');btn.disabled=true;showBanner('form-loading');var speaker=document.querySelector('input[name="fl-speaker"]:checked');var collab=document.querySelector('input[name="fl-collab"]:checked');gasCall({action:'submitForm',leaderName:document.getElementById('fl-name').value.trim(),city:document.getElementById('fl-city').value.trim(),dateOfActivity:document.getElementById('fl-date').value,attendance:document.getElementById('fl-attendance').value.trim(),whoFoundSpeaker:speaker?speaker.value:'',collaborated:collab?collab.value:'',meetupHighlights:document.getElementById('fl-highlights').value.trim(),referral:document.getElementById('fl-referral').value.trim(),promotingEvents:document.getElementById('fl-promoting').value.trim()},function(res){btn.disabled=false;if(res&&res.success){showBanner('form-ok');document.getElementById('activity-form').reset();setTimeout(clearBanners,6000);}else{showBanner('form-err');setTimeout(clearBanners,6000);}},function(){btn.disabled=false;showBanner('form-err');setTimeout(clearBanners,6000);});}
+function submitDispute(e){e.preventDefault();var btn=document.getElementById('d-btn');btn.disabled=true;showBanner('dispute-loading');gasCall({action:'complaint',leaderName:document.getElementById('d-name').value,city:document.getElementById('d-city').value,category:document.getElementById('d-category').value,ptsShown:document.getElementById('d-shown').value,ptsExpected:document.getElementById('d-expected').value,description:document.getElementById('d-desc').value},function(res){btn.disabled=false;if(res&&res.success){showBanner('dispute-ok');document.getElementById('dispute-form').reset();var d=leaderDataMap[myLeader.toLowerCase()];if(d){document.getElementById('d-name').value=d.name;document.getElementById('d-city').value=d.city;}setTimeout(clearBanners,6000);}else{showBanner('dispute-err');setTimeout(clearBanners,6000);}},function(){btn.disabled=false;showBanner('dispute-err');setTimeout(clearBanners,6000);});}
 </script>
 </body>
 </html>
