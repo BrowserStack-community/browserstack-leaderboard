@@ -173,6 +173,31 @@ textarea.form-input{resize:vertical;min-height:90px}
 .banner-ok{background:#052e1e;border:1px solid #15803d;color:#4ade80}
 .banner-err{background:#2d0e0e;border:1px solid #dc2626;color:#f87171}
 .banner-loading{background:#0c2a4a;border:1px solid #1d4ed8;color:#60a5fa}
+/* Rules Accordion (Option B) */
+.rules-acc{background:linear-gradient(135deg,#0d2040 0%,#0b1929 100%);border:1px solid #2563eb33;border-left:3px solid #3b82f6;border-radius:12px;margin-bottom:18px;overflow:hidden;box-shadow:0 0 24px rgba(59,130,246,.1)}
+.rules-acc-toggle{width:100%;background:linear-gradient(90deg,#0e2845 0%,transparent 70%);border:none;color:#e2e8f0;padding:15px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:.92rem;font-weight:700;gap:10px;transition:background .2s}
+.rules-acc-toggle:hover{background:linear-gradient(90deg,#132f55 0%,#0d1f35 70%)}
+.rules-acc-toggle .acc-left{display:flex;align-items:center;gap:10px}
+.acc-pulse{width:8px;height:8px;background:#3b82f6;border-radius:50%;flex-shrink:0;animation:accPulse 2s ease-in-out infinite}
+@keyframes accPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(59,130,246,.5)}50%{opacity:.7;box-shadow:0 0 0 5px rgba(59,130,246,0)}}
+.acc-label-text{color:#93c5fd;font-size:.75rem;font-weight:600;background:#1e3a5f;padding:2px 10px;border-radius:20px;letter-spacing:.04em;white-space:nowrap}
+.rules-acc-arrow{font-size:.8rem;color:#60a5fa;transition:transform .25s;flex-shrink:0;background:#1e3a5f;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.rules-acc-arrow.open{transform:rotate(180deg)}
+.rules-acc-body{border-top:1px solid #1e3a5f44;padding:20px;background:#0b1929}
+.acc-tier-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.acc-tier-pill{border-radius:10px;padding:14px 16px;text-align:center}
+.acc-tier-pill.builder{background:#091f12;border:1px solid #134e2a}
+.acc-tier-pill.t3{background:#1a0d00;border:1px solid #7c2d12}
+.acc-tier-pill.t2{background:#0f1520;border:1px solid #374151}
+.acc-tier-pill.t1{background:#160d29;border:1px solid #4c1d95}
+.acc-tier-name{font-size:.78rem;font-weight:800;margin-bottom:4px}
+.acc-tier-pts{font-size:1.1rem;font-weight:800;margin-bottom:4px}
+.acc-tier-reward{font-size:.7rem;color:#94a3b8;line-height:1.4}
+.acc-full-link{text-align:center;margin-top:16px}
+.acc-view-btn{display:inline-flex;align-items:center;gap:8px;background:#1d4ed8;color:#fff;border:none;border-radius:8px;padding:11px 24px;font-size:.9rem;font-weight:700;cursor:pointer;transition:background .15s;letter-spacing:.01em}
+.acc-view-btn:hover{background:#2563eb}
+.acc-view-btn span{font-size:1rem}
+@media(max-width:600px){.acc-tier-row{grid-template-columns:repeat(2,1fr)}}
 /* Rules */
 .rules-card{background:#0b1929;border:1px solid #162d47;border-radius:12px;padding:28px;margin-bottom:20px}
 .rules-title{font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:20px}
@@ -331,11 +356,11 @@ textarea.form-input{resize:vertical;min-height:90px}
     <div class="logo-title">CL <b>Leaderboard</b></div>
   </div>
   <nav>
-    <button class="nav-btn active"   onclick="switchTab('standings',this)">&#127885; Standings</button>
-    <button class="nav-btn dash-btn" onclick="switchTab('dashboard',this)">&#128100; Dashboard</button>
-    <button class="nav-btn"          onclick="switchTab('form',this)">&#8853; Activity Form</button>
-    <button class="nav-btn res-btn"  onclick="switchTab('resources',this)">&#128218; Resources</button>
-    <button class="nav-btn"          onclick="switchTab('rules',this)">&#128203; Rules &amp; Tiers</button>
+    <button class="nav-btn"           onclick="switchTab('standings',this)">&#127885; Standings</button>
+    <button class="nav-btn dash-btn"  onclick="switchTab('dashboard',this)">&#128100; Dashboard</button>
+    <button class="nav-btn"           onclick="switchTab('form',this)">&#8853; Activity Form</button>
+    <button class="nav-btn res-btn"   onclick="switchTab('resources',this)">&#128218; Resources</button>
+    <button class="nav-btn active"    onclick="switchTab('rules',this)">&#128203; Rules &amp; Tiers</button>
   </nav>
 </header>
 
@@ -348,7 +373,43 @@ textarea.form-input{resize:vertical;min-height:90px}
 
 <div class="main">
 
-<div class="tab-panel active" id="tab-standings">
+<div class="tab-panel" id="tab-standings">
+  <!-- OPTION B: Collapsible rules accordion -->
+  <div class="rules-acc">
+    <button class="rules-acc-toggle" onclick="toggleRulesAcc()">
+      <span class="acc-left">
+        <span class="acc-pulse"></span>
+        &#128203; Points &amp; Tiers
+        <span class="acc-label-text">Quick Guide</span>
+      </span>
+      <span class="rules-acc-arrow" id="acc-arrow">&#9660;</span>
+    </button>
+    <div class="rules-acc-body" id="rules-acc-body" style="display:none">
+      <div class="acc-tier-row">
+        <div class="acc-tier-pill builder">
+          <div class="acc-tier-name" style="color:#34d399">&#129489; Builder</div>
+          <div class="acc-tier-pts" style="color:#34d399">1 Meetup</div>
+          <div class="acc-tier-reward">Annual Swag Kit + Active CL Badge</div>
+        </div>
+        <div class="acc-tier-pill t3">
+          <div class="acc-tier-name" style="color:#f97316">&#127881; Tier 3</div>
+          <div class="acc-tier-pts" style="color:#f97316">750 pts</div>
+          <div class="acc-tier-reward">Tech Hardware up to $75 + Contributor Badge</div>
+        </div>
+        <div class="acc-tier-pill t2">
+          <div class="acc-tier-name" style="color:#9ca3af">&#127775; Tier 2</div>
+          <div class="acc-tier-pts" style="color:#9ca3af">1,550 pts</div>
+          <div class="acc-tier-reward">Hardware $135 + Upskilling Voucher $40</div>
+        </div>
+        <div class="acc-tier-pill t1">
+          <div class="acc-tier-name" style="color:#a855f7">&#128081; Tier 1</div>
+          <div class="acc-tier-pts" style="color:#a855f7">2,250 pts</div>
+          <div class="acc-tier-reward">Premium Hardware $200 + Learning Stipend $75</div>
+        </div>
+      </div>
+      <div class="acc-full-link"><button class="acc-view-btn" onclick="switchTab('rules',document.querySelectorAll('.nav-btn')[4])"><span>&#128203;</span> View Full Rules &amp; Points Breakdown</button></div>
+    </div>
+  </div>
   <div class="filters">
     <div class="search-wrap"><span class="s-icon">&#128269;</span><input type="text" id="search" placeholder="Search leader or chapter&hellip;" oninput="filterTable()"></div>
     <select id="filter-tier" onchange="filterTable()">
@@ -610,7 +671,7 @@ textarea.form-input{resize:vertical;min-height:90px}
 </div>
 
 <!-- RULES & TIERS -->
-<div class="tab-panel" id="tab-rules">
+<div class="tab-panel active" id="tab-rules">
   <div class="rules-card">
     <div class="rules-title">&#127942; Tiering Framework &amp; Rewards</div>
     <p class="rules-para" style="margin-bottom:20px">Progression is cumulative throughout the quarter. Leaders unlock physical items and career growth perks at each stage.</p>
@@ -728,11 +789,13 @@ function togglePwVisibility(){var inp=document.getElementById('pw-input');var on
 function setPwLoading(v){var btn=document.getElementById('pw-btn'),inp=document.getElementById('pw-input');btn.disabled=v;inp.disabled=v;document.getElementById('pw-spinner').style.display=v?'block':'none';document.getElementById('pw-btn-text').textContent=v?'Verifying…':'Access Portal';}
 var POPUP_ENABLED = false; // ← change to true to show the popup, false to hide it
 function showPopupIfNeeded(){if(!POPUP_ENABLED)return;var ep=document.getElementById('event-popup');if(ep&&!localStorage.getItem('bs_popup_seen'))ep.classList.add('show');}
-function checkPw(){var val=document.getElementById('pw-input').value.trim();if(!val)return;document.getElementById('pw-err').classList.remove('show');setPwLoading(true);gasCall({action:'checkPassword',pw:val},function(res){setPwLoading(false);if(res&&res.success){localStorage.setItem('bs_auth','1');if(typeof gtag==='function')gtag('event','login_success',{event_category:'auth'});document.getElementById('pw-gate').style.display='none';document.getElementById('app').style.display='block';showPopupIfNeeded();loadLeaderboardData();}else{var err=document.getElementById('pw-err');err.textContent='❌ Incorrect password. Please try again.';err.classList.add('show');document.getElementById('pw-input').value='';document.getElementById('pw-input').type='password';document.getElementById('eye-icon').style.display='block';document.getElementById('eye-off-icon').style.display='none';document.getElementById('pw-input').focus();}},function(){setPwLoading(false);document.getElementById('pw-err').textContent='❌ Connection error. Please try again.';document.getElementById('pw-err').classList.add('show');});}
+function checkPw(){var val=document.getElementById('pw-input').value.trim();if(!val)return;document.getElementById('pw-err').classList.remove('show');setPwLoading(true);gasCall({action:'checkPassword',pw:val},function(res){setPwLoading(false);if(res&&res.success){localStorage.setItem('bs_auth','1');if(typeof gtag==='function')gtag('event','login_success',{event_category:'auth'});document.getElementById('pw-gate').style.display='none';document.getElementById('app').style.display='block';showPopupIfNeeded();loadLeaderboardData();landAfterLogin();}else{var err=document.getElementById('pw-err');err.textContent='❌ Incorrect password. Please try again.';err.classList.add('show');document.getElementById('pw-input').value='';document.getElementById('pw-input').type='password';document.getElementById('eye-icon').style.display='block';document.getElementById('eye-off-icon').style.display='none';document.getElementById('pw-input').focus();}},function(){setPwLoading(false);document.getElementById('pw-err').textContent='❌ Connection error. Please try again.';document.getElementById('pw-err').classList.add('show');});}
 function closePopup(){localStorage.setItem('bs_popup_seen','1');var ep=document.getElementById('event-popup');if(ep)ep.classList.remove('show');}
+function landAfterLogin(){if(localStorage.getItem('seen_rules')){switchTab('standings',document.querySelectorAll('.nav-btn')[0]);}else{localStorage.setItem('seen_rules','1');/* Rules tab is already active in HTML — first-timer stays there */}}
+function toggleRulesAcc(){var body=document.getElementById('rules-acc-body');var arrow=document.getElementById('acc-arrow');var open=body.style.display==='block';body.style.display=open?'none':'block';arrow.classList.toggle('open',!open);}
 
 /* Returning user */
-if(localStorage.getItem('bs_auth')==='1'){document.getElementById('pw-gate').style.display='none';document.getElementById('app').style.display='block';showPopupIfNeeded();loadLeaderboardData();}
+if(localStorage.getItem('bs_auth')==='1'){document.getElementById('pw-gate').style.display='none';document.getElementById('app').style.display='block';showPopupIfNeeded();loadLeaderboardData();landAfterLogin();}
 
 /* State */
 var allLeaders=[],leaderDataMap={},colMeta=[],utmLinksMap={};
