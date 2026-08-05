@@ -327,13 +327,13 @@ textarea.form-input{resize:vertical;min-height:90px}
 <div id="app" style="display:none">
 <header>
   <div class="logo">
-    <div class="logo-icon">&#127942;</div>
-    <div class="logo-title">Chapter <b>Leader Board</b></div>
+    <img src="bstack-logo.png" alt="BrowserStack" style="width:38px;height:38px;object-fit:contain;flex-shrink:0">
+    <div class="logo-title">CL <b>Leaderboard</b></div>
   </div>
   <nav>
     <button class="nav-btn active"   onclick="switchTab('standings',this)">&#127885; Standings</button>
     <button class="nav-btn dash-btn" onclick="switchTab('dashboard',this)">&#128100; Dashboard</button>
-    <button class="nav-btn"          onclick="switchTab('form',this)">&#8853; Submit Form</button>
+    <button class="nav-btn"          onclick="switchTab('form',this)">&#8853; Activity Form</button>
     <button class="nav-btn res-btn"  onclick="switchTab('resources',this)">&#128218; Resources</button>
     <button class="nav-btn"          onclick="switchTab('rules',this)">&#128203; Rules &amp; Tiers</button>
   </nav>
@@ -443,9 +443,9 @@ textarea.form-input{resize:vertical;min-height:90px}
 
 <div class="tab-panel" id="tab-form">
   <div class="form-wrap"><div class="form-card">
-    <h2 class="form-card-title">Submit CL Contributions</h2>
-    <p class="form-card-sub">Submit a report detailing your recent chapter activity. All submissions are reviewed by the DevRel team.</p>
-    <a href="https://forms.gle/enpHZqp4Tx22bCm96" target="_blank" class="form-ext-link">&#8599; Open Original Google Form</a>
+    <h2 class="form-card-title">Activity Form</h2>
+    <p class="form-card-sub">Log your chapter activity. Name and City are required — fill in the rest as applicable.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe3VuD_4S2-y_N6QnMzWXB1dQKQj8bAVVdGDilfj39pUQOvZw/viewform" target="_blank" class="form-ext-link">&#8599; Open Google Form directly</a>
     <hr class="divider">
     <div class="banner banner-ok" id="form-ok">&#9989; Your response has been saved successfully!</div>
     <div class="banner banner-err" id="form-err">&#10060; Submission failed. Please try again or use the Google Form link above.</div>
@@ -453,62 +453,55 @@ textarea.form-input{resize:vertical;min-height:90px}
     <form id="activity-form" onsubmit="submitActivityForm(event)">
       <div class="form-field"><label class="form-label">1. Chapter Leader Name <span class="req">*</span></label><input type="text" class="form-input" id="fl-name" placeholder="Enter your full name" required></div>
       <div class="form-field"><label class="form-label">2. City / Chapter <span class="req">*</span></label><input type="text" class="form-input" id="fl-city" placeholder="e.g. Mumbai, Bangalore, Chennai&hellip;" required></div>
-      <div class="form-field"><label class="form-label">3. Date of Activity</label><input type="date" class="form-input" id="fl-date"></div>
-      <div class="form-field"><label class="form-label">4. Venue arrangement for this meetup</label>
+      <div class="form-field"><label class="form-label">3. Venue arrangement for this meetup</label>
         <div class="radio-group">
-          <label class="radio-opt"><input type="radio" name="fl-venue" value="Targeted Venue Partner — from the approved company list (200 pts)"><span class="radio-opt-label">Targeted Venue Partner &mdash; secured from the approved company list <span style="color:#f97316;font-size:.75rem;font-weight:700">(+200 pts)</span></span></label>
-          <label class="radio-opt"><input type="radio" name="fl-venue" value="Venue Partner — free third-party venue self-sourced (100 pts)"><span class="radio-opt-label">Venue Partner &mdash; secured a free third-party venue <span style="color:#f97316;font-size:.75rem;font-weight:700">(+100 pts)</span></span></label>
-          <label class="radio-opt"><input type="radio" name="fl-venue" value="Paid Venue — self-found and paid (50 pts)"><span class="radio-opt-label">Paid Venue &mdash; self-found and paid <span style="color:#f97316;font-size:.75rem;font-weight:700">(+50 pts)</span></span></label>
+          <label class="radio-opt"><input type="radio" name="fl-venue" value="Targeted Venue Partner — secured from the approved company list"><span class="radio-opt-label">Targeted Venue Partner &mdash; from the approved company list <span style="color:#f97316;font-size:.75rem;font-weight:700">(+200 pts)</span></span></label>
+          <label class="radio-opt"><input type="radio" name="fl-venue" value="Venue Partner — secured a free third-party venue"><span class="radio-opt-label">Venue Partner &mdash; free third-party venue <span style="color:#f97316;font-size:.75rem;font-weight:700">(+100 pts)</span></span></label>
+          <label class="radio-opt"><input type="radio" name="fl-venue" value="Paid Venue — self-found and paid"><span class="radio-opt-label">Paid Venue &mdash; self-found and paid <span style="color:#f97316;font-size:.75rem;font-weight:700">(+50 pts)</span></span></label>
+          <label class="radio-opt"><input type="radio" name="fl-venue" value="Found by the BrowserStack Team"><span class="radio-opt-label">Found by the BrowserStack Team</span></label>
           <label class="radio-opt"><input type="radio" name="fl-venue" value="No venue arrangement this time"><span class="radio-opt-label">No venue arrangement this time</span></label>
         </div>
       </div>
-      <div class="form-field"><label class="form-label">5. Who found the speaker for this meetup?</label>
+      <div class="form-field"><label class="form-label">4. Who found the speaker for this meetup?</label>
         <div class="radio-group">
-          <label class="radio-opt"><input type="radio" name="fl-speaker" value="I (Chapter Leader) sourced the speaker"><span class="radio-opt-label">I (Chapter Leader) sourced the speaker</span></label>
+          <label class="radio-opt"><input type="radio" name="fl-speaker" value="I (Chapter Leader) sourced the speaker"><span class="radio-opt-label">I (Chapter Leader) sourced the speaker <span style="color:#f97316;font-size:.75rem;font-weight:700">(+100 pts)</span></span></label>
           <label class="radio-opt"><input type="radio" name="fl-speaker" value="BrowserStack Team provided the speaker"><span class="radio-opt-label">BrowserStack Team provided the speaker</span></label>
           <label class="radio-opt"><input type="radio" name="fl-speaker" value="No guest speaker this time"><span class="radio-opt-label">No guest speaker this time</span></label>
         </div>
       </div>
-      <div class="form-field"><label class="form-label">6. Did you deliver a BrowserStack Product Session? <span style="color:#f97316;font-size:.75rem;font-weight:700">(+100 pts)</span></label>
-        <div class="radio-group">
-          <label class="radio-opt"><input type="radio" name="fl-bs-session" value="Yes" onchange="document.getElementById('bs-topic-wrap').style.display='block'"><span class="radio-opt-label">Yes</span></label>
-          <label class="radio-opt"><input type="radio" name="fl-bs-session" value="No" onchange="document.getElementById('bs-topic-wrap').style.display='none'"><span class="radio-opt-label">No</span></label>
-        </div>
-        <div id="bs-topic-wrap" style="display:none;margin-top:10px"><input type="text" class="form-input" id="fl-bs-topic" placeholder="Brief description / demo topic (e.g. Automate, Percy, Test Companion)"></div>
-      </div>
-      <div class="form-field"><label class="form-label">7. Did you collaborate with any community?</label>
+      <div class="form-field"><label class="form-label">5. Did you collaborate with any community? <span style="color:#f97316;font-size:.75rem;font-weight:700">(+100 pts)</span></label>
         <div class="radio-group">
           <label class="radio-opt"><input type="radio" name="fl-collab" value="Yes"><span class="radio-opt-label">Yes</span></label>
           <label class="radio-opt"><input type="radio" name="fl-collab" value="No"><span class="radio-opt-label">No</span></label>
         </div>
       </div>
-      <div class="form-field"><label class="form-label">8. Meetup Highlights / Photos</label><input type="url" class="form-input" id="fl-highlights" placeholder="https://drive.google.com/&hellip;"><p class="form-note">Share a Google Drive link to your photos/highlights.</p></div>
-      <div class="form-field"><label class="form-label">9. Did you refer a potential new Chapter Leader?</label><input type="text" class="form-input" id="fl-referral" placeholder="Name / email of referred person (leave blank if none)"></div>
-      <div class="form-field"><label class="form-label">10. Alpha User Activity <span style="color:#f97316;font-size:.75rem;font-weight:700">(Self +50 pts &bull; Referral +30 pts)</span></label>
-        <div style="font-size:.78rem;color:#94a3b8;font-weight:600;margin-bottom:6px">Did you sign up as an Alpha User yourself?</div>
-        <div class="radio-group" style="margin-bottom:12px">
-          <label class="radio-opt"><input type="radio" name="fl-alpha-self" value="Yes"><span class="radio-opt-label">Yes</span></label>
-          <label class="radio-opt"><input type="radio" name="fl-alpha-self" value="No"><span class="radio-opt-label">No</span></label>
-        </div>
-        <div style="font-size:.78rem;color:#94a3b8;font-weight:600;margin-bottom:6px">Did you refer anyone as an Alpha User?</div>
-        <input type="text" class="form-input" id="fl-alpha-referral" placeholder="Name / email of referred alpha user (leave blank if none)">
-      </div>
-      <div class="form-field"><label class="form-label">11. BrowserStack Related Conference Talk <span style="color:#f97316;font-size:.75rem;font-weight:700">(+200 pts)</span></label>
-        <p class="form-note" style="margin-bottom:10px">Got a talk accepted at a conference on a BrowserStack topic? Share details &mdash; leave blank if not applicable.</p>
-        <div class="form-row">
-          <div><input type="text" class="form-input" id="fl-conf-name" placeholder="Conference name"></div>
-          <div><input type="text" class="form-input" id="fl-conf-topic" placeholder="Talk topic / title"></div>
-        </div>
-      </div>
-      <div class="form-field"><label class="form-label">12. Have you spoken at any other BrowserStack meetups?</label>
+      <div class="form-field"><label class="form-label">6. Alpha User Activity <span style="color:#f97316;font-size:.75rem;font-weight:700">(Self +50 pts &bull; Referral +30 pts)</span></label>
         <div class="radio-group">
-          <label class="radio-opt"><input type="radio" name="fl-other-speak" value="Yes" onchange="document.getElementById('other-speak-wrap').style.display='block'"><span class="radio-opt-label">Yes</span></label>
-          <label class="radio-opt"><input type="radio" name="fl-other-speak" value="No" onchange="document.getElementById('other-speak-wrap').style.display='none'"><span class="radio-opt-label">No</span></label>
+          <label class="radio-opt"><input type="radio" name="fl-alpha" value="None" onchange="document.getElementById('alpha-detail-wrap').style.display='none'"><span class="radio-opt-label">None</span></label>
+          <label class="radio-opt"><input type="radio" name="fl-alpha" value="I signed up as an Alpha User" onchange="document.getElementById('alpha-detail-wrap').style.display='none'"><span class="radio-opt-label">I signed up as an Alpha User <span style="color:#f97316;font-size:.75rem;font-weight:700">(+50 pts)</span></span></label>
+          <label class="radio-opt"><input type="radio" name="fl-alpha" value="I referred someone as an Alpha User" onchange="document.getElementById('alpha-detail-wrap').style.display='block'"><span class="radio-opt-label">I referred someone as an Alpha User <span style="color:#f97316;font-size:.75rem;font-weight:700">(+30 pts)</span></span></label>
+          <label class="radio-opt"><input type="radio" name="fl-alpha" value="Both — signed up and referred someone" onchange="document.getElementById('alpha-detail-wrap').style.display='block'"><span class="radio-opt-label">Both &mdash; signed up and referred someone <span style="color:#f97316;font-size:.75rem;font-weight:700">(+80 pts)</span></span></label>
         </div>
-        <div id="other-speak-wrap" style="display:none;margin-top:10px"><input type="text" class="form-input" id="fl-other-speak-detail" placeholder="Meetup name / topic (e.g. DevFest Mumbai — Testing in the Cloud)"></div>
+        <div id="alpha-detail-wrap" style="display:none;margin-top:10px"><input type="text" class="form-input" id="fl-alpha-detail" placeholder="Name / email of the person you referred as Alpha User"></div>
       </div>
-      <div class="form-field"><label class="form-label">13. Promoting BrowserStack events &amp; content <span class="req">*</span></label><input type="text" class="form-input" id="fl-promoting" placeholder="Drop your social media post link here" required><p class="form-note">Link to your social media post — required to receive points!</p></div>
-      <button type="submit" class="btn-primary" id="form-btn">Submit Contributions</button>
+      <div class="form-field"><label class="form-label">7. Conference Talk <span style="color:#f97316;font-size:.75rem;font-weight:700">(+200 pts)</span></label>
+        <div class="radio-group">
+          <label class="radio-opt"><input type="radio" name="fl-conf" value="No" onchange="document.getElementById('conf-detail-wrap').style.display='none'"><span class="radio-opt-label">No conference talk</span></label>
+          <label class="radio-opt"><input type="radio" name="fl-conf" value="Yes" onchange="document.getElementById('conf-detail-wrap').style.display='block'"><span class="radio-opt-label">Yes, I gave / got accepted for a BrowserStack-related talk</span></label>
+        </div>
+        <div id="conf-detail-wrap" style="display:none;margin-top:10px"><input type="text" class="form-input" id="fl-conf-detail" placeholder="Conference name &amp; talk topic (e.g. DevFest Pune — Testing with BrowserStack)"></div>
+      </div>
+      <div class="form-field"><label class="form-label">8. Have you spoken at any other meetups?</label>
+        <div class="radio-group">
+          <label class="radio-opt"><input type="radio" name="fl-spoken" value="No" onchange="document.getElementById('spoken-detail-wrap').style.display='none'"><span class="radio-opt-label">No</span></label>
+          <label class="radio-opt"><input type="radio" name="fl-spoken" value="Yes" onchange="document.getElementById('spoken-detail-wrap').style.display='block'"><span class="radio-opt-label">Yes</span></label>
+        </div>
+        <div id="spoken-detail-wrap" style="display:none;margin-top:10px"><input type="text" class="form-input" id="fl-spoken-detail" placeholder="Which meetup and what did you speak about?"></div>
+      </div>
+      <div class="form-field"><label class="form-label">9. Meetup Highlights / Photos</label><input type="url" class="form-input" id="fl-highlights" placeholder="https://drive.google.com/&hellip;"><p class="form-note">Paste a Google Drive link to your photos — required for Meetup Highlights points.</p></div>
+      <div class="form-field"><label class="form-label">10. Did you refer a potential new Chapter Leader? <span style="color:#f97316;font-size:.75rem;font-weight:700">(+100 pts)</span></label><input type="text" class="form-input" id="fl-referral" placeholder="Name / email of referred person (leave blank if none)"></div>
+      <div class="form-field"><label class="form-label">11. Social media promotion link <span style="color:#f97316;font-size:.75rem;font-weight:700">(+20 pts)</span></label><input type="text" class="form-input" id="fl-promoting" placeholder="Link to your LinkedIn / Discord post about this event"><p class="form-note">Required to receive points for promoting BrowserStack events.</p></div>
+      <button type="submit" class="btn-primary" id="form-btn">Submit</button>
     </form>
   </div></div>
 </div>
@@ -734,7 +727,7 @@ function gasCall(params,onSuccess,onError){var cb='_cb_'+Date.now()+'_'+Math.ran
 function togglePwVisibility(){var inp=document.getElementById('pw-input');var on=document.getElementById('eye-icon'),off=document.getElementById('eye-off-icon');if(inp.type==='password'){inp.type='text';on.style.display='none';off.style.display='block';}else{inp.type='password';on.style.display='block';off.style.display='none';}}
 function setPwLoading(v){var btn=document.getElementById('pw-btn'),inp=document.getElementById('pw-input');btn.disabled=v;inp.disabled=v;document.getElementById('pw-spinner').style.display=v?'block':'none';document.getElementById('pw-btn-text').textContent=v?'Verifying…':'Access Portal';}
 function showPopupIfNeeded(){var ep=document.getElementById('event-popup');if(ep&&!localStorage.getItem('bs_popup_seen'))ep.classList.add('show');}
-function checkPw(){var val=document.getElementById('pw-input').value.trim();if(!val)return;document.getElementById('pw-err').classList.remove('show');setPwLoading(true);gasCall({action:'checkPassword',pw:val},function(res){setPwLoading(false);if(res&&res.success){localStorage.setItem('bs_auth','1');if(typeof gtag==='function')gtag('event','login_success',{event_category:'auth'});document.getElementById('pw-gate').style.display='none';document.getElementById('app').style.display='block';showPopupIfNeeded();loadLeaderboardData();}else{var err=document.getElementById('pw-err');err.textContent='❌ Incorrect password. Please try again.';err.classList.add('show');document.getElementById('pw-input').value='';document.getElementById('pw-input').type='password';document.getElementById('eye-icon').style.display='block';document.getElementById('eye-off-icon').style.display='none';document.getElementById('pw-input').focus();}},function(){setPwLoading(false);document.getElementById('pw-err').textContent='❌ Connection error. Please try again.';document.getElementById('pw-err').classList.add('show');});}
+function showPopupIfNeeded(){/* popup disabled */}
 function closePopup(){localStorage.setItem('bs_popup_seen','1');var ep=document.getElementById('event-popup');if(ep)ep.classList.remove('show');}
 
 /* Returning user */
@@ -797,7 +790,7 @@ function findDiscordUTM(name){var lc=name.toLowerCase().trim();if(utmLinksMap[lc
 function renderUTMLinks(d){var url=findDiscordUTM(d.name);document.getElementById('utm-links-container').innerHTML='<div class="utm-link-row"><div class="utm-link-label">&#128172; Discord Community Join</div><div class="utm-link-url"><input type="text" id="utm-inp-0" value="'+(url?esc(url):'No Discord UTM found — contact BrowserStack team')+'" readonly '+(url?'':'style="color:#3d5568;font-style:italic"')+'>'+(url?'<button class="copy-btn" id="utm-cp-0" onclick="copyUTM()">Copy</button>':'')+'</div></div>';}
 function copyUTM(){navigator.clipboard.writeText(document.getElementById('utm-inp-0').value).then(function(){var btn=document.getElementById('utm-cp-0');btn.textContent='Copied!';btn.classList.add('copied');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('copied');},2000);});}
 function renderBreakdown(d){var rows=colMeta.map(function(c){return{name:c.name,isInd:c.isIndividual,pts:d.breakdown[c.name]||0};});rows.sort(function(a,b){return b.pts-a.pts;});document.getElementById('breakdown-body').innerHTML=rows.map(function(r){return'<tr class="'+(r.pts===0?'zero-row':'')+'"><td>'+esc(r.name)+'</td><td><span class="cat-badge '+(r.isInd?'cb-indiv':'cb-comb')+'">'+(r.isInd?'Individual':'Combined')+'</span></td><td class="'+(r.pts>0?'pts-val-pos':'pts-val-zero')+'">'+r.pts+'</td></tr>';}).join('');}
-function submitActivityForm(e){e.preventDefault();var btn=document.getElementById('form-btn');btn.disabled=true;showBanner('form-loading');var speaker=document.querySelector('input[name="fl-speaker"]:checked');var collab=document.querySelector('input[name="fl-collab"]:checked');var venue=document.querySelector('input[name="fl-venue"]:checked');var bsSess=document.querySelector('input[name="fl-bs-session"]:checked');var alphaSelf=document.querySelector('input[name="fl-alpha-self"]:checked');gasCall({action:'submitForm',leaderName:document.getElementById('fl-name').value.trim(),city:document.getElementById('fl-city').value.trim(),dateOfActivity:document.getElementById('fl-date').value,venueArrangement:venue?venue.value:'',whoFoundSpeaker:speaker?speaker.value:'',bsProductSession:bsSess?bsSess.value:'',bsSessionTopic:document.getElementById('fl-bs-topic').value.trim(),collaborated:collab?collab.value:'',meetupHighlights:document.getElementById('fl-highlights').value.trim(),referral:document.getElementById('fl-referral').value.trim(),alphaUserSelf:alphaSelf?alphaSelf.value:'',alphaUserReferral:document.getElementById('fl-alpha-referral').value.trim(),conferenceName:document.getElementById('fl-conf-name').value.trim(),conferenceTopic:document.getElementById('fl-conf-topic').value.trim(),spokenOtherMeetups:(document.querySelector('input[name="fl-other-speak"]:checked')||{}).value||'',otherMeetupDetail:document.getElementById('fl-other-speak-detail').value.trim(),promotingEvents:document.getElementById('fl-promoting').value.trim()},function(res){btn.disabled=false;if(res&&res.success){showBanner('form-ok');document.getElementById('activity-form').reset();document.getElementById('bs-topic-wrap').style.display='none';document.getElementById('other-speak-wrap').style.display='none';setTimeout(clearBanners,6000);}else{showBanner('form-err');setTimeout(clearBanners,6000);}},function(){btn.disabled=false;showBanner('form-err');setTimeout(clearBanners,6000);});}
+function submitActivityForm(e){e.preventDefault();var btn=document.getElementById('form-btn');btn.disabled=true;showBanner('form-loading');var speaker=document.querySelector('input[name="fl-speaker"]:checked');var collab=document.querySelector('input[name="fl-collab"]:checked');var venue=document.querySelector('input[name="fl-venue"]:checked');var alpha=document.querySelector('input[name="fl-alpha"]:checked');var conf=document.querySelector('input[name="fl-conf"]:checked');var spoken=document.querySelector('input[name="fl-spoken"]:checked');var fd={action:'submitForm',leaderName:document.getElementById('fl-name').value.trim(),city:document.getElementById('fl-city').value.trim(),venueArrangement:venue?venue.value:'',whoFoundSpeaker:speaker?speaker.value:'',collaborated:collab?collab.value:'',alphaActivity:alpha?alpha.value:'',alphaDetail:document.getElementById('fl-alpha-detail').value.trim(),conferenceYesNo:conf?conf.value:'',conferenceDetail:document.getElementById('fl-conf-detail').value.trim(),spokenAtMeetup:spoken?spoken.value:'',meetupDetail:document.getElementById('fl-spoken-detail').value.trim(),meetupHighlights:document.getElementById('fl-highlights').value.trim(),referral:document.getElementById('fl-referral').value.trim(),promotingEvents:document.getElementById('fl-promoting').value.trim()};gasCall(fd,function(res){btn.disabled=false;if(res&&res.success){showBanner('form-ok');document.getElementById('activity-form').reset();document.getElementById('alpha-detail-wrap').style.display='none';document.getElementById('conf-detail-wrap').style.display='none';document.getElementById('spoken-detail-wrap').style.display='none';setTimeout(clearBanners,6000);}else{showBanner('form-err');setTimeout(clearBanners,6000);}},function(){btn.disabled=false;showBanner('form-err');setTimeout(clearBanners,6000);});}
 function submitDispute(e){e.preventDefault();var btn=document.getElementById('d-btn');btn.disabled=true;showBanner('dispute-loading');gasCall({action:'complaint',leaderName:document.getElementById('d-name').value,city:document.getElementById('d-city').value,category:document.getElementById('d-category').value,ptsShown:document.getElementById('d-shown').value,ptsExpected:document.getElementById('d-expected').value,description:document.getElementById('d-desc').value},function(res){btn.disabled=false;if(res&&res.success){showBanner('dispute-ok');document.getElementById('dispute-form').reset();var d=leaderDataMap[myLeader.toLowerCase()];if(d){document.getElementById('d-name').value=d.name;document.getElementById('d-city').value=d.city;}setTimeout(clearBanners,6000);}else{showBanner('dispute-err');setTimeout(clearBanners,6000);}},function(){btn.disabled=false;showBanner('dispute-err');setTimeout(clearBanners,6000);});}
 </script>
 </body>
