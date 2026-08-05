@@ -727,33 +727,17 @@ var SECRET_TOKEN='BSCLSecure2024xT9k';
 var IND_COLS=['collab','highlight','referral','alpha user','ama','breakpoint promo','discord join (unique)','browserstack product session','cl connect','conference talk'];
 function isIndividualCol(h){return IND_COLS.some(function(k){return h.indexOf(k)>=0;});}
 
-/* Cache: 5-min fresh TTL, 30-min max TTL */
-function _cacheGet(){try{var r=localStorage.getItem('bs_lb_v2');if(!r)return null;var o=JSON.parse(r);var age=Date.now()-o.ts;if(age>1800000)return null;return{data:o.d,fresh:age<300000};}catch(e){return null;}}
-function _cacheSet(d){try{localStorage.setItem('bs_lb_v2',JSON.stringify({ts:Date.now(),d:d}));}catch(e){}}
-
 /* JSONP helper */
 function gasCall(params,onSuccess,onError){var cb='_cb_'+Date.now()+'_'+Math.random().toString(36).slice(2);window[cb]=function(res){delete window[cb];var old=document.querySelector('script[data-jsonp="'+cb+'"]');if(old)old.remove();onSuccess(res);};var s=document.createElement('script');s.setAttribute('data-jsonp',cb);var p=Object.assign({},params,{token:SECRET_TOKEN,callback:cb});var qs=Object.keys(p).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(p[k]);}).join('&');s.src=GAS_URL+'?'+qs;s.onerror=function(){delete window[cb];s.remove();if(onError)onError();};document.head.appendChild(s);}
-
-/* Prefetch state */
-var _prefetchData=null,_prefetchDone=false,_bgRefresh=false;
-function _startPrefetch(){gasCall({},function(res){_prefetchData=res;_prefetchDone=true;if(res&&!res.error){_cacheSet(res);if(_bgRefresh)setTimeout(function(){processSheetData(res);},0);}var el=document.getElementById('pw-prefetch');if(el){el.textContent='✔ Server ready';el.classList.add('ready');}},function(){_prefetchDone=true;var el=document.getElementById('pw-prefetch');if(el)el.textContent='';});}
-
-/* Smart prefetch: skip for returning users with fresh cache */
-var _initCache=_cacheGet();
-if(localStorage.getItem('bs_auth')==='1'&&_initCache&&_initCache.fresh){
-  _prefetchDone=true;
-}else{
-  _startPrefetch();
-}
 
 /* Auth UI */
 function togglePwVisibility(){var inp=document.getElementById('pw-input');var on=document.getElementById('eye-icon'),off=document.getElementById('eye-off-icon');if(inp.type==='password'){inp.type='text';on.style.display='none';off.style.display='block';}else{inp.type='password';on.style.display='block';off.style.display='none';}}
 function setPwLoading(v){var btn=document.getElementById('pw-btn'),inp=document.getElementById('pw-input');btn.disabled=v;inp.disabled=v;document.getElementById('pw-spinner').style.display=v?'block':'none';document.getElementById('pw-btn-text').textContent=v?'Verifying…':'Access Portal';}
-function checkPw(){var val=document.getElementById('pw-input').value.trim();if(!val)return;document.getElementById('pw-err').classList.remove('show');setPwLoading(true);gasCall({action:'checkPassword',pw:val},function(res){setPwLoading(false);if(res&&res.success){localStorage.setItem('bs_auth','1');if(typeof gtag==='function')gtag('event','login_success',{event_category:'auth'});document.getElementById('pw-gate').style.display='none';document.getElementById('app').style.display='block';if(!localStorage.getItem('bs_popup_seen'))document.getElementById('event-popup').classList.add('show');if(_prefetchDone&&_prefetchData&&!_prefetchData.error){processSheetData(_prefetchData);}else{var c=_cacheGet();if(c){processSheetData(c.data);_bgRefresh=true;}else loadLeaderboardData();}}else{var err=document.getElementById('pw-err');err.textContent='❌ Incorrect password. Please try again.';err.classList.add('show');document.getElementById('pw-input').value='';document.getElementById('pw-input').type='password';document.getElementById('eye-icon').style.display='block';document.getElementById('eye-off-icon').style.display='none';document.getElementById('pw-input').focus();}},function(){setPwLoading(false);document.getElementById('pw-err').textContent='❌ Connection error. Please try again.';document.getElementById('pw-err').classList.add('show');});}
+function checkPw(){var val=document.getElementById('pw-input').value.trim();if(!val)return;document.getElementById('pw-err').classList.remove('show');setPwLoading(true);gasCall({action:'checkPassword',pw:val},function(res){setPwLoading(false);if(res&&res.success){localStorage.setItem('bs_auth','1');if(typeof gtag==='function')gtag('event','login_success',{event_category:'auth'});document.getElementById('pw-gate').style.display='none';document.getElementById('app').style.display='block';if(!localStorage.getItem('bs_popup_seen'))document.getElementById('event-popup').classList.add('show');loadLeaderboardData();}else{var err=document.getElementById('pw-err');err.textContent='❌ Incorrect password. Please try again.';err.classList.add('show');document.getElementById('pw-input').value='';document.getElementById('pw-input').type='password';document.getElementById('eye-icon').style.display='block';document.getElementById('eye-off-icon').style.display='none';document.getElementById('pw-input').focus();}},function(){setPwLoading(false);document.getElementById('pw-err').textContent='❌ Connection error. Please try again.';document.getElementById('pw-err').classList.add('show');});}
 function closePopup(){localStorage.setItem('bs_popup_seen','1');document.getElementById('event-popup').classList.remove('show');}
 
-/* Returning user: instant load */
-if(localStorage.getItem('bs_auth')==='1'){document.getElementById('pw-gate').style.display='none';document.getElementById('app').style.display='block';if(!localStorage.getItem('bs_popup_seen'))document.getElementById('event-popup').classList.add('show');setTimeout(function(){if(_initCache){processSheetData(_initCache.data);if(!_initCache.fresh)_bgRefresh=true;}else if(_prefetchDone&&_prefetchData&&!_prefetchData.error){processSheetData(_prefetchData);}else loadLeaderboardData();},0);}
+/* Returning user */
+if(localStorage.getItem('bs_auth')==='1'){document.getElementById('pw-gate').style.display='none';document.getElementById('app').style.display='block';if(!localStorage.getItem('bs_popup_seen'))document.getElementById('event-popup').classList.add('show');loadLeaderboardData();}
 
 /* State */
 var allLeaders=[],leaderDataMap={},colMeta=[],utmLinksMap={};
@@ -766,7 +750,7 @@ function leaderKey(name,city){return(name+'|||'+city).toLowerCase();}
 function clearBanners(){['form-ok','form-err','form-loading','dispute-ok','dispute-err','dispute-loading'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('show');});}
 function showBanner(id){clearBanners();var el=document.getElementById(id);if(el)el.classList.add('show');}
 function switchTab(tab,btn){document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+tab).classList.add('active');if(btn)btn.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
-function loadLeaderboardData(){var h='<div class="loading"><div class="spinner"></div>Loading from Google Sheets…</div>';document.getElementById('lb-body').innerHTML=h;document.getElementById('lb-cards').innerHTML=h;gasCall({},function(data){if(data&&!data.error)_cacheSet(data);processSheetData(data);},function(){var e='<div class="loading">Failed to load. Please refresh.</div>';document.getElementById('lb-body').innerHTML=e;document.getElementById('lb-cards').innerHTML=e;});}
+function loadLeaderboardData(){var h='<div class="loading"><div class="spinner"></div>Loading from Google Sheets…</div>';document.getElementById('lb-body').innerHTML=h;document.getElementById('lb-cards').innerHTML=h;gasCall({},function(data){processSheetData(data);},function(){var e='<div class="loading">Failed to load. Please refresh.</div>';document.getElementById('lb-body').innerHTML=e;document.getElementById('lb-cards').innerHTML=e;});}
 function getMilestone(total,hasMeetup){if(total>=2250)return'TIER 1';if(total>=1550)return'TIER 2';if(total>=750)return'TIER 3';if(hasMeetup)return'BUILDER';return'NONE';}
 function processSheetData(data){
   if(!data||data.error){var m='<div class="loading">'+(data&&data.error?esc(data.error):'Error loading data')+'</div>';document.getElementById('lb-body').innerHTML=m;document.getElementById('lb-cards').innerHTML=m;return;}
