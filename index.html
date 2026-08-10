@@ -259,6 +259,127 @@ textarea.form-input{resize:vertical;min-height:90px}
 .guardrail-list{list-style:none;display:flex;flex-direction:column;gap:12px}
 .guardrail-list li{display:flex;gap:12px;align-items:flex-start;font-size:.85rem;color:#94a3b8;line-height:1.6}
 .guardrail-list li span:first-child{flex-shrink:0;margin-top:2px;font-size:1rem}
+
+/* ── Newcomer-friendly Rules Page ─────────────────────────── */
+.rules-hero{
+  background:linear-gradient(135deg,#0e2845 0%,#12172f 100%);
+  border:1px solid #2563eb55;border-radius:16px;padding:28px;
+  margin-bottom:18px;position:relative;overflow:hidden
+}
+.rules-hero::after{
+  content:'';position:absolute;right:-70px;top:-70px;width:220px;height:220px;
+  background:radial-gradient(circle,rgba(59,130,246,.18),transparent 68%);
+  pointer-events:none
+}
+.rules-eyebrow{
+  display:inline-flex;align-items:center;gap:7px;background:#1e3a5f;
+  color:#93c5fd;border-radius:20px;padding:4px 11px;font-size:.68rem;
+  font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px
+}
+.rules-hero h1{font-size:1.55rem;line-height:1.25;color:#f8fafc;margin-bottom:8px}
+.rules-hero p{font-size:.88rem;color:#94a3b8;line-height:1.65;max-width:760px}
+.rules-hero-note{
+  margin-top:16px;display:inline-flex;gap:8px;align-items:flex-start;
+  background:#071b2d;border:1px solid #1d4ed855;border-radius:9px;
+  padding:10px 13px;font-size:.78rem;color:#bfdbfe;line-height:1.5
+}
+.rules-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px
+}
+.rules-step{
+  background:#0b1929;border:1px solid #162d47;border-radius:12px;padding:17px
+}
+.rules-step-num{
+  width:28px;height:28px;border-radius:50%;background:#1d4ed8;color:white;
+  display:flex;align-items:center;justify-content:center;font-size:.75rem;
+  font-weight:800;margin-bottom:10px
+}
+.rules-step-title{font-size:.86rem;font-weight:800;color:#e2e8f0;margin-bottom:5px}
+.rules-step-copy{font-size:.76rem;color:#6b8299;line-height:1.5}
+.points-type-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:15px}
+.points-type{
+  border-radius:12px;padding:18px;border:1px solid #162d47
+}
+.points-type.combined{background:#071d2c;border-color:#155e7555}
+.points-type.individual{background:#071e18;border-color:#16653466}
+.points-type-head{display:flex;align-items:center;gap:9px;margin-bottom:7px;font-size:.92rem;font-weight:800}
+.points-type.combined .points-type-head{color:#67e8f9}
+.points-type.individual .points-type-head{color:#86efac}
+.points-type p{font-size:.8rem;color:#94a3b8;line-height:1.55}
+.points-example{
+  margin-top:10px;padding-top:10px;border-top:1px solid #ffffff10;
+  font-size:.72rem;color:#64748b;line-height:1.5
+}
+.rules-callout{
+  display:flex;gap:10px;background:#101b2a;border:1px solid #334155;
+  border-radius:10px;padding:13px 15px;margin-top:14px
+}
+.rules-callout strong{color:#e2e8f0}
+.rules-callout div:last-child{font-size:.78rem;color:#94a3b8;line-height:1.55}
+.tier-path{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0 6px
+}
+.tier-path-item{
+  position:relative;background:#071320;border:1px solid #162d47;
+  border-radius:10px;padding:13px;text-align:center
+}
+.tier-path-item:not(:last-child)::after{
+  content:'→';position:absolute;right:-9px;top:50%;transform:translateY(-50%);
+  color:#3d5568;font-weight:800;z-index:2
+}
+.tier-path-name{font-size:.7rem;color:#64748b;font-weight:700;margin-bottom:4px}
+.tier-path-value{font-size:.93rem;font-weight:800;color:#f8fafc}
+.tier-path-item.builder .tier-path-value{color:#34d399}
+.tier-path-item.t3 .tier-path-value{color:#f97316}
+.tier-path-item.t2 .tier-path-value{color:#cbd5e1}
+.tier-path-item.t1 .tier-path-value{color:#c084fc}
+.quick-rules{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px
+}
+.quick-rule{
+  background:#071320;border:1px solid #162d47;border-radius:9px;padding:13px
+}
+.quick-rule-icon{font-size:1.15rem;margin-bottom:6px}
+.quick-rule-title{font-size:.78rem;font-weight:800;color:#e2e8f0;margin-bottom:3px}
+.quick-rule-copy{font-size:.72rem;color:#64748b;line-height:1.45}
+.points-section-title{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  margin:20px 0 8px
+}
+.points-section-title .left{font-size:.86rem;font-weight:800}
+.points-section-title .hint{font-size:.68rem;color:#4b6478;font-weight:500}
+.activity-name{font-weight:700;color:#e2e8f0}
+.tracking-chip{
+  display:inline-block;background:#101e2d;border:1px solid #1f3348;
+  border-radius:10px;padding:2px 7px;font-size:.65rem;color:#7f9ab3;
+  white-space:nowrap
+}
+.rules-footnote{
+  font-size:.72rem;color:#4b6478;line-height:1.55;margin-top:12px
+}
+details.rules-faq{
+  background:#071320;border:1px solid #162d47;border-radius:9px;
+  margin-bottom:8px;overflow:hidden
+}
+details.rules-faq summary{
+  cursor:pointer;list-style:none;padding:13px 15px;font-size:.8rem;
+  font-weight:700;color:#cbd5e1;display:flex;justify-content:space-between;gap:10px
+}
+details.rules-faq summary::-webkit-details-marker{display:none}
+details.rules-faq summary::after{content:'+';color:#60a5fa;font-size:1rem}
+details.rules-faq[open] summary::after{content:'−'}
+details.rules-faq p{padding:0 15px 14px;font-size:.76rem;color:#6b8299;line-height:1.55}
+@media(max-width:900px){
+  .rules-steps{grid-template-columns:repeat(2,1fr)}
+  .tier-path{grid-template-columns:repeat(2,1fr)}
+  .tier-path-item::after{display:none}
+}
+@media(max-width:640px){
+  .rules-hero{padding:21px 17px}.rules-hero h1{font-size:1.25rem}
+  .rules-steps,.points-type-grid,.quick-rules,.tier-path{grid-template-columns:1fr}
+  .points-section-title{align-items:flex-start;flex-direction:column;gap:3px}
+}
+
 /* ── Resources ── */
 .res-section{margin-bottom:28px}
 .res-section-title{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#4b6478;margin-bottom:14px;display:flex;align-items:center;gap:8px}
@@ -692,109 +813,251 @@ textarea.form-input{resize:vertical;min-height:90px}
     <button class="wb-dismiss-x" onclick="dismissWelcomeBanner()" title="Dismiss">✕</button>
     <div class="wb-tag">🎉 First time here?</div>
     <div class="wb-title">Welcome to the <span>Chapter Leader Portal</span></div>
-    <div class="wb-sub">Please have a look at the rules and tiers below to get started. You'll find everything you need from how points are earned to the rewards waiting at each tier.</div>
+    <div class="wb-sub">Start with the 4-step guide below. It explains what you need to do, how points work, and how you move through the leaderboard tiers.</div>
     <div class="wb-actions">
-      <button class="wb-dismiss" onclick="dismissWelcomeBanner()">Got it, let me explore! ✓</button>
+      <button class="wb-dismiss" onclick="dismissWelcomeBanner()">Got it, show me how it works ✓</button>
     </div>
   </div>
 
+  <!-- 30-second overview -->
+  <div class="rules-hero">
+    <div class="rules-eyebrow">📘 Start here</div>
+    <h1>How the Chapter Leader Leaderboard works</h1>
+    <p>You earn points for hosting strong meetups and contributing to the BrowserStack community during the quarter. Some points are shared with your chapter co-hosts, while others are earned by you individually. Your total points determine the tier and rewards you unlock.</p>
+    <div class="rules-hero-note"><span>💡</span><span><strong>New Chapter Leader?</strong> Your first goal is simple: successfully host one primary meetup. That unlocks <strong>Builder</strong> status and your annual Chapter Leader swag kit.</span></div>
+  </div>
+
+  <div class="rules-steps">
+    <div class="rules-step">
+      <div class="rules-step-num">1</div>
+      <div class="rules-step-title">Host your primary meetup</div>
+      <div class="rules-step-copy">Successfully host one primary meetup during the quarter to become a Builder.</div>
+    </div>
+    <div class="rules-step">
+      <div class="rules-step-num">2</div>
+      <div class="rules-step-title">Earn points</div>
+      <div class="rules-step-copy">Earn points through meetup execution, community contributions, referrals, Discord growth and other activities.</div>
+    </div>
+    <div class="rules-step">
+      <div class="rules-step-num">3</div>
+      <div class="rules-step-title">Submit what needs proof</div>
+      <div class="rules-step-copy">Use the Activity Form for activities that are not automatically tracked. Other activities are tracked by the DevRel team.</div>
+    </div>
+    <div class="rules-step">
+      <div class="rules-step-num">4</div>
+      <div class="rules-step-title">Move up the tiers</div>
+      <div class="rules-step-copy">Your points add up through the quarter. Reach 750, 1,550 or 2,250 points to unlock higher tiers and rewards.</div>
+    </div>
+  </div>
+
+  <!-- Combined vs Individual -->
   <div class="rules-card">
-    <div class="rules-title">&#127942; Tiering Framework &amp; Rewards</div>
-    <p class="rules-para" style="margin-bottom:20px">Progression is cumulative throughout the quarter. Leaders unlock physical items and career growth perks at each stage.</p>
-    <div class="tier-grid">
+    <div class="rules-title">🧩 First, understand your two point types</div>
+    <p class="rules-para">Your leaderboard total can include both <strong style="color:#06b6d4">Combined Points</strong> and <strong style="color:#22c55e">Individual Points</strong>. The difference is who receives the points.</p>
+
+    <div class="points-type-grid">
+      <div class="points-type combined">
+        <div class="points-type-head">🔗 Combined Points</div>
+        <p>Points earned from activities that benefit the whole chapter. These points are credited to the active Chapter Leaders co-hosting that chapter.</p>
+        <div class="points-example"><strong>Examples:</strong> hosting the meetup, securing the venue, finding a guest speaker, attendance performance and chapter Discord joins.</div>
+      </div>
+      <div class="points-type individual">
+        <div class="points-type-head">⚡ Individual Points</div>
+        <p>Points earned personally for your own contribution. These points are credited only to the Chapter Leader who completed the activity.</p>
+        <div class="points-example"><strong>Examples:</strong> speaking about BrowserStack, attending CL Connect, referrals, meetup highlights, alpha activities and your personal Discord UTM joins.</div>
+      </div>
+    </div>
+
+    <div class="rules-callout">
+      <div>🧮</div>
+      <div><strong>Your leaderboard score = Combined Points + Individual Points</strong><br>Your Dashboard shows the split so you can see exactly where your points are coming from.</div>
+    </div>
+  </div>
+
+  <!-- Tier progression -->
+  <div class="rules-card">
+    <div class="rules-title">🏆 Your tier journey</div>
+    <p class="rules-para">Points accumulate during the quarter. You keep progressing as your total increases; you do not need to choose a tier.</p>
+
+    <div class="tier-path">
+      <div class="tier-path-item builder"><div class="tier-path-name">Builder</div><div class="tier-path-value">1 Meetup</div></div>
+      <div class="tier-path-item t3"><div class="tier-path-name">Tier 3</div><div class="tier-path-value">750 pts</div></div>
+      <div class="tier-path-item t2"><div class="tier-path-name">Tier 2</div><div class="tier-path-value">1,550 pts</div></div>
+      <div class="tier-path-item t1"><div class="tier-path-name">Tier 1</div><div class="tier-path-value">2,250 pts</div></div>
+    </div>
+
+    <div class="tier-grid" style="margin-top:18px">
       <div class="tier-card tc-builder">
-        <div class="tc-tier-name builder">&#129489; Builder</div>
-        <div class="tc-threshold">Successfully host one primary meetup during the quarter</div>
-        <div class="tc-section-label">Physical Reward</div>
-        <div class="tc-reward-box"><div class="tc-reward-val">&#127873; Official BrowserStack Annual Swag Kit</div></div>
-        <div class="tc-section-label">Professional Growth</div>
+        <div class="tc-tier-name builder">🧑 Builder</div>
+        <div class="tc-threshold">Requirement: successfully host 1 primary meetup in the quarter</div>
+        <div class="tc-section-label">You Unlock</div>
+        <div class="tc-reward-box"><div class="tc-reward-val">🎁 Official BrowserStack Annual Swag Kit</div></div>
+        <div class="tc-section-label">Recognition</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-green"></span>Active Chapter Leader Badge</div>
       </div>
+
       <div class="tier-card tc-t3">
-        <div class="tc-tier-name t3">&#127881; Tier 3 &mdash; Community Contributor</div>
-        <div class="tc-threshold">750 Points</div>
-        <div class="tc-section-label">Physical Reward</div>
-        <div class="tc-reward-box"><div class="tc-reward-val">&#128241; Tech Hardware up to $75</div></div>
-        <div class="tc-section-label">Professional Growth</div>
+        <div class="tc-tier-name t3">🎉 Tier 3 — Community Contributor</div>
+        <div class="tc-threshold">Requirement: 750 total points</div>
+        <div class="tc-section-label">You Unlock</div>
+        <div class="tc-reward-box"><div class="tc-reward-val">📱 Tech Hardware up to $75</div></div>
+        <div class="tc-section-label">Recognition &amp; Perks</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-orange"></span>Community Contributor Badge</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-orange"></span>Eligible for Quarterly Reward Pool</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-orange"></span>BrowserStack Community Recognition</div>
       </div>
+
       <div class="tier-card tc-t2">
-        <div class="tc-tier-name t2">&#127775; Tier 2 &mdash; Community Architect</div>
-        <div class="tc-threshold">1,550 Points</div>
-        <div class="tc-section-label">Physical Rewards</div>
+        <div class="tc-tier-name t2">🌟 Tier 2 — Community Architect</div>
+        <div class="tc-threshold">Requirement: 1,550 total points</div>
+        <div class="tc-section-label">You Unlock</div>
         <div class="tc-reward-box">
-          <div class="tc-reward-val">&#128218; Tech Hardware up to $135</div>
-          <div class="tc-reward-note">+ BrowserStack-sponsored Upskilling Voucher (up to $40)</div>
+          <div class="tc-reward-val">📚 Tech Hardware up to $135</div>
+          <div class="tc-reward-note">+ BrowserStack-sponsored Upskilling Voucher up to $40</div>
         </div>
-        <div class="tc-section-label">Professional Growth</div>
+        <div class="tc-section-label">Recognition &amp; Perks</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-silver"></span>Community Architect Badge</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-silver"></span>Priority Alpha Program Access</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-silver"></span>Featured on BrowserStack Community &amp; LinkedIn</div>
       </div>
+
       <div class="tier-card tc-t1">
-        <div class="tc-tier-name t1">&#128081; Tier 1 &mdash; Community Strategist</div>
-        <div class="tc-threshold">2,250 Points</div>
-        <div class="tc-section-label">Physical Rewards</div>
+        <div class="tc-tier-name t1">👑 Tier 1 — Community Strategist</div>
+        <div class="tc-threshold">Requirement: 2,250 total points</div>
+        <div class="tc-section-label">You Unlock</div>
         <div class="tc-reward-box">
-          <div class="tc-reward-val">&#128187; Premium Tech Hardware up to $200</div>
-          <div class="tc-reward-note">+ Advanced Technical Learning Stipend (up to $75)</div>
+          <div class="tc-reward-val">💻 Premium Tech Hardware up to $200</div>
+          <div class="tc-reward-note">+ Advanced Technical Learning Stipend up to $75</div>
         </div>
-        <div class="tc-section-label">Professional Growth</div>
+        <div class="tc-section-label">Recognition &amp; Perks</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-purple"></span>Premium BrowserStack Leader Badge</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-purple"></span>BrowserStack Global Community Spotlight</div>
         <div class="tc-perk"><span class="tc-perk-dot dot-purple"></span>Priority consideration for conference travel &amp; accommodation sponsorship</div>
       </div>
     </div>
   </div>
+
+  <!-- Special rules -->
   <div class="rules-card">
-    <div class="rules-title">&#127775; Key Programme Initiatives</div>
+    <div class="rules-title">✨ Three special rules worth knowing</div>
+    <p class="rules-para">These can make a meaningful difference to your score or benefits, so keep them in mind throughout the quarter.</p>
     <div class="programs-grid">
-      <div class="prog-card tide"><div class="prog-icon">&#127754;</div><div class="prog-title">Ride the Tide</div><div class="prog-desc">If <strong>all active Chapter Leaders in a city</strong> reach Tier 3 or higher, every leader in that chapter gets a <strong>+15% bonus point boost</strong>. A chapter wins together.</div></div>
-      <div class="prog-card conf"><div class="prog-icon">&#9992;</div><div class="prog-title">Conference Travel &amp; Stay Sponsorship</div><div class="prog-desc">If a CL's talk proposal featuring a <strong>BrowserStack topic</strong> gets accepted at a recognised conference, BrowserStack will <strong>sponsor travel and accommodation</strong>. Funded separately from tier rewards.</div></div>
-      <div class="prog-card discord"><div class="prog-icon">&#128172;</div><div class="prog-title">Discord Point Policy</div><div class="prog-desc">Joins earn <strong>10 points per verified member</strong> via Chapter QR or Individual UTM links. <strong>Capped at 50 joins per source channel</strong> to keep rankings balanced.</div></div>
+      <div class="prog-card tide">
+        <div class="prog-icon">🌊</div>
+        <div class="prog-title">Ride the Tide: +15%</div>
+        <div class="prog-desc">If <strong>all active Chapter Leaders in your city reach Tier 3 or higher</strong>, every leader in that chapter receives a <strong>15% bonus point boost</strong>. Help your co-hosts progress too.</div>
+      </div>
+      <div class="prog-card conf">
+        <div class="prog-icon">✈️</div>
+        <div class="prog-title">Conference Sponsorship</div>
+        <div class="prog-desc">If your talk proposal featuring a <strong>BrowserStack topic</strong> is accepted at a recognised conference, BrowserStack will <strong>sponsor travel and accommodation</strong>. This is funded separately from tier rewards.</div>
+      </div>
+      <div class="prog-card discord">
+        <div class="prog-icon">💬</div>
+        <div class="prog-title">Discord: 10 pts per join</div>
+        <div class="prog-desc">Each verified new member earns <strong>10 points</strong>. Chapter QR joins and personal UTM joins are tracked separately, with a <strong>50-join cap per source channel</strong>.</div>
+      </div>
     </div>
   </div>
+
+  <!-- Full points reference -->
   <div class="rules-card">
-    <div class="rules-title">&#128202; Points Framework</div>
-    <p class="rules-para">Points are divided into <strong style="color:#06b6d4">Combined</strong> (all active chapter co-hosts) and <strong style="color:#22c55e">Individual</strong> (earned personally).</p>
-    <div style="font-size:.82rem;font-weight:700;color:#06b6d4;margin:20px 0 8px">&#128279; Combined Activities</div>
-    <div class="pts-table-wrap"><table class="pts-table"><thead><tr><th>Activity</th><th>Qualification</th><th>Tracking</th><th>Points</th></tr></thead><tbody>
-      <tr><td>Primary Meetup Hosting</td><td>Host 1 primary meetup in the quarter</td><td>CL Portal / Dashboard</td><td class="pts-val">100</td></tr>
-      <tr><td>Extra Meetup Bonus</td><td>Host an additional meetup (45-day gap mandatory)</td><td>CL Portal / Dashboard</td><td class="pts-val">150</td></tr>
-      <tr><td>Targeted Venue Partner</td><td>Secure a venue from the given list of companies</td><td>Activity Form (Portal)</td><td class="pts-val">200</td></tr>
-      <tr><td>Venue Partner</td><td>Secure a third-party venue for free</td><td>Activity Form (Portal)</td><td class="pts-val">100</td></tr>
-      <tr><td>Paid Venue (Self-Found)</td><td>Source a paid venue found independently by CL</td><td>Activity Form (Portal)</td><td class="pts-val">50</td></tr>
-      <tr><td>Guest Speaker</td><td>Onboard an external expert / speaker</td><td>Activity Form (Portal)</td><td class="pts-val">100</td></tr>
-      <tr><td>Special Format / Theme</td><td>Organise a Bug Bash, Hackathon, etc.</td><td>CL Portal / Dashboard</td><td class="pts-val">50</td></tr>
-      <tr><td>Attendance (High)</td><td>&gt;75% conversion on form fills</td><td>Attendance Form</td><td class="pts-val">100</td></tr>
-      <tr><td>Attendance (Mid)</td><td>50%–75% conversion on form fills</td><td>Attendance Form</td><td class="pts-val">50</td></tr>
-      <tr><td>Attendance (Low)</td><td>&lt;50% conversion rate on form fills</td><td>Attendance Form</td><td class="pts-val">0</td></tr>
-      <tr><td>Feedback Collection</td><td>Secure &ge;30% attendee feedback responses</td><td>Feedback Form</td><td class="pts-val">50</td></tr>
-      <tr><td>Discord Join (Chapter)</td><td>New members via generic slide QR code</td><td>Auto-Tracked Link</td><td class="pts-val">10/join<br><small style="color:#4b6478;font-weight:400">Cap: 50 joins</small></td></tr>
-    </tbody></table></div>
-    <div style="font-size:.82rem;font-weight:700;color:#22c55e;margin:24px 0 8px">&#9889; Individual Activities</div>
-    <div class="pts-table-wrap"><table class="pts-table"><thead><tr><th>Activity</th><th>Qualification</th><th>Tracking</th><th>Points</th></tr></thead><tbody>
-      <tr><td>BrowserStack Product Session</td><td>Deliver a BrowserStack demo / session at a meetup</td><td>Activity Form (Portal)</td><td class="pts-val">100</td></tr>
-      <tr><td>CL Connect Attendance</td><td>Attend the official quarterly CL Connect call</td><td>Attendance Sheet</td><td class="pts-val">100</td></tr>
-      <tr><td>Collab &amp; Cross-Promotion</td><td>Collaborate with local tech communities</td><td>Activity Form (Portal)</td><td class="pts-val">100</td></tr>
-      <tr><td>Referral (Successful)</td><td>Refer a new CL who completes their 1st meetup</td><td>Manual Onboarding</td><td class="pts-val">100</td></tr>
-      <tr><td>Meetup Highlights</td><td>Share photos / wins on LinkedIn or Discord</td><td>Activity Form (Portal)</td><td class="pts-val">50</td></tr>
-      <tr><td>Alpha User (Self)</td><td>Act as an alpha user for new features</td><td>Activity Form (Portal)</td><td class="pts-val">50</td></tr>
-      <tr><td>Alpha User Referral</td><td>Onboard external alpha users (post-feedback)</td><td>Activity Form (Portal)</td><td class="pts-val">30</td></tr>
-      <tr><td>AMA or Product Promotion</td><td>LinkedIn / Discord posts about product AMAs</td><td>Activity Form (Portal)</td><td class="pts-val">20</td></tr>
-      <tr><td>Discord Join (Unique)</td><td>New members via personal CL UTM link</td><td>Unique UTM Link</td><td class="pts-val">10/join<br><small style="color:#4b6478;font-weight:400">Cap: 50 joins</small></td></tr>
-      <tr><td>BrowserStack Related Conference Talk</td><td>Topic should be related to BrowserStack</td><td>Activity Form</td><td class="pts-val" style="color:#a855f7">200</td></tr>
-    </tbody></table></div>
+    <div class="rules-title">📊 Full points reference</div>
+    <p class="rules-para">Use this section when you want to check exactly how many points an activity earns and how it is tracked.</p>
+
+    <div class="points-section-title">
+      <div class="left" style="color:#06b6d4">🔗 Combined Activities — shared with active chapter co-hosts</div>
+      <div class="hint">These are chapter-level contributions</div>
+    </div>
+    <div class="pts-table-wrap">
+      <table class="pts-table">
+        <thead><tr><th>Activity</th><th>What you need to do</th><th>How it is tracked</th><th>Points</th></tr></thead>
+        <tbody>
+          <tr><td class="activity-name">Primary Meetup Hosting</td><td>Successfully host 1 primary meetup in the quarter</td><td><span class="tracking-chip">Portal / Dashboard</span></td><td class="pts-val">100</td></tr>
+          <tr><td class="activity-name">Extra Meetup Bonus</td><td>Host an additional meetup with a mandatory 45-day gap</td><td><span class="tracking-chip">Portal / Dashboard</span></td><td class="pts-val">150</td></tr>
+          <tr><td class="activity-name">Targeted Venue Partner</td><td>Secure a venue from the given list of companies</td><td><span class="tracking-chip">Activity Form</span></td><td class="pts-val">200</td></tr>
+          <tr><td class="activity-name">Venue Partner</td><td>Secure a third-party venue for free</td><td><span class="tracking-chip">Activity Form</span></td><td class="pts-val">100</td></tr>
+          <tr><td class="activity-name">Paid Venue (Self-Found)</td><td>Independently source a paid venue</td><td><span class="tracking-chip">Activity Form</span></td><td class="pts-val">50</td></tr>
+          <tr><td class="activity-name">Guest Speaker</td><td>Onboard an external expert or speaker</td><td><span class="tracking-chip">Activity Form</span></td><td class="pts-val">100</td></tr>
+          <tr><td class="activity-name">Special Format / Theme</td><td>Organise a special format such as a Bug Bash or Hackathon</td><td><span class="tracking-chip">Portal / Dashboard</span></td><td class="pts-val">50</td></tr>
+          <tr><td class="activity-name">Attendance — High</td><td>Achieve more than 75% attendance conversion on form fills</td><td><span class="tracking-chip">Attendance Form</span></td><td class="pts-val">100</td></tr>
+          <tr><td class="activity-name">Attendance — Mid</td><td>Achieve 50%–75% attendance conversion on form fills</td><td><span class="tracking-chip">Attendance Form</span></td><td class="pts-val">50</td></tr>
+          <tr><td class="activity-name">Attendance — Low</td><td>Attendance conversion is below 50%</td><td><span class="tracking-chip">Attendance Form</span></td><td class="pts-val">0</td></tr>
+          <tr><td class="activity-name">Feedback Collection</td><td>Receive feedback responses from at least 30% of attendees</td><td><span class="tracking-chip">Feedback Form</span></td><td class="pts-val">50</td></tr>
+          <tr><td class="activity-name">Discord Join — Chapter</td><td>Bring verified new members through the generic chapter slide QR code</td><td><span class="tracking-chip">Auto-tracked</span></td><td class="pts-val">10/join<br><small style="color:#4b6478;font-weight:400">Max 50 joins</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="points-section-title">
+      <div class="left" style="color:#22c55e">⚡ Individual Activities — credited only to you</div>
+      <div class="hint">These are personal contributions</div>
+    </div>
+    <div class="pts-table-wrap">
+      <table class="pts-table">
+        <thead><tr><th>Activity</th><th>What you need to do</th><th>How it is tracked</th><th>Points</th></tr></thead>
+        <tbody>
+          <tr><td class="activity-name">BrowserStack Product Session</td><td>Deliver a BrowserStack demo or product session at a meetup</td><td><span class="tracking-chip">Activity Form</span></td><td class="pts-val">100</td></tr>
+          <tr><td class="activity-name">CL Connect Attendance</td><td>Attend the official quarterly Chapter Leader Connect call</td><td><span class="tracking-chip">Attendance Sheet</span></td><td class="pts-val">100</td></tr>
+          <tr><td class="activity-name">Collab &amp; Cross-Promotion</td><td>Collaborate with local tech communities</td><td><span class="tracking-chip">Activity Form</span></td><td class="pts-val">100</td></tr>
+          <tr><td class="activity-name">Referral — Successful</td><td>Refer a new Chapter Leader who completes their first meetup</td><td><span class="tracking-chip">Manual onboarding</span></td><td class="pts-val">100</td></tr>
+          <tr><td class="activity-name">Meetup Highlights</td><td>Share meetup photos or wins on LinkedIn or Discord</td><td><span class="tracking-chip">Activity Form</span></td><td class="pts-val">50</td></tr>
+          <tr><td class="activity-name">Alpha User — Self</td><td>Participate as an alpha user for new features</td><td><span class="tracking-chip">Activity Form</span></td><td class="pts-val">50</td></tr>
+          <tr><td class="activity-name">Alpha User Referral</td><td>Onboard an external alpha user after feedback</td><td><span class="tracking-chip">Activity Form</span></td><td class="pts-val">30</td></tr>
+          <tr><td class="activity-name">AMA or Product Promotion</td><td>Post about BrowserStack product AMAs on LinkedIn or Discord</td><td><span class="tracking-chip">Activity Form</span></td><td class="pts-val">20</td></tr>
+          <tr><td class="activity-name">Discord Join — Personal</td><td>Bring verified new members through your personal CL UTM link</td><td><span class="tracking-chip">Unique UTM Link</span></td><td class="pts-val">10/join<br><small style="color:#4b6478;font-weight:400">Max 50 joins</small></td></tr>
+          <tr><td class="activity-name">BrowserStack Related Conference Talk</td><td>Speak at a conference on a topic related to BrowserStack</td><td><span class="tracking-chip">Activity Form</span></td><td class="pts-val" style="color:#a855f7">200</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="rules-footnote">Tip: if an activity says <strong>Activity Form</strong>, submit it from the portal so the DevRel team has the information needed to verify and credit your points.</div>
   </div>
+
+  <!-- Important rules -->
   <div class="rules-card">
-    <div class="rules-title">&#128737; Guardrails</div>
-    <ul class="guardrail-list">
-      <li><span>&#128197;</span><span><strong>Quarterly Reset</strong> &mdash; Leaderboard totals, tier status, and point counters reset at the beginning of each quarter.</span></li>
-      <li><span>&#128269;</span><span><strong>Verification &amp; Audit</strong> &mdash; All activity form submissions and tracking links are audited by the DevRel team prior to final tier payouts.</span></li>
-      <li><span>&#128666;</span><span><strong>Reward Distribution</strong> &mdash; Physical rewards, badges, and certificates are processed and dispatched within <strong>30 days</strong> of the quarter-end review.</span></li>
-    </ul>
+    <div class="rules-title">🛡️ Important rules</div>
+    <div class="quick-rules">
+      <div class="quick-rule">
+        <div class="quick-rule-icon">📅</div>
+        <div class="quick-rule-title">Points reset every quarter</div>
+        <div class="quick-rule-copy">Leaderboard totals, tier status and point counters start fresh at the beginning of each quarter.</div>
+      </div>
+      <div class="quick-rule">
+        <div class="quick-rule-icon">🔎</div>
+        <div class="quick-rule-title">Points are verified</div>
+        <div class="quick-rule-copy">Activity submissions and tracked links are audited by the DevRel team before final tier rewards are confirmed.</div>
+      </div>
+      <div class="quick-rule">
+        <div class="quick-rule-icon">🚚</div>
+        <div class="quick-rule-title">Rewards follow quarter-end review</div>
+        <div class="quick-rule-copy">Physical rewards, badges and certificates are processed within 30 days of the quarter-end review.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Simple FAQ -->
+  <div class="rules-card">
+    <div class="rules-title">❓ Common questions</div>
+    <details class="rules-faq">
+      <summary>Do my points carry into the next quarter?</summary>
+      <p>No. Leaderboard totals, tier status and point counters reset at the start of every quarter.</p>
+    </details>
+    <details class="rules-faq">
+      <summary>Do all Chapter Leaders get the same meetup points?</summary>
+      <p>Combined activities are credited to the active Chapter Leaders co-hosting the chapter. Individual activities are credited only to the person who completed them.</p>
+    </details>
+    <details class="rules-faq">
+      <summary>Where do I submit an activity?</summary>
+      <p>Use the Activity Form in this portal whenever the points reference says “Activity Form.” Automatically tracked activities do not require a separate submission.</p>
+    </details>
+    <details class="rules-faq">
+      <summary>How do Discord points work?</summary>
+      <p>Each verified new member is worth 10 points. Chapter QR joins and personal UTM joins are tracked as separate source channels, each capped at 50 joins.</p>
+    </details>
+    <details class="rules-faq">
+      <summary>What is Ride the Tide?</summary>
+      <p>If every active Chapter Leader in a city reaches Tier 3 or higher, each leader in that chapter receives a 15% bonus point boost.</p>
+    </details>
   </div>
 </div>
 
