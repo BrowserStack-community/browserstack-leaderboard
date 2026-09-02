@@ -447,9 +447,191 @@ details.rules-faq p{padding:0 15px 14px;font-size:.76rem;color:#6b8299;line-heig
   .res-grid{grid-template-columns:1fr}
   .ep-box{padding:24px 18px}.pw-box{padding:28px 20px}
 }
+
+/* ── Feedback Footer + Modal (new feature only) ───────────── */
+.feedback-footer{
+  margin:26px 0 0;
+  padding:18px 0 4px;
+  border-top:1px solid #162d47;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-size:.76rem;
+  color:#4b6478
+}
+.feedback-footer-btn{
+  background:none;
+  border:none;
+  color:#6b8299;
+  cursor:pointer;
+  font-size:.76rem;
+  padding:4px 6px
+}
+.feedback-footer-btn:hover{color:#94a3b8;text-decoration:underline}
+
+#feedback-modal{
+  position:fixed;
+  inset:0;
+  z-index:9998;
+  background:rgba(0,0,0,.72);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px
+}
+#feedback-modal.show{display:flex}
+.feedback-modal-box{
+  width:100%;
+  max-width:520px;
+  background:#0b1929;
+  border:1px solid #162d47;
+  border-radius:14px;
+  padding:24px
+}
+.feedback-modal-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:18px
+}
+.feedback-modal-title{font-size:1.05rem;font-weight:800;color:#e2e8f0;margin-bottom:4px}
+.feedback-modal-sub{font-size:.78rem;color:#6b8299;line-height:1.5}
+.feedback-modal-close{
+  background:none;border:none;color:#4b6478;cursor:pointer;font-size:1.1rem;padding:2px 4px
+}
+.feedback-modal-close:hover{color:#94a3b8}
+.feedback-field{margin-bottom:14px}
+.feedback-label{
+  display:block;font-size:.78rem;font-weight:700;color:#c0d0e0;margin-bottom:7px
+}
+.feedback-input{
+  width:100%;
+  background:#071320;
+  border:1px solid #162d47;
+  border-radius:8px;
+  padding:10px 12px;
+  color:#e2e8f0;
+  font-size:.84rem;
+  outline:none
+}
+.feedback-input:focus{border-color:#3b82f6}
+textarea.feedback-input{min-height:88px;resize:vertical}
+.feedback-stars{display:flex;gap:7px}
+.feedback-star{
+  background:#071320;border:1px solid #162d47;color:#6b8299;
+  width:38px;height:38px;border-radius:8px;cursor:pointer;font-weight:800
+}
+.feedback-star:hover,.feedback-star.active{
+  border-color:#3b82f6;color:#93c5fd;background:#0e2845
+}
+.feedback-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.feedback-cancel{
+  background:#071320;border:1px solid #162d47;color:#94a3b8;
+  padding:9px 14px;border-radius:8px;cursor:pointer
+}
+.feedback-submit{
+  background:#1d4ed8;border:none;color:#fff;
+  padding:9px 16px;border-radius:8px;font-weight:700;cursor:pointer
+}
+.feedback-submit:disabled{opacity:.55;cursor:not-allowed}
+.feedback-status{font-size:.76rem;margin-top:10px;display:none}
+.feedback-status.show{display:block}
+.feedback-status.ok{color:#4ade80}
+.feedback-status.err{color:#f87171}
+
+
+/* ── Floating Feedback Button (new feature only) ──────────── */
+.feedback-fab{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:150;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:#4f46e5;
+  color:#fff;
+  border:1px solid #6366f1;
+  border-radius:999px;
+  padding:10px 16px;
+  font-size:.82rem;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(15,23,42,.45);
+  transition:transform .15s ease,background .15s ease,box-shadow .15s ease
+}
+.feedback-fab:hover{
+  background:#5b55ea;
+  transform:translateY(-1px);
+  box-shadow:0 10px 28px rgba(15,23,42,.55)
+}
+.feedback-fab-icon{font-size:.95rem;line-height:1}
+.feedback-fab-text{line-height:1}
+@media(max-width:640px){
+  .feedback-fab{
+    right:14px;
+    bottom:14px;
+    width:46px;
+    height:46px;
+    padding:0;
+    justify-content:center
+  }
+  .feedback-fab-text{display:none}
+  .feedback-fab-icon{font-size:1.05rem}
+}
+
 </style>
 </head>
 <body>
+
+<div id="feedback-modal" onclick="if(event.target===this)closeFeedbackModal()">
+  <div class="feedback-modal-box">
+    <div class="feedback-modal-head">
+     <div class="feedback-modal-sub">
+  Help us improve the Chapter Leader program and portal. This should take less than a minute.
+  <br><br>
+  <strong style="color:#94a3b8">Your feedback is anonymous.</strong>
+  If you'd like to identify yourself, you can mention your name and city in the “Anything else?” section.
+</div>
+      <button class="feedback-modal-close" type="button" onclick="closeFeedbackModal()" aria-label="Close">✕</button>
+    </div>
+
+    <div class="feedback-field">
+      <label class="feedback-label">How useful is the Chapter Leader program for you?</label>
+      <div class="feedback-stars" id="feedback-stars">
+        <button class="feedback-star" type="button" data-rating="1" onclick="setFeedbackRating(1)">1</button>
+        <button class="feedback-star" type="button" data-rating="2" onclick="setFeedbackRating(2)">2</button>
+        <button class="feedback-star" type="button" data-rating="3" onclick="setFeedbackRating(3)">3</button>
+        <button class="feedback-star" type="button" data-rating="4" onclick="setFeedbackRating(4)">4</button>
+        <button class="feedback-star" type="button" data-rating="5" onclick="setFeedbackRating(5)">5</button>
+      </div>
+    </div>
+
+    <div class="feedback-field">
+      <label class="feedback-label" for="feedback-like">What is working well?</label>
+      <textarea class="feedback-input" id="feedback-like" placeholder="Anything you like about the program, meetups, leaderboard, resources..."></textarea>
+    </div>
+
+    <div class="feedback-field">
+      <label class="feedback-label" for="feedback-improve">What can we improve?</label>
+      <textarea class="feedback-input" id="feedback-improve" placeholder="Tell us what would make the experience better..."></textarea>
+    </div>
+
+    <div class="feedback-field">
+      <label class="feedback-label" for="feedback-other">Anything else? <span style="font-weight:400;color:#4b6478">(optional)</span></label>
+      <textarea class="feedback-input" id="feedback-other" placeholder="Additional thoughts..."></textarea>
+    </div>
+
+    <div class="feedback-actions">
+      <button class="feedback-cancel" type="button" onclick="closeFeedbackModal()">Cancel</button>
+      <button class="feedback-submit" id="feedback-submit" type="button" onclick="submitPortalFeedback()">Submit Feedback</button>
+    </div>
+    <div class="feedback-status" id="feedback-status"></div>
+  </div>
+</div>
+
 
 <div id="pw-gate">
   <div class="pw-box">
@@ -477,8 +659,8 @@ details.rules-faq p{padding:0 15px 14px;font-size:.76rem;color:#6b8299;line-heig
     <div class="ep-icon">&#128197;</div>
     <div class="ep-badge">Upcoming Event</div>
     <div class="ep-title">Chapter Leader Connect</div>
-    <div class="ep-date">30th July 2025</div>
-    <div class="ep-sub">We're bringing all Chapter Leaders together for our quarterly connect! Mark your calendars &mdash; more details will be shared soon.</div>
+    <div class="ep-date">17th September 2026</div>
+    <div class="ep-sub">Join us for a hands-on workshop on Test Companion, where we will explore the product and learn how to use it through practical examples</div>
     <button class="ep-btn" onclick="closePopup()">Got it, see you there! &#127881;</button>
     <button class="ep-skip" onclick="closePopup()">Remind me later</button>
   </div>
@@ -1061,6 +1243,14 @@ details.rules-faq p{padding:0 15px 14px;font-size:.76rem;color:#6b8299;line-heig
   </div>
 </div>
 
+
+
+
+<button class="feedback-fab" type="button" onclick="openFeedbackModal()" aria-label="Share feedback" title="Share feedback">
+  <span class="feedback-fab-icon">💬</span>
+  <span class="feedback-fab-text">Feedback</span>
+</button>
+
 </div>
 </div>
 
@@ -1070,13 +1260,97 @@ var SECRET_TOKEN='BSCLSecure2024xT9k';
 var IND_COLS=['collab','highlight','referral','alpha user','ama','breakpoint promo','discord join (unique)','browserstack product session','cl connect','conference talk'];
 function isIndividualCol(h){return IND_COLS.some(function(k){return h.indexOf(k)>=0;});}
 
+/* ── Portal Feedback ───────────────────────────────────────── */
+var feedbackRating = 0;
+
+function openFeedbackModal(){
+  feedbackRating = 0;
+  document.querySelectorAll('.feedback-star').forEach(function(btn){btn.classList.remove('active');});
+  document.getElementById('feedback-like').value='';
+  document.getElementById('feedback-improve').value='';
+  document.getElementById('feedback-other').value='';
+  var status=document.getElementById('feedback-status');
+  status.className='feedback-status';
+  status.textContent='';
+  document.getElementById('feedback-submit').disabled=false;
+  document.getElementById('feedback-modal').classList.add('show');
+}
+
+function closeFeedbackModal(){
+  document.getElementById('feedback-modal').classList.remove('show');
+}
+
+function setFeedbackRating(rating){
+  feedbackRating=rating;
+  document.querySelectorAll('.feedback-star').forEach(function(btn){
+    btn.classList.toggle('active',Number(btn.getAttribute('data-rating'))<=rating);
+  });
+}
+
+function checkBackendVersion(){
+  gasCall({action:'health'},function(res){
+    console.log('Chapter Leader Portal backend:',res);
+    return res;
+  },function(){
+    console.error('Could not reach Apps Script backend.');
+  });
+}
+
+function submitPortalFeedback(){
+  var liked=document.getElementById('feedback-like').value.trim();
+  var improve=document.getElementById('feedback-improve').value.trim();
+  var other=document.getElementById('feedback-other').value.trim();
+  var status=document.getElementById('feedback-status');
+  var btn=document.getElementById('feedback-submit');
+
+  if(!feedbackRating && !liked && !improve && !other){
+    status.textContent='Please add a rating or a short comment before submitting.';
+    status.className='feedback-status show err';
+    return;
+  }
+
+  btn.disabled=true;
+  status.textContent='Submitting…';
+  status.className='feedback-status show';
+
+  gasCall({
+    action:'feedback',
+    rating:feedbackRating || '',
+    liked:liked,
+    improve:improve,
+    other:other,
+    leaderName:localStorage.getItem('my_leader') || ''
+  },function(res){
+    if(res && res.success){
+      status.textContent='Thanks — your feedback has been recorded.';
+      status.className='feedback-status show ok';
+      setTimeout(closeFeedbackModal,1200);
+    }else{
+      if(res && res.error){
+        status.textContent='Feedback error: '+res.error;
+      }else if(res && res.headers && res.rows){
+        status.textContent='Your website is still connected to an older Apps Script deployment. Update/redeploy the backend or replace GAS_URL with the latest deployment URL.';
+      }else{
+        status.textContent='Unexpected backend response. Please verify the Apps Script deployment URL and version.';
+      }
+      status.className='feedback-status show err';
+      btn.disabled=false;
+    }
+  },function(){
+    status.textContent='Connection error. Please try again.';
+    status.className='feedback-status show err';
+    btn.disabled=false;
+  });
+}
+
+
 /* JSONP helper */
 function gasCall(params,onSuccess,onError){var cb='_cb_'+Date.now()+'_'+Math.random().toString(36).slice(2);window[cb]=function(res){delete window[cb];var old=document.querySelector('script[data-jsonp="'+cb+'"]');if(old)old.remove();onSuccess(res);};var s=document.createElement('script');s.setAttribute('data-jsonp',cb);var p=Object.assign({},params,{token:SECRET_TOKEN,callback:cb});var qs=Object.keys(p).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(p[k]);}).join('&');s.src=GAS_URL+'?'+qs;s.onerror=function(){delete window[cb];s.remove();if(onError)onError();};document.head.appendChild(s);}
 
 /* Auth UI */
 function togglePwVisibility(){var inp=document.getElementById('pw-input');var on=document.getElementById('eye-icon'),off=document.getElementById('eye-off-icon');if(inp.type==='password'){inp.type='text';on.style.display='none';off.style.display='block';}else{inp.type='password';on.style.display='block';off.style.display='none';}}
 function setPwLoading(v){var btn=document.getElementById('pw-btn'),inp=document.getElementById('pw-input');btn.disabled=v;inp.disabled=v;document.getElementById('pw-spinner').style.display=v?'block':'none';document.getElementById('pw-btn-text').textContent=v?'Verifying…':'Access Portal';}
-var POPUP_ENABLED = false; // ← change to true to show the popup, false to hide it
+var POPUP_ENABLED = true; // ← change to true to show the popup, false to hide it
 function showPopupIfNeeded(){if(!POPUP_ENABLED)return;var ep=document.getElementById('event-popup');if(ep&&!localStorage.getItem('bs_popup_seen'))ep.classList.add('show');}
 function checkPw(){var val=document.getElementById('pw-input').value.trim();if(!val)return;document.getElementById('pw-err').classList.remove('show');setPwLoading(true);gasCall({action:'checkPassword',pw:val},function(res){setPwLoading(false);if(res&&res.success){localStorage.setItem('bs_auth','1');if(typeof gtag==='function')gtag('event','login_success',{event_category:'auth'});document.getElementById('pw-gate').style.display='none';document.getElementById('app').style.display='block';showPopupIfNeeded();loadLeaderboardData();landAfterLogin();}else{var err=document.getElementById('pw-err');err.textContent='❌ Incorrect password. Please try again.';err.classList.add('show');document.getElementById('pw-input').value='';document.getElementById('pw-input').type='password';document.getElementById('eye-icon').style.display='block';document.getElementById('eye-off-icon').style.display='none';document.getElementById('pw-input').focus();}},function(){setPwLoading(false);document.getElementById('pw-err').textContent='❌ Connection error. Please try again.';document.getElementById('pw-err').classList.add('show');});}
 function closePopup(){localStorage.setItem('bs_popup_seen','1');var ep=document.getElementById('event-popup');if(ep)ep.classList.remove('show');}
